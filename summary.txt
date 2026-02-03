@@ -1,0 +1,652 @@
+================================================================================
+A) DEDUPLICATED DATA SOURCES  (table_name -> all fields ever queried)
+================================================================================
+
+  SOURCE: MishaO.Elections_razvod_right.Results_by_distrtict_right_fix
+  USED BY: ['PerformanceManagement/ElemMultiKpi']
+  FIELDS:  ['VotePercentage']
+
+  SOURCE: MishaO.Status_of_municipal_elections_district_results
+  USED BY: ['PerformanceManagement/ElemMultiKpi']
+  FIELDS:  ['VotePercentage']
+
+  SOURCE: Studenikin.mamaanarchia
+  USED BY: ['PerformanceManagement/ElemCnpXlsxBtn']
+  FIELDS:  ['AO', 'Come', 'Country', 'Percent', 'YI']
+
+  SOURCE: custom_radio_btn_abs_per
+  USED BY: ['PerformanceManagement/ElemHouse', 'ElemSmartGallery', '5INSIGHT/ElemChartFilterMed']
+  FIELDS:  ['name', 'ord']
+
+  SOURCE: custom_radio_btn_all_deg_intramural
+  USED BY: ['ElemSmartGallery', 'PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['name']
+
+  SOURCE: d_all_filters
+  USED BY: ['PerformanceManagement/ElemHouse', 'ElemSmartGallery', '5INSIGHT/ElemChartFilterMed', 'PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['event', 'name', 'name_en', 'ord', 'type', 'variable']
+
+  SOURCE: d_all_slices
+  USED BY: ['ElemDremioTable', 'PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['ao_code', 'ao_id', 'district_id', 'district_name', 'district_okato', 'election_id', 'io_coordinates', 'io_id', 'io_name', 'io_number', 'uik_id', 'uik_number', 'uik_type_id']
+
+  SOURCE: datetime_integration666
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['date_integration', 'datetime_integration_db', 'datetime_integration_true', 'time_integration']
+
+  SOURCE: db_menu
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['contur', 'filter', 'menu_link', 'menu_name', 'order']
+
+  SOURCE: dict_not_one_table_checkbox
+  USED BY: ['5INSIGHT/ElemChartFilterMed']
+  FIELDS:  ['id_name', 'id_type_checkbox', 'name', 'type_checkbox']
+
+  SOURCE: dict_sources
+  USED BY: ['PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['sort', 'source_id', 'source_name_ru']
+
+  SOURCE: dit_data.elections.municipal.municipal_map_mo
+  USED BY: ['PerformanceManagement/ElemMultiSpline', 'ElemDremioTable']
+  FIELDS:  ['ao_okato', 'district_id', 'filter_name', 'perc_dim', 'source_name']
+
+  SOURCE: dit_data.elections.municipal.municipal_voters_district
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['district_okato', 'filter_name', 'voted_percent', 'voted_value']
+
+  SOURCE: dit_data.elections.custom_checkbox_color
+  USED BY: ['PerformanceManagement/ElemMultiKpi']
+  FIELDS:  ['name']
+
+  SOURCE: municipal_candidates_mo
+  USED BY: ['ElemDremioTable', 'ElemSmartGallery', 'PerformanceManagement/ElemMultiKpi', 'PerformanceManagement/ElemStandardFilter', 'PerformanceManagement/ElemCnpXlsxBtn']
+  FIELDS:  ['amount', 'anomaly_type', 'ao_code', 'ao_id', 'ao_name', 'ao_okato', 'candidate_full', 'candidate_id', 'candidate_short', 'digital_percent', 'digital_rang', 'digital_value', 'digital_winner', 'district_id', 'district_name', 'district_okato', 'filter_name', 'flag_color', 'flag_text', 'forecast_type', 'general_percent', 'general_value', 'io_id', 'io_name', 'io_number', 'name', 'paper_percent', 'paper_rang', 'paper_value', 'paper_winner', 'party_id', 'party_name', 'patronymic', 'percent_all', 'percent_digital', 'percent_offline', 'protocol_received_percent_all', 'protocol_received_percent_digital', 'protocol_received_percent_offline', 'protocol_received_value_all', 'protocol_received_value_digital', 'protocol_received_value_offline', 'rang', 'slice', 'source_id', 'source_name', 'style_attr_id', 'style_attr_name', 'style_attr_name_corr', 'surname', 'uik_id', 'uik_ids', 'uik_number', 'value_all', 'value_digital', 'value_offline', 'winner', 'winner_sort', 'winner_sort_text', 'winner_text']
+
+  SOURCE: municipal_candidates_table
+  USED BY: ['PerformanceManagement/ElemMultiKpi']
+  FIELDS:  ['candidate_full', 'candidate_id']
+
+  SOURCE: municipal_forecast_table_io
+  USED BY: ['PerformanceManagement/ElemCnpXlsxBtn', 'ElemDremioTable', 'PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['amount', 'block_type', 'candidate_short', 'candidate_type', 'color_candidate', 'concat_for_group', 'digital_percent', 'digital_value', 'digital_win', 'district_id', 'district_name', 'flag', 'forecast_color_io', 'forecast_color_mo', 'forecast_type', 'general_percent', 'general_value', 'general_win', 'io_id', 'io_number', 'now_color_io', 'now_color_mo', 'paper_goal_per', 'paper_goal_value', 'paper_percent', 'paper_value', 'paper_win', 'party_name', 'required_ballots_percent', 'required_ballots_percent_io', 'required_ballots_value', 'required_ballots_value_io', 'required_ballots_value_plus_num', 'source_id', 'total_unprocessed_ballots', 'total_unprocessed_ballots_io']
+
+  SOURCE: municipal_forecast_table_io_only_io
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['block_type', 'concat_for_group', 'concat_for_mo_group', 'district_id', 'district_name', 'district_okato', 'forecast_color_io', 'forecast_color_mo', 'forecast_type', 'io_id', 'io_name', 'io_number', 'now_color_io', 'now_color_mo', 'required_ballots_percent', 'required_ballots_percent_io', 'required_ballots_value', 'required_ballots_value_io', 'required_ballots_value_plus_num', 'total_unprocessed_ballots', 'total_unprocessed_ballots_io']
+
+  SOURCE: municipal_forecast_table_mo
+  USED BY: ['5INSIGHT/ElemChartFilterMed', 'PerformanceManagement/ElemCnpXlsxBtn', 'ElemDremioTable', 'PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['amount', 'block_type', 'candidate_short', 'candidate_type', 'color_candidate', 'concat_for_group', 'digital_percent', 'digital_value', 'digital_win', 'district_id', 'district_name', 'flag', 'forecast_color_mo', 'forecast_type', 'general_percent', 'general_value', 'general_win', 'io_id', 'io_number', 'now_color_mo', 'paper_goal_per', 'paper_goal_value', 'paper_percent', 'paper_value', 'paper_win', 'party_name', 'required_ballots_percent', 'required_ballots_percent_io', 'required_ballots_value', 'required_ballots_value_io', 'required_ballots_value_plus_num_io', 'required_ballots_value_plus_num_mo', 'source_id', 'total_unprocessed_ballots', 'total_unprocessed_ballots_io']
+
+  SOURCE: municipal_forecast_table_mo_det
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['amount', 'block_type', 'candidate_short', 'candidate_type', 'color_candidate', 'concat_for_group', 'digital_percent', 'digital_value', 'digital_win', 'district_id', 'district_name', 'flag', 'forecast_color_mo', 'forecast_type', 'general_percent', 'general_value', 'general_win', 'io_id', 'io_number', 'now_color_mo', 'paper_goal_per', 'paper_goal_value', 'paper_percent', 'paper_value', 'paper_win', 'party_name', 'required_ballots_percent', 'required_ballots_percent_io', 'required_ballots_value', 'required_ballots_value_io', 'source_id', 'total_unprocessed_ballots', 'total_unprocessed_ballots_io']
+
+  SOURCE: municipal_forecast_table_mo_only_io
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['block_type', 'concat_for_group', 'concat_for_mo_group', 'district_id', 'district_name', 'district_okato', 'forecast_color_io', 'forecast_color_mo', 'forecast_type', 'io_id', 'io_name', 'io_number', 'now_color_io', 'now_color_mo', 'required_ballots_percent', 'required_ballots_percent_io', 'required_ballots_value', 'required_ballots_value_io', 'required_ballots_value_plus_num', 'total_unprocessed_ballots', 'total_unprocessed_ballots_io']
+
+  SOURCE: municipal_invalid_bulletin
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['ao_code', 'ao_id', 'ao_name', 'ao_okato', 'district_id', 'district_name', 'district_okato', 'invalid', 'invalid_deg', 'invalid_offline', 'invalid_per', 'invalid_per_deg', 'invalid_per_offline', 'io_id', 'io_number', 'source_id', 'source_name', 'uik_id', 'uik_number']
+
+  SOURCE: municipal_kpi_msk
+  USED BY: ['PerformanceManagement/ElemPieChartDremio', 'ElemDremioTable']
+  FIELDS:  ['ao_code', 'ao_id', 'ao_name', 'ao_okato', 'district_id', 'district_name', 'district_okato', 'filter_name', 'io_id', 'io_number', 'protocol_received_percent', 'protocol_received_value', 'sort', 'source_id', 'source_name', 'statement_processed_percent', 'statement_processed_value', 'uik_id', 'uik_number']
+
+  SOURCE: municipal_mandates
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['ao_code', 'ao_id', 'ao_name', 'ao_okato', 'color', 'count', 'count_all', 'district_id', 'filter_name', 'flag', 'io_id', 'source_id', 'source_name', 'uik_id']
+
+  SOURCE: municipal_mandates_by_party
+  USED BY: ['ElemSmartGallery', 'PerformanceManagement/ElemMultiSpline', 'ElemDremioTable', 'PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['ao_code', 'ao_id', 'ao_name', 'ao_okato', 'color', 'color_v', 'count', 'count_mandate', 'count_v', 'deg_winner', 'district_id', 'filter_name', 'io_id', 'paper_winner', 'party_id', 'party_name', 'percent', 'percent_mandate', 'percent_v', 'rank_num_mandates', 'rank_num_voices', 'source_id', 'source_name', 'uik_id', 'voice_percent_by_party', 'voice_value_by_party', 'winner']
+
+  SOURCE: municipal_map_forecast_count
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['block_type', 'count_district', 'district_id', 'forecast_color_mo', 'forecast_type', 'now_color_mo', 'sort', 'source_id']
+
+  SOURCE: municipal_map_io
+  USED BY: ['PerformanceManagement/ElemDotMap', 'PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['color', 'color_id', 'count_number', 'district_id', 'district_name', 'filter_name', 'io_id', 'io_name', 'io_name_full', 'io_number', 'mo_percent', 'source_id', 'source_name']
+
+  SOURCE: municipal_map_io_forecast
+  USED BY: ['PerformanceManagement/ElemDotMap']
+  FIELDS:  ['ao_code', 'ao_id', 'ao_name', 'district_id', 'district_name', 'forecast_color_mo', 'forecast_type', 'id_concat', 'io_id', 'io_name', 'io_number', 'latt', 'long', 'name_concat', 'source_id', 'source_name', 'voice_min', 'voice_min_per']
+
+  SOURCE: municipal_map_mo
+  USED BY: ['PerformanceManagement/ElemDotMap']
+  FIELDS:  ['color', 'color_id', 'count_number', 'district_id', 'district_name', 'filter_name', 'mo_percent', 'source_id']
+
+  SOURCE: municipal_map_mo_forecast
+  USED BY: ['PerformanceManagement/ElemDotMap']
+  FIELDS:  ['ao_code', 'ao_id', 'ao_name', 'district_id', 'district_name', 'forecast_color_mo', 'forecast_type', 'id_concat', 'io_number_1', 'io_number_2', 'io_number_3', 'io_number_4', 'io_number_5', 'latt', 'long', 'name_concat', 'source_id', 'source_name', 'voice_1', 'voice_2', 'voice_3', 'voice_4', 'voice_5', 'voice_min', 'voice_min_per', 'voice_per_1', 'voice_per_2', 'voice_per_3', 'voice_per_4', 'voice_per_5']
+
+  SOURCE: municipal_map_uik
+  USED BY: ['PerformanceManagement/ElemDotMap']
+  FIELDS:  ['color', 'count_number', 'district_id', 'district_name', 'filter_name', 'io_id', 'io_name', 'io_number', 'latt', 'long', 'source_id', 'statement_processed_value', 'uik_id', 'uik_number', 'uik_size']
+
+  SOURCE: municipal_protocol_district
+  USED BY: ['PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['district_id', 'district_name', 'district_okato', 'filter_name', 'source_name']
+
+  SOURCE: municipal_protocol_district_unpivot
+  USED BY: ['PerformanceManagement/ElemMultiSpline', 'ElemDremioTable']
+  FIELDS:  ['district_id', 'district_name', 'io_id', 'io_number', 'protocol_percent', 'protocol_value', 'rec_attr', 'source_id', 'source_name', 'status', 'uik_all']
+
+  SOURCE: municipal_protocol_io_uik_download
+  USED BY: ['PerformanceManagement/ElemCnpXlsxBtn']
+  FIELDS:  ['district_id', 'district_name', 'io_id', 'io_number', 'protocol_percent', 'protocol_value', 'sort', 'status', 'uik_all', 'uik_id', 'uik_number']
+
+  SOURCE: municipal_protocol_uik
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['ao_code', 'ao_id', 'ao_name', 'district_id', 'district_name', 'election_id', 'io_id', 'io_name', 'io_number', 'rec_attr', 'source_id', 'source_name', 'status', 'uik_id', 'uik_number']
+
+  SOURCE: municipal_turnout_loyal
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['20_15', 'district_id', 'fact', 'flag_up_down_00_00', 'io_id', 'loyal', 'not_loyal', 'past_turnout_point', 'plan', 'source_id', 'uik_id', 'voting_type', 'voting_type_id']
+
+  SOURCE: municipal_turnout_not_one
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['20_15', 'district_id', 'fact', 'flag_up_down_00_00', 'io_id', 'plan', 'source_id', 'uik_id', 'voting_type', 'voting_type_id']
+
+  SOURCE: municipal_turnout_not_one_table_det
+  USED BY: ['PerformanceManagement/ElemCnpXlsxBtn', 'ElemDremioTable', 'PerformanceManagement/ElemStandardFilter']
+  FIELDS:  ['00_00', '01_00', '02_00', '03_00', '20_00', '20_15', '20_15_sum', '21_00', '22_00', '23_00', 'concat', 'deviation_abs', 'deviation_percent', 'district_id', 'district_name', 'district_okato', 'flag_down_00_00_filter', 'flag_down_01_00_filter', 'flag_down_02_00_filter', 'flag_down_03_00_filter', 'flag_down_20_15_filter', 'flag_down_21_00_filter', 'flag_down_22_00_filter', 'flag_down_23_00_filter', 'flag_down_filter', 'flag_up_00_00_filter', 'flag_up_01_00_filter', 'flag_up_02_00_filter', 'flag_up_03_00_filter', 'flag_up_20_15_filter', 'flag_up_21_00_filter', 'flag_up_22_00_filter', 'flag_up_23_00_filter', 'flag_up_down', 'flag_up_down_00_00', 'flag_up_down_01_00', 'flag_up_down_02_00', 'flag_up_down_03_00', 'flag_up_down_20_00', 'flag_up_down_20_15', 'flag_up_down_21_00', 'flag_up_down_22_00', 'flag_up_down_23_00', 'flag_up_filter', 'flag_warn', 'io_id', 'io_number', 'is_total_row', 'plan', 'source_id', 'total', 'uik_id', 'uik_number', 'voting_type', 'voting_type_id', 'yavka_fact']
+
+  SOURCE: municipal_voters_ao_chart
+  USED BY: ['PerformanceManagement/ElemPieChartDremio', 'ElemDremioTable']
+  FIELDS:  ['Type', 'ao_id', 'district_id', 'io_id', 'okato', 'sort', 'source_id', 'source_name', 'type', 'uik_id', 'voted_percent_all', 'voted_value_all']
+
+  SOURCE: municipal_voters_msk
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['ao_id', 'district_id', 'io_id', 'registered_voters', 'source_id', 'uik_id', 'voted_percent', 'voted_percent_deg', 'voted_percent_offline', 'voted_value', 'voted_value_deg', 'voted_value_offline']
+
+  SOURCE: refresh_bc
+  USED BY: ['ElemSmartGallery']
+  FIELDS:  ['contur', 'id', 'status']
+
+  SOURCE: turnout_not_one_time
+  USED BY: ['ElemDremioTable']
+  FIELDS:  ['election_id', 'left_time', 'time']
+
+================================================================================
+B) ALL VISIBLE TABLE COLUMN TITLES (from ElemDremioTable .columns[].title)
+   grouped by $from source
+================================================================================
+
+  d_all_slices:
+      [sort:УИК № ]
+      [sort:ио]
+
+  datetime_integration666:
+      [sort:date]
+      [sort:time]
+
+  db_menu:
+      [sort:menu_link]
+
+  dit_data.elections.municipal.municipal_map_mo:
+      Количество
+      Результат
+
+  dit_data.elections.municipal.municipal_voters_district:
+      [sort:Значение]
+      [sort:Процент]
+      значение
+      процент
+
+  municipal_candidates_mo:
+      [sort:ord Мандат]
+      [sort:Бумаж.]
+      [sort:Бумажно абс]
+      [sort:Голоса_бум%]
+      [sort:Голоса_общ%]
+      [sort:Голоса_общее%]
+      [sort:Голоса_эл%]
+      [sort:ИО]
+      [sort:Общее %]
+      [sort:Партия]
+      [sort:Протоколы_общее%]
+      [sort:Район]
+      Голоса
+      Мандат
+      Обработанные протоколы
+
+  municipal_forecast_table_io:
+      [sort:-]
+      [sort:Бум%]
+      [sort:Бум_ц%]
+      [sort:Бум_ц]
+      [sort:Необр_всего_ио]
+      [sort:Необр_необх_%_ио]
+      [sort:Общ%]
+      [sort:Эл%]
+      Бум.
+      Бум_ц %
+      Бум_ц абс.
+      ИО
+      Кандидат
+      Мандат
+      Общ.
+      Партия
+      Электр.
+      всего
+      необх IO
+
+  municipal_forecast_table_io_only_io:
+      [sort:ИО назв]
+      Бюллетени min
+      Бюллетени min%
+      ИО
+      МО
+
+  municipal_forecast_table_mo:
+      [sort:-]
+      [sort:Бум_ц%]
+      [sort:ИО]
+      [sort:Необр_всего]
+      [sort:Необр_всего_ио]
+      [sort:Необр_необх_%_ио]
+      [sort:Необр_необх_абс]
+      [sort:Необр_необх_абс_ио]
+      [sort:Партия]
+      Бум.
+      Бум_ц %
+      Бум_ц абс.
+      Бюллетени min
+      Бюллетени min%
+      ИО
+      Кандидат
+      Мандат
+      Общ.
+      Партия
+      Электр.
+      всего
+      всего мо
+      всего2
+      необх
+      необх2
+
+  municipal_forecast_table_mo_det:
+      [sort:-]
+      [sort:Бум_ц%]
+      [sort:ИО]
+      [sort:Необр_всего]
+      [sort:Необр_всего_ио]
+      [sort:Необр_необх_%_ио]
+      [sort:Необр_необх_абс]
+      [sort:Партия]
+      Бум.
+      Бум_ц %
+      Бум_ц абс.
+      ИО
+      Кандидат
+      Мандат
+      Общ.
+      Партия
+      Электр.
+      всего
+      необх
+      необх2
+
+  municipal_forecast_table_mo_only_io:
+      [sort:ИО прогноз]
+      [sort:МО_н]
+      [sort:бюллетени %]
+      [sort:бюллетени]
+      [sort:прогнозз]
+      Бюллетени min
+      Бюллетени min%
+      ИО
+      МО
+
+  municipal_invalid_bulletin:
+      [sort:Бум%]
+      [sort:Бум]
+      [sort:Бумаж.]
+      [sort:Недействительные бюллетени ]
+
+  municipal_kpi_msk:
+      [sort:Значение]
+      [sort:Кастом процент]
+      [sort:Процент каст]
+      [sort:Процент]
+      [sort:Тип сокращ]
+      значение
+      процент
+
+  municipal_mandates:
+      [sort:Кол-во]
+      [sort:приписка]
+
+  municipal_mandates_by_party:
+      [sort:Ось У]
+      [sort:Партия]
+      [sort:Тип сокращен]
+
+  municipal_map_forecast_count:
+      Зеленые
+
+  municipal_protocol_district_unpivot:
+      [sort:Всего]
+      Всего УИК
+
+  municipal_protocol_uik:
+
+  municipal_turnout_loyal:
+      0 00
+      20 15
+      [sort:Время 1ст]
+      [sort:Время]
+      [sort:Всего]
+      [sort:Тип голосования img]
+      [sort:Флаг (стрелки)]
+      Всего
+      картинка
+
+  municipal_turnout_not_one:
+      0 00
+      20 15
+      [sort:Время 1ст]
+      [sort:Всего]
+      [sort:План]
+      [sort:Тип голосования img]
+      [sort:Флаг (стрелки)]
+      Всего
+      картинка
+      план
+
+  municipal_turnout_not_one_table_det:
+      00_00
+      01_00
+      02_00
+      03_00
+      20_00
+      20_15
+      21_00
+      22_00
+      23_00
+      [sort:Флаг 21_00 img]
+      [sort:Флаг WARN img]
+      [sort:Флаг Всего img]
+      Всего
+      ИО
+      Отклон %
+      Отклон абс
+      План
+      Тип голосования кастом
+      УИК
+      Явка
+
+  municipal_voters_ao_chart:
+      [sort:Значение]
+      [sort:Процент]
+      [sort:Тип сокращ]
+      значение
+      процент
+
+  municipal_voters_msk:
+      [sort:Значение]
+      [sort:Кастом процент]
+      [sort:Кол-во]
+      [sort:Процент кастом]
+
+  turnout_not_one_time:
+      [sort:Время]
+
+================================================================================
+C) Table/ElemHeader dataField values (sortable column names)
+================================================================================
+  ['Бюллетени мин', 'Необр бюллет всего', 'Необр бюллет необх', 'Район н']
+
+================================================================================
+D) FILTER WIDGETS  (dimension field + placeholder label + source)
+================================================================================
+  dimension='ИО_н'                placeholder='ИО'             source=municipal_map_io
+  dimension='УИК_н'               placeholder='УИК'            source=d_all_slices
+  dimension='Район_н'             placeholder='МО'             source=d_all_slices
+  dimension='ИО_н'                placeholder='ИО'             source=d_all_slices
+  dimension='Тип'                 placeholder='Тип прогноза'   source=d_all_filters
+  dimension='Название источника'  placeholder='Источники данных'  source=dict_sources
+  dimension='Тип'                 placeholder='Тип'            source=custom_radio_btn_all_deg_intramural
+  dimension='Наименование'        placeholder=''               source=d_all_filters
+  dimension='Порядок'             placeholder=''               source=d_all_filters
+  dimension='ФИО'                 placeholder=''               source=municipal_candidates_mo
+  dimension='Название района'     placeholder='МО'             source=d_all_slices
+  dimension='Название ИО'         placeholder='ИО'             source=d_all_slices
+  dimension='Кандидат (полный)'   placeholder='Кандидат'       source=municipal_candidates_mo
+  dimension='Партия'              placeholder='Партия'         source=municipal_candidates_mo
+  dimension='Тип выигрыша'        placeholder='Общ'            source=d_all_filters
+  dimension='Тип выигрыша'        placeholder='Эл'             source=d_all_filters
+  dimension='Тип выигрыша'        placeholder='Бум'            source=d_all_filters
+  dimension='Район'               placeholder='МО'             source=d_all_slices
+  dimension='ИО название'         placeholder='ИО'             source=d_all_slices
+  dimension='Тип'                 placeholder='Кандидат'       source=d_all_filters
+  dimension='Партия'              placeholder='Партия'         source=municipal_forecast_table_mo
+  dimension='Группировка'         placeholder=''               source=municipal_forecast_table_mo
+  dimension='Группировка'         placeholder=''               source=municipal_forecast_table_io
+  dimension='МО'                  placeholder='МО'             source=d_all_slices
+  dimension='Полное ИО'           placeholder='ИО'             source=d_all_slices
+  dimension='Номер УИКа'          placeholder='УИК'            source=d_all_slices
+  dimension='Тип голосования'     placeholder='Тип'            source=municipal_turnout_not_one_table_det
+  dimension='Отклонение'          placeholder='Отклонение'     source=municipal_turnout_not_one_table_det
+  dimension='Тип'                 placeholder='Категория'      source=d_all_filters
+  dimension='Партия'              placeholder=''               source=municipal_mandates_by_party
+  dimension='Тип'                 placeholder='Поступило'      source=d_all_filters
+  dimension='Район'               placeholder=''               source=municipal_protocol_district
+
+================================================================================
+E) ALL UI LABELS (ElemText .html, deduplicated & tag-stripped)
+================================================================================
+  %
+  00:00
+  01:00
+  02:00
+  03:00
+  1
+  10
+  11
+  12
+  13
+  14
+  2
+  20:00
+  20:15
+  21:00
+  22:00
+  23:00
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+  io
+  msk
+  Бум.
+  Бум. (целевой)
+  Бумажно
+  Бумажное голосование
+  Военные
+  Всего
+  Выборы в Мосгордуму
+  Доп. список
+  Заявления
+  Итоги по районам
+  Кандидаты
+  Круговая диаграмма
+  Мандат
+  Мандаты  по кандидатам
+  Меню
+  Москва
+  Муниципальные выборы
+  Надомники
+  Назад
+  Не обработанобюллетеней бумажно
+  Необр. бюллетени
+  Обработано протоколов (бумажно)
+  Обработанобюллетеней
+  Общ.
+  Общее
+  Отобразить УИКи
+  План
+  Прогноз по МО
+  Распределение голосов
+  Результаты голосования
+  Результаты голосования по субъектамвыдвижения
+  Результаты муниципальных выборов
+  Статус поступления протоколов
+  Статус поступления протоколов (бумажно)
+  Столбчатая диаграмма
+  Табличный вид
+  Текущее состояние
+  Элек.
+  Электронно
+  Явка (итоги)
+  Явка(факт)
+  абс
+  абс.
+  всего
+  необх.
+  от числа избирателей
+  от числаизбирателей
+  ⬤0%-50%
+  ⬤100%-100%
+  ⬤50%-66%
+  ⬤66%-100%
+  ⬤Бумажно
+  ⬤Не поступило
+  ⬤Поступило
+  ⬤Электронно
+
+================================================================================
+F) CHART-FILTER DIMENSIONS (5INSIGHT/ElemChartFilterMed)
+================================================================================
+  dimension='Тип'                      type='radio'          source=custom_radio_btn_abs_per
+      fields: ['name', 'ord']
+  dimension='Статус'                   type=None             source=d_all_filters
+      fields: ['name', 'ord', 'type']
+  dimension='Мандат'                   type=None             source=municipal_forecast_table_mo
+      fields: ['general_win']
+  dimension='Тип'                      type='radio'          source=d_all_filters
+      fields: ['event', 'name', 'name_en', 'ord', 'type', 'variable']
+  dimension='Флаг времени'             type=None             source=dict_not_one_table_checkbox
+      fields: ['id_name', 'id_type_checkbox', 'name', 'type_checkbox']
+  dimension='Флаг Всего'               type=None             source=dict_not_one_table_checkbox
+      fields: ['id_name', 'id_type_checkbox', 'name', 'type_checkbox']
+  dimension='Флаг откл %'              type=None             source=dict_not_one_table_checkbox
+      fields: ['id_name', 'id_type_checkbox', 'name', 'type_checkbox']
+  dimension='Взятие мандата'           type=None             source=d_all_filters
+      fields: ['name', 'ord', 'type']
+
+================================================================================
+G) KPI WIDGETS  (metric + dimension + prefix + source)
+================================================================================
+  metric='Партия'                   dim=None                       prefix='Всего:'         type=None          src=municipal_candidates_mo
+  metric='Статус_метрика'           dim='Голосов процент'          prefix=None             type='dimension'   src=MishaO.Elections_razvod_right.Results_by_distrtict_right_fix
+  metric='VotePercentage'           dim='Голосов процент'          prefix=None             type=None          src=MishaO.Status_of_municipal_elections_district_results
+  metric=None                       dim='Цвет'                     prefix=None             type='dimension'   src=dit_data.elections.custom_checkbox_color
+  metric=None                       dim='ФИО'                      prefix='Статистика по'  type='dimension'   src=municipal_candidates_table
+
+================================================================================
+H) SPLINE CHARTS  (metricNames + dimensionOptions + source)
+================================================================================
+  metricNames:      ['Кол-во районов']
+  dimensionOptions: {'main': {'name': 'Процент', 'sort': 'none', 'format': 'string'}, 'minor': {'name': '', 'sort': 'ascending', 'format': 'string'}}
+  source:           dit_data.elections.municipal.municipal_map_mo
+  fields:           ['ao_okato', 'district_id', 'filter_name', 'perc_dim', 'source_name']
+
+  metricNames:      ['Процент', 'Доп подпись', 'Сортировка']
+  dimensionOptions: {'main': {'name': 'Тип', 'sort': 'none'}, 'minor': {'name': 'Статус'}}
+  source:           municipal_mandates_by_party
+  fields:           ['ao_code', 'ao_id', 'ao_name', 'ao_okato', 'color', 'color_v', 'count', 'count_mandate', 'count_v', 'deg_winner', 'district_id', 'filter_name', 'io_id', 'paper_winner', 'party_id', 'party_name', 'percent', 'percent_mandate', 'percent_v', 'rank_num_mandates', 'rank_num_voices', 'source_id', 'source_name', 'uik_id', 'voice_percent_by_party', 'voice_value_by_party', 'winner']
+
+  metricNames:      ['Процент', 'Количество']
+  dimensionOptions: {'main': {'name': 'Район', 'sort': 'none'}, 'minor': {'name': 'Статус', 'sort': 'descending'}}
+  source:           municipal_protocol_district_unpivot
+  fields:           ['district_id', 'district_name', 'protocol_percent', 'protocol_value', 'rec_attr', 'source_id', 'status', 'uik_all']
+
+================================================================================
+I) PIE / DONUT CHARTS  (dimension + metrics + colorSet + source)
+================================================================================
+  dimension: status
+  colorSet:  [{'name': 'Остаток', 'color': 'rgba(155, 168, 197, 0)'}, {'name': 'Электронно', 'color': '#957AEB'}, {'name': 'Бумажно', 'color': '#44B3EE'}, {'name': '1', 'color': '#957AEB'}, {'name': '2', 'color': '#44B3EE'}]
+  source:    municipal_kpi_msk
+  fields:    ['ao_id', 'district_id', 'filter_name', 'io_id', 'sort', 'source_id', 'statement_processed_percent', 'uik_id']
+
+  dimension: status
+  colorSet:  [{'name': 'Среднее', 'color': '%blue%'}, {'name': 'Остаток', 'color': 'rgba(74, 98, 223, 0)'}, {'name': 'Электронно', 'color': '#957AEB'}, {'name': 'Бумажно', 'color': '#44B3EE'}, {'name': '1.Электронно', 'color': '#957AEB'}, {'name': '2.Бумажно', 'color': '#44B3EE'}, {'name': '1', 'color': '#957AEB'}, {'name': '2', 'color': '#44B3EE'}]
+  source:    municipal_voters_ao_chart
+  fields:    ['ao_id', 'district_id', 'io_id', 'sort', 'source_id', 'type', 'uik_id', 'voted_percent_all']
+
+================================================================================
+J) GEO / DOT-MAP SOURCES  (geojson files + dremio sources)
+================================================================================
+  geojson files: ['upload/54/mun_io_0924_aug.geojson']
+  dremio sources: ['municipal_map_uik', 'municipal_map_io']
+
+  geojson files: ['upload/54/mun_io_0924_aug.geojson']
+  dremio sources: ['municipal_map_io_forecast', 'municipal_map_io']
+
+  geojson files: ['upload/54/mun_district_0924.geojson']
+  dremio sources: ['municipal_map_mo', 'municipal_map_mo_forecast']
+
+================================================================================
+K) NAVIGATION / HOUSE WIDGETS
+================================================================================
+  workType: None   source: d_all_filters
+  fields:   ['name', 'ord', 'type']
+
+  workType: start by event   source: d_all_filters
+  fields:   ['name', 'ord', 'type']
+
+  workType: None   source: custom_radio_btn_abs_per
+  fields:   ['name', 'ord']
+
+================================================================================
+L) XLSX EXPORT DEFINITIONS  (datasetMapped columns + titles)
+================================================================================
+  bookName:       Результаты голосования по субъектам выдвижения
+  datasetMapped:  ['Район', 'ИО', 'Взятие мандата', 'Мандат', 'Статус', 'Кандидат', 'Партия', 'Тип кандидатов', 'Голоса_общ%', 'Голоса_общ', 'Голоса_эл%', 'Голоса_эл', 'Голоса_бум%', 'Голоса_бум', 'Выигрыш общ', 'Выигрыш эл', 'Выигрыш бумаж', 'Полное ФИО', 'ord Мандат', 'ид Района']
+  datasetTitles:  {'ИО': 'ИО', 'МО': 'МО', 'Место': 'Место', 'Голоса': 'Голоса', 'Партия': 'Партия', 'Статус': 'Статус', 'Кандидат': 'Кандидат', 'Проценты': 'Проценты', 'Отставание': 'Отставание', 'Процент': 'Процент', 'Тип кандидатов': 'Тип кандидатов', 'Район': 'Район', 'Мандат': 'Мандат', 'Голоса_общ%': 'Голоса_общ%', 'Голоса_эл%': 'Голоса_эл%', 'Голоса_бум%': 'Голоса_бум%', 'Полное ФИО': 'Полное ФИО', 'Голоса_общ': 'Голоса_общ', 'Голоса_эл': 'Голоса_эл', 'Голоса_бум': 'Голоса_бум', 'ord Мандат': 'ord Мандат', 'Выигрыш общ': 'Выигрыш общ', 'Выигрыш эл': 'Выигрыш эл', 'Выигрыш бумаж': 'Выигрыш бумаж', 'ид Района': 'ид Района', 'Взятие мандата': 'Взятие мандата'}
+  excluded:       ['Статус', 'Полное ФИО', 'Мандат', 'ord Мандат', 'ид Района', 'Тип кандидатов']
+  source:         municipal_candidates_mo
+
+  bookName:       Результаты голосования по субъектам выдвижения
+  datasetMapped:  ['Район н', 'ИО н', 'Тип прогноза', 'Необр. бюллетени всего ИО', 'Необр. бюллетени необх. ИО', 'Необр. бюллетени необх.% ИО', 'Мандат', 'Взятие мандата', 'Кандидат', 'Цвет кандидата', 'Партия', 'Общ%', 'Общ абс', 'Эл%', 'Эл абс', 'Бум%', 'Бум абс', 'Бум_ц%', 'Бум_ц']
+  datasetTitles:  {'ИО': 'ИО', 'МО': 'МО', 'Место': 'Место', 'Голоса': 'Голоса', 'Партия': 'Партия', 'Статус': 'Статус', 'Кандидат': 'Кандидат', 'Проценты': 'Проценты', 'Отставание': 'Отставание', 'Процент': 'Процент', 'Тип кандидатов': 'Тип кандидатов', 'Район': 'Район', 'Мандат': 'Мандат', 'Общ%': 'Общ%', 'Эл%': 'Эл%', 'Бум%': 'Бум%', 'Бум_ц': 'Бум_ц', 'Бум_ц%': 'Бум_ц%', 'Общ абс': 'Общ абс', 'Эл абс': 'Эл абс', 'Бум абс': 'Бум абс', 'Необр. бюллетени всего МО': 'Необр. бюллетени всего МО', 'Необр. бюллетени необх. МО': 'Необр. бюллетени необх. МО', 'Необр. бюллетени необх.% МО': 'Необр. бюллетени необх.% МО', 'Необр. бюллетени всего ИО': 'Необр. бюллетени всего ИО', 'Необр. бюллетени необх. ИО': 'Необр. бюллетени необх. ИО', 'Необр. бюллетени необх.% ИО': 'Необр. бюллетени необх.% ИО', '!': '!', 'Тип прогноза': 'Тип прогноза', 'Цвет кандидата': 'Цвет кандидата', 'Район н': 'Район н', 'ИО н': 'ИО н', 'Взятие мандата': 'Взятие мандата'}
+  excluded:       ['Статус', '!', 'Мандат']
+  source:         municipal_forecast_table_io
+
+  bookName:       Результаты голосования по субъектам выдвижения
+  datasetMapped:  ['МО', 'Тип прогноза', 'now', 'forecast', 'Необр_всего', 'Необр_необх_%', 'Необр_необх_абс', 'ИО', 'Необр_всего_ио', 'Необр_необх_%_ио', 'Необр_необх_абс_ио', 'Взятие мандата', 'Кадик', 'Цвет_канд', 'Партия', 'Общ%', 'Общ абс', 'Эл%', 'Эл абс', 'Бум%', 'Бум абс', 'Бум_ц', 'Бум_ц%', 'Цель %', 'Цель абс', 'Цвет', 'Мандат', 'Цвет заливки', 'Мандат_ид', 'МО ид', 'ИО ид']
+  datasetTitles:  {'ИО': 'ИО', 'МО': 'МО', 'Место': 'Место', 'Голоса': 'Голоса', 'Партия': 'Партия', 'Статус': 'Статус', 'Кандидат': 'Кандидат', 'Проценты': 'Проценты', 'Отставание': 'Отставание', 'Процент': 'Процент', 'Тип кандидатов': 'Тип кандидатов', 'Район': 'Район', 'Мандат': 'Мандат', 'Общ%': 'Общ%', 'Эл%': 'Эл%', 'Бум%': 'Бум%', 'Бум_ц': 'Бум_ц', 'Бум_ц%': 'Бум_ц%', 'Общ абс': 'Общ абс', 'Эл абс': 'Эл абс', 'Бум абс': 'Бум абс', 'Цвет': 'Цвет', 'Цель %': 'Цель %', 'Цель абс': 'Цель абс', 'Цвет заливки': 'Цвет заливки', 'Цвет_канд': 'Цвет кандидата', 'Необр_всего': 'Необр_всего', 'Необр_всего_ио': 'Необр_всего_ио', 'Необр_необх_%': 'Необр_необх_%', 'Необр_необх_%_ио': 'Необр_необх_%_ио', 'Необр_необх_абс': 'Необр_необх_абс', 'Мандат_ид': 'Мандат_ид', 'Необр_необх_абс_ио': 'Необр_необх_абс_ио', 'Взятие мандата': 'Взятие мандата', 'Тип прогноза': 'Тип прогноза', 'now': 'Текущий цвет', 'forecast': 'Прогноз цвет', 'Кадик': 'Кадидат', 'МО ид': 'МО ид', 'ИО ид': 'ИО ид'}
+  excluded:       ['Статус', 'ИО ид', 'МО ид', 'Мандат_ид', 'Цвет заливки', 'Мандат', 'Цвет']
+  source:         municipal_forecast_table_mo
+
+  bookName:       Бумажное голосование
+  datasetMapped:  ['Флаг 20_15 img', 'Флаг 21_00 img', 'Флаг 22_00 img', 'Флаг 23_00 img', 'Флаг 00_00 img', 'Флаг 01_00 img', 'Флаг 02_00 img', 'Флаг 03_00 img', 'План', 'Тип голосования', 'Название Район', '№ ИО', 'Номер УИКа', 'Тип голосования каст', 'План к', 'ст 20_00', 'ст 20_15', 'ст 21_00', 'ст 22_00', 'ст 23_00', 'ст 00_00', 'ст 01_00', 'ст 02_00', 'ст 03_00', 'Всего', 'Флаг Всего img', 'Явка (факт)', 'Отклон%', 'Флаг отклон', 'Флаг WARN img', 'Отклон абс', 'ИД Тип голосования', 'Проверка на Всего', 'Флаг up 21_00', 'Флаг down 21_00', 'Флаг up 20_15', 'Флаг down 20_15', 'Флаг up 22_00', 'Флаг down 22_00', 'Флаг up 23_00', 'Флаг down 23_00', 'Флаг up 00_00', 'Флаг up 01_00', 'Флаг up 02_00', 'Флаг up 03_00', 'Флаг down 00_00', 'Флаг down 01_00', 'Флаг down 02_00', 'Флаг down 03_00', 'Флаг down Всего', 'Флаг up Всего']
+  datasetTitles:  {'ИО': 'ИО', 'МО': 'МО', 'Место': 'Место', 'Голоса': 'Голоса', 'Партия': 'Партия', 'Статус': 'Статус', 'Кандидат': 'Кандидат', 'Проценты': 'Проценты', 'Отставание': 'Отставание', 'Процент': 'Процент', 'Тип кандидатов': 'Тип кандидатов', 'Район': 'Район', 'Мандат': 'Мандат', 'Флаг Всего img': 'Флаг Всего img', 'Флаг Отклон% img': 'Флаг Отклон% img', 'Номер ИО': 'Номер ИО', 'Номер УИК': 'Номер УИК', 'Всего': 'Всего', 'Флаг отклон': 'Флаг отклон', 'Явка (факт)': 'Явка (факт)', 'Отклон %': 'Отклон %', 'Отклон АБС': 'Отклон АБС', 'Флаг Всего': 'Флаг Всего', 'Тип': 'Тип', 'Столбец тип голосования': 'Столбец тип голосования', 'План (строчный)': 'План (строчный)', 'Флаг 20_00 img': 'Флаг 20_00 img', 'Флаг 20_15 img': 'Флаг 20_15 img', 'Флаг 21_00 img': 'Флаг 21_00 img', 'Флаг 22_00 img': 'Флаг 22_00 img', 'Флаг 23_00 img': 'Флаг 23_00 img', 'Флаг 00_00 img': 'Флаг 00_00 img', 'Флаг 01_00 img': 'Флаг 01_00 img', 'Флаг 02_00 img': 'Флаг 02_00 img', 'Флаг 03_00 img': 'Флаг 03_00 img', 'План': 'План', 'Флаг 20_00': 'Флаг 20_00', 'Флаг 20_15': 'Флаг 20_15', 'Флаг 21_00': 'Флаг 21_00', 'Флаг 22_00': 'Флаг 22_00', 'Флаг 23_00': 'Флаг 23_00', 'Флаг 00_00': 'Флаг 00_00', 'Флаг 01_00': 'Флаг 01_00', 'Флаг 02_00': 'Флаг 02_00', 'Флаг 03_00': 'Флаг 03_00', '20_00': '20_00', '20_15': '20_15', '21_00': '21_00', '22_00': '22_00', '23_00': '23_00', '00_00': '00_00', '01_00': '01_00', '02_00': '02_00', '03_00': '03_00', 'Тип голосования': 'Тип голосования', 'Тип голосования каст': 'Тип голосования', 'План к': 'План', 'ст 20_00': '20_00', 'ст 20_15': '20_15', 'ст 21_00': '21_00', 'ст 22_00': '22_00', 'ст 23_00': '23_00', 'ст 00_00': '00_00', 'ст 01_00': '01_00', 'ст 02_00': '02_00', 'ст 03_00': '03_00', 'Флаг WARN img': 'Флаг WARN img', 'Название Район': 'МО', 'Номер УИКа': '№ УИКа', 'Отклон%': 'Отклон%', 'Отклон абс': 'Отклон абс', 'ИД Тип голосования': 'ИД Тип голосования', '№ ИО': '№ ИО', 'Проверка на Всего': 'Проверка на Всего', 'Флаг up 21_00': 'Флаг up 21_00', 'Флаг down 21_00': 'Флаг down 21_00', 'Флаг up 20_15': 'Флаг up 20_15', 'Флаг down 20_15': 'Флаг down 20_15', 'Флаг up 22_00': 'Флаг up 22_00', 'Флаг down 22_00': 'Флаг down 22_00', 'Флаг up 23_00': 'Флаг up 23_00', 'Флаг down 23_00': 'Флаг down 23_00', 'Флаг up 00_00': 'Флаг up 00_00', 'Флаг up 01_00': 'Флаг up 01_00', 'Флаг up 02_00': 'Флаг up 02_00', 'Флаг up 03_00': 'Флаг up 03_00', 'Флаг down 00_00': 'Флаг down 00_00', 'Флаг down 01_00': 'Флаг down 01_00', 'Флаг down 02_00': 'Флаг down 02_00', 'Флаг down 03_00': 'Флаг down 03_00', 'Флаг down Всего': 'Флаг down Всего', 'Флаг up Всего': 'Флаг up Всего'}
+  excluded:       ['Статус', 'Флаг Отклон% img', 'Флаг 20_00 img', 'Флаг 20_15 img', 'Флаг 21_00 img', 'Флаг 22_00 img', 'Флаг 23_00 img', 'Флаг 00_00 img', 'Флаг 01_00 img', 'Флаг 02_00 img', 'Флаг 03_00 img', 'План', 'Флаг 03_00', 'Флаг 02_00', 'Флаг 01_00', 'Флаг 00_00', 'Флаг 23_00', 'Флаг 22_00', 'Флаг 21_00', 'Флаг 20_00', 'Флаг 20_15', 'Тип голосования', 'ИД Тип голосования', 'Проверка на Всего', 'Флаг up 21_00', 'Флаг down 21_00', 'Флаг up 20_15', 'Флаг down 20_15', 'Флаг up 22_00', 'Флаг down 22_00', 'Флаг up 23_00', 'Флаг down 23_00', 'Флаг up 00_00', 'Флаг up 01_00', 'Флаг up 02_00', 'Флаг up 03_00', 'Флаг down 00_00', 'Флаг down 01_00', 'Флаг down 02_00', 'Флаг down 03_00', 'Флаг down Всего', 'Флаг up Всего', 'Флаг Всего img', 'Флаг WARN img', 'Флаг отклон']
+  source:         municipal_turnout_not_one_table_det
+
+  bookName:       Статус поступления протоколов (детализация)
+  datasetMapped:  ['Район', '№ ИО', '№ УИК', 'Статус', 'Протоколы абс', 'Протоколы %', 'Всего УИК']
+  datasetTitles:  {'%': '%', 'АО': 'АО', 'AO_dim': 'AO', 'Район': 'Район', 'Всего УИК': 'Всего УИК', 'Поступило': 'Поступило', 'Поступило %': '%', 'Статус': 'Статус', 'Сортировка': 'Сортировка', 'УИК': 'Не поступило, УИК №', 'Не поступило': 'Не поступило', 'Не поступило, %': 'Не поступило, %', 'Протоколы абс': 'Протоколы абс', 'Протоколы %': 'Протоколы %', '№ УИК': '№ УИК', '№ ИО': '№ ИО'}
+  excluded:       ['Сортировка']
+  source:         municipal_protocol_io_uik_download
+
+  bookName:       Goodt table data
+  datasetMapped:  ['АО', 'Район', 'Всего УИК', 'Поступило', '%']
+  datasetTitles:  {'%': '%', 'АО': 'АО', 'Район': 'Район', 'Всего УИК': 'Всего УИК', 'Поступило': 'Поступило'}
+  excluded:       None
+  source:         Studenikin.mamaanarchia
+
+  bookName:       Статистика по кандидату
+  datasetMapped:  ['ФИО_full', 'Районы', 'ИО', 'Голоса_общее', 'Голоса_общее%', 'Голоса_очно', 'Голоса_очно%', 'Голоса_дэг', 'Голоса_дэг%', 'Протоколы_общее', 'Протоколы_общее%', 'Протоколы_очно', 'Протоколы_очно%', 'Протоколы_дэг', 'Протоколы_дэг%', 'Фамилия', 'Имя', 'Отчество']
+  datasetTitles:  {'MO': 'MO', 'ф': 'ф', 'ИО': 'ИО', 'ип': 'ип', 'от': 'от', 'фио': 'фио', 'ГолосД': 'Голоса ДЭГ абсолют', 'ГолосОб': 'Голоса Общее абсолют', 'ГолосОч': 'Голоса Очно абсолют', 'ДЭГПрот': 'Протоколы ДЭГ абсолют', 'ОчноПрот': 'Протоколы Очно абсолют', 'ОбщееПрот': 'Протоколы Общее абсолют', 'ПроцПротД': 'Протоколы ДЭГ %', 'ГолосПроцД': 'Голоса ДЭГ %', 'ПроцПротОб': 'Протоколы Общее %', 'ПроцПротОч': 'Протоколы Очно %', 'ГолосПроцОб': 'Голоса Общее %', 'ГолосПроцОч': 'Голоса Очно %', 'Голоса_общее': 'Голоса_общее', 'Голоса_общее%': 'Голоса_общее%', 'Голоса_очно': 'Голоса_очно', 'Голоса_очно%': 'Голоса_очно%', 'Голоса_дэг': 'Голоса_дэг', 'Голоса_дэг%': 'Голоса_дэг%', 'Протоколы_общее': 'Протоколы_общее', 'Протоколы_общее%': 'Протоколы_общее%', 'Протоколы_очно': 'Протоколы_очно', 'Протоколы_очно%': 'Протоколы_очно%', 'Протоколы_дэг': 'Протоколы_дэг', 'Протоколы_дэг%': 'Протоколы_дэг%', 'Районы': 'МО', 'ФИО': 'ФИО', 'ФИО_full': 'ФИО', 'Фамилия': 'Фамилия', 'Имя': 'Имя', 'Отчество': 'Отчество'}
+  excluded:       ['Фамилия', 'Имя', 'Отчество']
+  source:         municipal_candidates_mo
+

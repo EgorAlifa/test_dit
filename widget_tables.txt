@@ -4,14 +4,12 @@
 -- Колонки взяты из $fields, типы определены по именам
 -- =============================================================
 
-CREATE SCHEMA IF NOT EXISTS dit_data;
-CREATE SCHEMA IF NOT EXISTS studenikin;
+CREATE SCHEMA IF NOT EXISTS test;
 
 -- -------------------------------------------------------------
 -- db_menu
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "db_menu";
-CREATE TABLE "db_menu" (
+CREATE TABLE test."db_menu" (
     contur TEXT,
     "filter" TEXT,
     menu_link TEXT,
@@ -19,7 +17,7 @@ CREATE TABLE "db_menu" (
     "order" INTEGER
 );
 
-INSERT INTO "db_menu" (contur, "filter", menu_link, menu_name, "order")
+INSERT INTO test."db_menu" (contur, "filter", menu_link, menu_name, "order")
 VALUES
     ('main', 'filter_0', '/page/1', 'Меню 1', 0),
     ('main', 'filter_1', '/page/2', 'Меню 2', 1),
@@ -45,8 +43,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_kpi_msk
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_kpi_msk";
-CREATE TABLE "municipal_kpi_msk" (
+CREATE TABLE test."municipal_kpi_msk" (
     ao_code TEXT,
     ao_id INTEGER,
     ao_name VARCHAR(100),
@@ -68,7 +65,7 @@ CREATE TABLE "municipal_kpi_msk" (
     uik_number INTEGER
 );
 
-INSERT INTO "municipal_kpi_msk" (ao_code, ao_id, ao_name, ao_okato, district_id, district_name, district_okato, filter_name, io_id, io_number, protocol_received_percent, protocol_received_value, sort, source_id, source_name, statement_processed_percent, statement_processed_value, uik_id, uik_number)
+INSERT INTO test."municipal_kpi_msk" (ao_code, ao_id, ao_name, ao_okato, district_id, district_name, district_okato, filter_name, io_id, io_number, protocol_received_percent, protocol_received_value, sort, source_id, source_name, statement_processed_percent, statement_processed_value, uik_id, uik_number)
 VALUES
     ('AO01', 1, 'АО-1', '4460967357', 1, 'Москворецкий', '8293453178', 'mobile', 100, 1, 27.79, 220, 0, 1, 'Dremio', 95.72, 172, 1000, 1),
     ('AO02', 2, 'АО-2', '1438989805', 2, 'Замоскворецкий', '2631775357', 'mobile', 101, 2, 84.75, 618, 1, 2, 'ЦЕСНА', 26.45, 22, 1007, 2),
@@ -94,15 +91,14 @@ VALUES
 -- -------------------------------------------------------------
 -- datetime_integration666
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "datetime_integration666";
-CREATE TABLE "datetime_integration666" (
+CREATE TABLE test."datetime_integration666" (
     date_integration VARCHAR(30),
     datetime_integration_db VARCHAR(30),
     datetime_integration_true VARCHAR(30),
     time_integration VARCHAR(30)
 );
 
-INSERT INTO "datetime_integration666" (date_integration, datetime_integration_db, datetime_integration_true, time_integration)
+INSERT INTO test."datetime_integration666" (date_integration, datetime_integration_db, datetime_integration_true, time_integration)
 VALUES
     ('2024-09-01', '2024-09-08 20:00:00', '2024-09-08 20:00:00', '20:00'),
     ('2024-09-02', '2024-09-08 21:03:00', '2024-09-08 21:03:00', '21:03'),
@@ -128,8 +124,7 @@ VALUES
 -- -------------------------------------------------------------
 -- d_all_filters
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "d_all_filters";
-CREATE TABLE "d_all_filters" (
+CREATE TABLE test."d_all_filters" (
     event TEXT,
     "name" VARCHAR(100),
     name_en VARCHAR(100),
@@ -138,7 +133,7 @@ CREATE TABLE "d_all_filters" (
     variable TEXT
 );
 
-INSERT INTO "d_all_filters" (event, "name", name_en, ord, "type", variable)
+INSERT INTO test."d_all_filters" (event, "name", name_en, ord, "type", variable)
 VALUES
     ('municipal_2024', 'фильтр_0', 'фильтр_0', 0, 'type_0', 'var_0'),
     ('municipal_2024', 'фильтр_1', 'фильтр_1', 1, 'type_1', 'var_1'),
@@ -164,14 +159,13 @@ VALUES
 -- -------------------------------------------------------------
 -- refresh_bc
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "refresh_bc";
-CREATE TABLE "refresh_bc" (
+CREATE TABLE test."refresh_bc" (
     contur TEXT,
     id INTEGER,
     status VARCHAR(30)
 );
 
-INSERT INTO "refresh_bc" (contur, id, status)
+INSERT INTO test."refresh_bc" (contur, id, status)
 VALUES
     ('secondary', 27, 'processed'),
     ('main', 92, 'pending'),
@@ -197,13 +191,12 @@ VALUES
 -- -------------------------------------------------------------
 -- custom_radio_btn_abs_per
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "custom_radio_btn_abs_per";
-CREATE TABLE "custom_radio_btn_abs_per" (
+CREATE TABLE test."custom_radio_btn_abs_per" (
     "name" VARCHAR(100),
     ord INTEGER
 );
 
-INSERT INTO "custom_radio_btn_abs_per" ("name", ord)
+INSERT INTO test."custom_radio_btn_abs_per" ("name", ord)
 VALUES
     ('фильтр_0', 0),
     ('фильтр_1', 1),
@@ -229,8 +222,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_io
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_map_io";
-CREATE TABLE "municipal_map_io" (
+CREATE TABLE test."municipal_map_io" (
     color VARCHAR(20),
     color_id INTEGER,
     count_number INTEGER,
@@ -246,7 +238,7 @@ CREATE TABLE "municipal_map_io" (
     source_name VARCHAR(100)
 );
 
-INSERT INTO "municipal_map_io" (color, color_id, count_number, district_id, district_name, filter_name, io_id, io_name, io_name_full, io_number, mo_percent, source_id, source_name)
+INSERT INTO test."municipal_map_io" (color, color_id, count_number, district_id, district_name, filter_name, io_id, io_name, io_name_full, io_number, mo_percent, source_id, source_name)
 VALUES
     ('#44B3EE', 1, 1, 1, 'Москворецкий', 'pc', 100, 'ИО № 100', 'Итоговый орган № 100', 1, 5.06, 1, 'Dremio'),
     ('#957AEB', 2, 2, 2, 'Замоскворецкий', 'all', 101, 'ИО № 101', 'Итоговый орган № 101', 2, 83.6, 2, 'ЦЕСНА'),
@@ -272,8 +264,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_uik
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_map_uik";
-CREATE TABLE "municipal_map_uik" (
+CREATE TABLE test."municipal_map_uik" (
     color VARCHAR(20),
     count_number INTEGER,
     district_id INTEGER,
@@ -291,7 +282,7 @@ CREATE TABLE "municipal_map_uik" (
     uik_size INTEGER
 );
 
-INSERT INTO "municipal_map_uik" (color, count_number, district_id, district_name, filter_name, io_id, io_name, io_number, latt, long, source_id, statement_processed_value, uik_id, uik_number, uik_size)
+INSERT INTO test."municipal_map_uik" (color, count_number, district_id, district_name, filter_name, io_id, io_name, io_number, latt, long, source_id, statement_processed_value, uik_id, uik_number, uik_size)
 VALUES
     ('#44B3EE', 1, 1, 'Москворецкий', 'pc', 100, 'ИО № 100', 1, 55.705128, 37.341122, 1, 61, 1000, 1, 2433),
     ('#957AEB', 2, 2, 'Замоскворецкий', 'pc', 101, 'ИО № 101', 2, 55.647351, 37.223845, 2, 41, 1007, 2, 1817),
@@ -317,8 +308,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_io_forecast
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_map_io_forecast";
-CREATE TABLE "municipal_map_io_forecast" (
+CREATE TABLE test."municipal_map_io_forecast" (
     ao_code TEXT,
     ao_id INTEGER,
     ao_name VARCHAR(100),
@@ -339,7 +329,7 @@ CREATE TABLE "municipal_map_io_forecast" (
     voice_min_per TEXT
 );
 
-INSERT INTO "municipal_map_io_forecast" (ao_code, ao_id, ao_name, district_id, district_name, forecast_color_mo, forecast_type, id_concat, io_id, io_name, io_number, latt, long, name_concat, source_id, source_name, voice_min, voice_min_per)
+INSERT INTO test."municipal_map_io_forecast" (ao_code, ao_id, ao_name, district_id, district_name, forecast_color_mo, forecast_type, id_concat, io_id, io_name, io_number, latt, long, name_concat, source_id, source_name, voice_min, voice_min_per)
 VALUES
     ('AO01', 1, 'АО-1', 1, 'Москворецкий', '#44B3EE', 'optimistic', 'concat_0', 100, 'ИО № 100', 1, 55.839355, 37.326046, 'name_0', 1, 'Dremio', 'voice_min_0', 'voice_min_per_0'),
     ('AO02', 2, 'АО-2', 2, 'Замоскворецкий', '#957AEB', 'pessimistic', 'concat_1', 101, 'ИО № 101', 2, 55.449718, 37.261676, 'name_1', 2, 'ЦЕСНА', 'voice_min_1', 'voice_min_per_1'),
@@ -365,8 +355,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_mo
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_map_mo";
-CREATE TABLE "municipal_map_mo" (
+CREATE TABLE test."municipal_map_mo" (
     color VARCHAR(20),
     color_id INTEGER,
     count_number INTEGER,
@@ -377,7 +366,7 @@ CREATE TABLE "municipal_map_mo" (
     source_id INTEGER
 );
 
-INSERT INTO "municipal_map_mo" (color, color_id, count_number, district_id, district_name, filter_name, mo_percent, source_id)
+INSERT INTO test."municipal_map_mo" (color, color_id, count_number, district_id, district_name, filter_name, mo_percent, source_id)
 VALUES
     ('#44B3EE', 1, 1, 1, 'Москворецкий', 'all', 33.11, 1),
     ('#957AEB', 2, 2, 2, 'Замоскворецкий', 'pc', 11.53, 2),
@@ -403,8 +392,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_mo_forecast
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_map_mo_forecast";
-CREATE TABLE "municipal_map_mo_forecast" (
+CREATE TABLE test."municipal_map_mo_forecast" (
     ao_code TEXT,
     ao_id INTEGER,
     ao_name VARCHAR(100),
@@ -437,7 +425,7 @@ CREATE TABLE "municipal_map_mo_forecast" (
     voice_per_5 TEXT
 );
 
-INSERT INTO "municipal_map_mo_forecast" (ao_code, ao_id, ao_name, district_id, district_name, forecast_color_mo, forecast_type, id_concat, io_number_1, io_number_2, io_number_3, io_number_4, io_number_5, latt, long, name_concat, source_id, source_name, voice_1, voice_2, voice_3, voice_4, voice_5, voice_min, voice_min_per, voice_per_1, voice_per_2, voice_per_3, voice_per_4, voice_per_5)
+INSERT INTO test."municipal_map_mo_forecast" (ao_code, ao_id, ao_name, district_id, district_name, forecast_color_mo, forecast_type, id_concat, io_number_1, io_number_2, io_number_3, io_number_4, io_number_5, latt, long, name_concat, source_id, source_name, voice_1, voice_2, voice_3, voice_4, voice_5, voice_min, voice_min_per, voice_per_1, voice_per_2, voice_per_3, voice_per_4, voice_per_5)
 VALUES
     ('AO01', 1, 'АО-1', 1, 'Москворецкий', '#44B3EE', 'optimistic', 'concat_0', '109', '117', '104', '106', '113', 55.698958, 37.427487, 'name_0', 1, 'Dremio', '1425', '4662', '2465', '3326', '4488', 'voice_min_0', 'voice_min_per_0', '83.37', '30.39', '21.02', '78.58', '60.67'),
     ('AO02', 2, 'АО-2', 2, 'Замоскворецкий', '#957AEB', 'pessimistic', 'concat_1', '110', '114', '114', '114', '106', 55.606704, 37.676241, 'name_1', 2, 'ЦЕСНА', '1390', '694', '2324', '4222', '2745', 'voice_min_1', 'voice_min_per_1', '9.34', '95.2', '23.49', '31.04', '80.66'),
@@ -463,8 +451,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_mo
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_forecast_table_mo";
-CREATE TABLE "municipal_forecast_table_mo" (
+CREATE TABLE test."municipal_forecast_table_mo" (
     amount INTEGER,
     block_type VARCHAR(50),
     candidate_short VARCHAR(30),
@@ -502,7 +489,7 @@ CREATE TABLE "municipal_forecast_table_mo" (
     total_unprocessed_ballots_io TEXT
 );
 
-INSERT INTO "municipal_forecast_table_mo" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num_io, required_ballots_value_plus_num_mo, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
+INSERT INTO test."municipal_forecast_table_mo" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num_io, required_ballots_value_plus_num_mo, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
 VALUES
     (42, 'candidate', '2024-09-01', '2024-09-01', '#44B3EE', 'group_1', 15.71, 1423, 'digital_win_0', 1, 'Москворецкий', '0', '#44B3EE', 'optimistic', 15.65, 3346, 'general_win_0', 100, 1, '#44B3EE', 'paper_goal_per_0', 3890, 68.94, 3849, 'paper_win_0', 'Единая Россия', 29.13, 23.15, 2995, 1258, 2979, 1959, 1, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
     (37, 'party', '2024-09-02', '2024-09-02', '#957AEB', 'group_2', 68.74, 7568, 'digital_win_1', 2, 'Замоскворецкий', '1', '#957AEB', 'pessimistic', 78.78, 5120, 'general_win_1', 101, 2, '#957AEB', 'paper_goal_per_1', 1820, 42.51, 4461, 'paper_win_1', 'ЛДПР', 22.48, 14.9, 1188, 682, 392, 344, 2, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
@@ -528,8 +515,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_mo_only_io
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_forecast_table_mo_only_io";
-CREATE TABLE "municipal_forecast_table_mo_only_io" (
+CREATE TABLE test."municipal_forecast_table_mo_only_io" (
     block_type VARCHAR(50),
     concat_for_group TEXT,
     concat_for_mo_group TEXT,
@@ -553,7 +539,7 @@ CREATE TABLE "municipal_forecast_table_mo_only_io" (
     total_unprocessed_ballots_io TEXT
 );
 
-INSERT INTO "municipal_forecast_table_mo_only_io" (block_type, concat_for_group, concat_for_mo_group, district_id, district_name, district_okato, forecast_color_io, forecast_color_mo, forecast_type, io_id, io_name, io_number, now_color_io, now_color_mo, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, total_unprocessed_ballots, total_unprocessed_ballots_io)
+INSERT INTO test."municipal_forecast_table_mo_only_io" (block_type, concat_for_group, concat_for_mo_group, district_id, district_name, district_okato, forecast_color_io, forecast_color_mo, forecast_type, io_id, io_name, io_number, now_color_io, now_color_mo, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, total_unprocessed_ballots, total_unprocessed_ballots_io)
 VALUES
     ('candidate', 'group_1', 'mo_grp_1', 1, 'Москворецкий', '5464285982', '#44B3EE', '#44B3EE', 'optimistic', 100, 'ИО № 100', 1, '#44B3EE', '#44B3EE', 78.86, 3.34, 1594, 638, 469, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
     ('party', 'group_2', 'mo_grp_2', 2, 'Замоскворецкий', '9201789018', '#957AEB', '#957AEB', 'pessimistic', 101, 'ИО № 101', 2, '#957AEB', '#957AEB', 32.67, 41.55, 922, 641, 2309, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
@@ -579,8 +565,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_io_only_io
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_forecast_table_io_only_io";
-CREATE TABLE "municipal_forecast_table_io_only_io" (
+CREATE TABLE test."municipal_forecast_table_io_only_io" (
     block_type VARCHAR(50),
     concat_for_group TEXT,
     concat_for_mo_group TEXT,
@@ -604,7 +589,7 @@ CREATE TABLE "municipal_forecast_table_io_only_io" (
     total_unprocessed_ballots_io TEXT
 );
 
-INSERT INTO "municipal_forecast_table_io_only_io" (block_type, concat_for_group, concat_for_mo_group, district_id, district_name, district_okato, forecast_color_io, forecast_color_mo, forecast_type, io_id, io_name, io_number, now_color_io, now_color_mo, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, total_unprocessed_ballots, total_unprocessed_ballots_io)
+INSERT INTO test."municipal_forecast_table_io_only_io" (block_type, concat_for_group, concat_for_mo_group, district_id, district_name, district_okato, forecast_color_io, forecast_color_mo, forecast_type, io_id, io_name, io_number, now_color_io, now_color_mo, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, total_unprocessed_ballots, total_unprocessed_ballots_io)
 VALUES
     ('candidate', 'group_1', 'mo_grp_1', 1, 'Москворецкий', '5758659815', '#44B3EE', '#44B3EE', 'optimistic', 100, 'ИО № 100', 1, '#44B3EE', '#44B3EE', 71.24, 44.36, 430, 1419, 2591, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
     ('party', 'group_2', 'mo_grp_2', 2, 'Замоскворецкий', '1637088959', '#957AEB', '#957AEB', 'pessimistic', 101, 'ИО № 101', 2, '#957AEB', '#957AEB', 12.62, 62.43, 2497, 2346, 1431, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
@@ -630,8 +615,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_candidates_mo
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_candidates_mo";
-CREATE TABLE "municipal_candidates_mo" (
+CREATE TABLE test."municipal_candidates_mo" (
     amount INTEGER,
     anomaly_type VARCHAR(50),
     ao_code TEXT,
@@ -694,7 +678,7 @@ CREATE TABLE "municipal_candidates_mo" (
     winner_text TEXT
 );
 
-INSERT INTO "municipal_candidates_mo" (amount, anomaly_type, ao_code, ao_id, ao_name, ao_okato, candidate_full, candidate_id, candidate_short, digital_percent, digital_rang, digital_value, digital_winner, district_id, district_name, district_okato, filter_name, flag_color, flag_text, forecast_type, general_percent, general_value, io_id, io_name, io_number, "name", paper_percent, paper_rang, paper_value, paper_winner, party_id, party_name, patronymic, percent_all, percent_digital, percent_offline, protocol_received_percent_all, protocol_received_percent_digital, protocol_received_percent_offline, protocol_received_value_all, protocol_received_value_digital, protocol_received_value_offline, rang, slice, source_id, source_name, style_attr_id, style_attr_name, style_attr_name_corr, surname, uik_id, uik_ids, uik_number, value_all, value_digital, value_offline, winner, winner_sort, winner_sort_text, winner_text)
+INSERT INTO test."municipal_candidates_mo" (amount, anomaly_type, ao_code, ao_id, ao_name, ao_okato, candidate_full, candidate_id, candidate_short, digital_percent, digital_rang, digital_value, digital_winner, district_id, district_name, district_okato, filter_name, flag_color, flag_text, forecast_type, general_percent, general_value, io_id, io_name, io_number, "name", paper_percent, paper_rang, paper_value, paper_winner, party_id, party_name, patronymic, percent_all, percent_digital, percent_offline, protocol_received_percent_all, protocol_received_percent_digital, protocol_received_percent_offline, protocol_received_value_all, protocol_received_value_digital, protocol_received_value_offline, rang, slice, source_id, source_name, style_attr_id, style_attr_name, style_attr_name_corr, surname, uik_id, uik_ids, uik_number, value_all, value_digital, value_offline, winner, winner_sort, winner_sort_text, winner_text)
 VALUES
     (361, 'type_0', 'AO01', 1, 'АО-1', '2521136431', '2024-09-01', 1, '2024-09-01', 39.71, 1, 6078, 0, 1, 'Москворецкий', '2873548915', 'mobile', '#44B3EE', '', 'optimistic', 86.21, 4716, 100, 'ИО № 100', 1, 'фильтр_0', 42.93, 1, 3313, 1, 1, 'Единая Россия', 'Сидорович', 11.52, 2.09, 32.48, 80.13, 61.81, 83.2, 370, 90, 447, 1, 'all', 1, 'Dremio', 1, 'attr_0', 'attr_0', 'name_0', 1000, 'uik_ids_0', 1, 3986, 7138, 9648, 1, 0, '—', 'Победитель'),
     (203, 'type_1', 'AO02', 2, 'АО-2', '9033841191', '2024-09-02', 2, '2024-09-02', 74.58, 2, 1815, 1, 2, 'Замоскворецкий', '4346285771', 'pc', '#957AEB', 'аномалия', 'pessimistic', 63.32, 4346, 101, 'ИО № 101', 2, 'фильтр_1', 51.0, 2, 7421, 1, 2, 'ЛДПР', 'Сидорович', 72.74, 81.89, 81.5, 23.63, 14.64, 19.73, 616, 156, 778, 2, 'io', 2, 'ЦЕСНА', 2, 'attr_1', 'attr_1', 'name_1', 1007, 'uik_ids_1', 2, 1234, 2902, 8095, 1, 1, '—', '—'),
@@ -720,12 +704,11 @@ VALUES
 -- -------------------------------------------------------------
 -- custom_radio_btn_all_deg_intramural
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "custom_radio_btn_all_deg_intramural";
-CREATE TABLE "custom_radio_btn_all_deg_intramural" (
+CREATE TABLE test."custom_radio_btn_all_deg_intramural" (
     "name" VARCHAR(100)
 );
 
-INSERT INTO "custom_radio_btn_all_deg_intramural" ("name")
+INSERT INTO test."custom_radio_btn_all_deg_intramural" ("name")
 VALUES
     ('фильтр_0'),
     ('фильтр_1'),
@@ -751,8 +734,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_mandates_by_party
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_mandates_by_party";
-CREATE TABLE "municipal_mandates_by_party" (
+CREATE TABLE test."municipal_mandates_by_party" (
     ao_code TEXT,
     ao_id INTEGER,
     ao_name VARCHAR(100),
@@ -779,7 +761,7 @@ CREATE TABLE "municipal_mandates_by_party" (
     voice_value_by_party BIGINT
 );
 
-INSERT INTO "municipal_mandates_by_party" (ao_code, ao_id, ao_name, ao_okato, color, color_v, "count", count_mandate, count_v, district_id, filter_name, io_id, party_id, party_name, percent, percent_mandate, percent_v, rank_num_mandates, rank_num_voices, source_id, source_name, uik_id, voice_percent_by_party, voice_value_by_party)
+INSERT INTO test."municipal_mandates_by_party" (ao_code, ao_id, ao_name, ao_okato, color, color_v, "count", count_mandate, count_v, district_id, filter_name, io_id, party_id, party_name, percent, percent_mandate, percent_v, rank_num_mandates, rank_num_voices, source_id, source_name, uik_id, voice_percent_by_party, voice_value_by_party)
 VALUES
     ('AO01', 1, 'АО-1', '4098389895', '#44B3EE', '#44B3EE', 37, 30, 10, 1, 'all', 100, 1, 'Единая Россия', 62.9, 61.97, 84.12, '2024-09-01', 'rank_num_voices_0', 1, 'Dremio', 1000, 14.78, 44612),
     ('AO02', 2, 'АО-2', '2040226318', '#957AEB', '#957AEB', 36, 44, 7, 2, 'pc', 101, 2, 'ЛДПР', 1.89, 31.37, 15.14, '2024-09-02', 'rank_num_voices_1', 2, 'ЦЕСНА', 1007, 69.05, 26894),
@@ -805,8 +787,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_io
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_forecast_table_io";
-CREATE TABLE "municipal_forecast_table_io" (
+CREATE TABLE test."municipal_forecast_table_io" (
     amount INTEGER,
     block_type VARCHAR(50),
     candidate_short VARCHAR(30),
@@ -845,7 +826,7 @@ CREATE TABLE "municipal_forecast_table_io" (
     total_unprocessed_ballots_io TEXT
 );
 
-INSERT INTO "municipal_forecast_table_io" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_io, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_io, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
+INSERT INTO test."municipal_forecast_table_io" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_io, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_io, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
 VALUES
     (104, 'candidate', '2024-09-01', '2024-09-01', '#44B3EE', 'group_1', 57.27, 1227, 'digital_win_0', 1, 'Москворецкий', '0', '#44B3EE', '#44B3EE', 'optimistic', 32.81, 4262, 'general_win_0', 100, 1, '#44B3EE', '#44B3EE', 'paper_goal_per_0', 3819, 11.62, 1682, 'paper_win_0', 'Единая Россия', 71.69, 48.88, 2190, 1924, 327, 1, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
     (233, 'party', '2024-09-02', '2024-09-02', '#957AEB', 'group_2', 13.19, 3403, 'digital_win_1', 2, 'Замоскворецкий', '1', '#957AEB', '#957AEB', 'pessimistic', 56.39, 4577, 'general_win_1', 101, 2, '#957AEB', '#957AEB', 'paper_goal_per_1', 3987, 67.28, 2524, 'paper_win_1', 'ЛДПР', 72.33, 39.59, 112, 992, 2468, 2, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
@@ -871,8 +852,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_mo_det
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_forecast_table_mo_det";
-CREATE TABLE "municipal_forecast_table_mo_det" (
+CREATE TABLE test."municipal_forecast_table_mo_det" (
     amount INTEGER,
     block_type VARCHAR(50),
     candidate_short VARCHAR(30),
@@ -908,7 +888,7 @@ CREATE TABLE "municipal_forecast_table_mo_det" (
     total_unprocessed_ballots_io TEXT
 );
 
-INSERT INTO "municipal_forecast_table_mo_det" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
+INSERT INTO test."municipal_forecast_table_mo_det" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
 VALUES
     (9, 'candidate', '2024-09-01', '2024-09-01', '#44B3EE', 'group_1', 50.22, 5716, 'digital_win_0', 1, 'Москворецкий', '1', '#44B3EE', 'optimistic', 80.62, 7452, 'general_win_0', 100, 1, '#44B3EE', 'paper_goal_per_0', 1668, 10.7, 789, 'paper_win_0', 'Единая Россия', 52.44, 24.1, 2638, 2256, 1, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
     (130, 'party', '2024-09-02', '2024-09-02', '#957AEB', 'group_2', 81.52, 2189, 'digital_win_1', 2, 'Замоскворецкий', '1', '#957AEB', 'pessimistic', 7.9, 7858, 'general_win_1', 101, 2, '#957AEB', 'paper_goal_per_1', 3526, 45.9, 1992, 'paper_win_1', 'ЛДПР', 99.02, 22.59, 2901, 430, 2, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
@@ -934,15 +914,14 @@ VALUES
 -- -------------------------------------------------------------
 -- dict_not_one_table_checkbox
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "dict_not_one_table_checkbox";
-CREATE TABLE "dict_not_one_table_checkbox" (
+CREATE TABLE test."dict_not_one_table_checkbox" (
     id_name VARCHAR(100),
     id_type_checkbox INTEGER,
     "name" VARCHAR(100),
     type_checkbox VARCHAR(50)
 );
 
-INSERT INTO "dict_not_one_table_checkbox" (id_name, id_type_checkbox, "name", type_checkbox)
+INSERT INTO test."dict_not_one_table_checkbox" (id_name, id_type_checkbox, "name", type_checkbox)
 VALUES
     ('name_0', 1, 'фильтр_0', 'type_0'),
     ('name_1', 2, 'фильтр_1', 'type_1'),
@@ -968,8 +947,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_turnout_not_one_table_det
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_turnout_not_one_table_det";
-CREATE TABLE "municipal_turnout_not_one_table_det" (
+CREATE TABLE test."municipal_turnout_not_one_table_det" (
     "00_00" NUMERIC(10,2),
     "01_00" NUMERIC(10,2),
     "02_00" NUMERIC(10,2),
@@ -1028,7 +1006,7 @@ CREATE TABLE "municipal_turnout_not_one_table_det" (
     yavka_fact NUMERIC(10,2)
 );
 
-INSERT INTO "municipal_turnout_not_one_table_det" ("00_00", "01_00", "02_00", "03_00", "20_00", "20_15", "20_15_sum", "21_00", "22_00", "23_00", concat, deviation_abs, deviation_percent, district_id, district_name, district_okato, flag_down_00_00_filter, flag_down_01_00_filter, flag_down_02_00_filter, flag_down_03_00_filter, flag_down_20_15_filter, flag_down_21_00_filter, flag_down_22_00_filter, flag_down_23_00_filter, flag_down_filter, flag_up_00_00_filter, flag_up_01_00_filter, flag_up_02_00_filter, flag_up_03_00_filter, flag_up_20_15_filter, flag_up_21_00_filter, flag_up_22_00_filter, flag_up_23_00_filter, flag_up_down, flag_up_down_00_00, flag_up_down_01_00, flag_up_down_02_00, flag_up_down_03_00, flag_up_down_20_00, flag_up_down_20_15, flag_up_down_21_00, flag_up_down_22_00, flag_up_down_23_00, flag_up_filter, flag_warn, io_id, io_number, is_total_row, plan, source_id, total, uik_id, uik_number, voting_type, voting_type_id, yavka_fact)
+INSERT INTO test."municipal_turnout_not_one_table_det" ("00_00", "01_00", "02_00", "03_00", "20_00", "20_15", "20_15_sum", "21_00", "22_00", "23_00", concat, deviation_abs, deviation_percent, district_id, district_name, district_okato, flag_down_00_00_filter, flag_down_01_00_filter, flag_down_02_00_filter, flag_down_03_00_filter, flag_down_20_15_filter, flag_down_21_00_filter, flag_down_22_00_filter, flag_down_23_00_filter, flag_down_filter, flag_up_00_00_filter, flag_up_01_00_filter, flag_up_02_00_filter, flag_up_03_00_filter, flag_up_20_15_filter, flag_up_21_00_filter, flag_up_22_00_filter, flag_up_23_00_filter, flag_up_down, flag_up_down_00_00, flag_up_down_01_00, flag_up_down_02_00, flag_up_down_03_00, flag_up_down_20_00, flag_up_down_20_15, flag_up_down_21_00, flag_up_down_22_00, flag_up_down_23_00, flag_up_filter, flag_warn, io_id, io_number, is_total_row, plan, source_id, total, uik_id, uik_number, voting_type, voting_type_id, yavka_fact)
 VALUES
     (25.87, 51.07, 51.88, 58.05, 57.52, 44.58, 39.11, 77.23, 58.86, 50.05, 'group_1', -4.65, -14.26, 1, 'Москворецкий', '5744003377', 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 100, 1, 1, 68.11, 1, 3418, 1000, 1, 'electronic', 80, 41.99),
     (64.05, 43.21, 2.92, 61.41, 19.73, 59.22, 38.88, 70.47, 20.58, 75.23, 'group_2', 9.26, -13.12, 2, 'Замоскворецкий', '6097953682', 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 101, 2, 1, 66.5, 2, 4502, 1007, 2, 'paper', 88, 89.75),
@@ -1054,8 +1032,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_turnout_not_one
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_turnout_not_one";
-CREATE TABLE "municipal_turnout_not_one" (
+CREATE TABLE test."municipal_turnout_not_one" (
     "20_15" NUMERIC(10,2),
     district_id INTEGER,
     fact TEXT,
@@ -1068,7 +1045,7 @@ CREATE TABLE "municipal_turnout_not_one" (
     voting_type_id INTEGER
 );
 
-INSERT INTO "municipal_turnout_not_one" ("20_15", district_id, fact, flag_up_down_00_00, io_id, plan, source_id, uik_id, voting_type, voting_type_id)
+INSERT INTO test."municipal_turnout_not_one" ("20_15", district_id, fact, flag_up_down_00_00, io_id, plan, source_id, uik_id, voting_type, voting_type_id)
 VALUES
     (47.08, 1, 'fact_0', 1, 100, 85.38, 1, 1000, 'electronic', 71),
     (76.29, 2, 'fact_1', 0, 101, 93.14, 2, 1007, 'paper', 42),
@@ -1094,14 +1071,13 @@ VALUES
 -- -------------------------------------------------------------
 -- turnout_not_one_time
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "turnout_not_one_time";
-CREATE TABLE "turnout_not_one_time" (
+CREATE TABLE test."turnout_not_one_time" (
     election_id INTEGER,
     left_time VARCHAR(30),
     "time" VARCHAR(30)
 );
 
-INSERT INTO "turnout_not_one_time" (election_id, left_time, "time")
+INSERT INTO test."turnout_not_one_time" (election_id, left_time, "time")
 VALUES
     (2024, '20:00', '20:00'),
     (2024, '21:03', '21:03'),
@@ -1127,8 +1103,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_turnout_loyal
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_turnout_loyal";
-CREATE TABLE "municipal_turnout_loyal" (
+CREATE TABLE test."municipal_turnout_loyal" (
     "20_15" NUMERIC(10,2),
     district_id INTEGER,
     fact TEXT,
@@ -1144,7 +1119,7 @@ CREATE TABLE "municipal_turnout_loyal" (
     voting_type_id INTEGER
 );
 
-INSERT INTO "municipal_turnout_loyal" ("20_15", district_id, fact, flag_up_down_00_00, io_id, loyal, not_loyal, past_turnout_point, plan, source_id, uik_id, voting_type, voting_type_id)
+INSERT INTO test."municipal_turnout_loyal" ("20_15", district_id, fact, flag_up_down_00_00, io_id, loyal, not_loyal, past_turnout_point, plan, source_id, uik_id, voting_type, voting_type_id)
 VALUES
     (94.85, 1, 'fact_0', 1, 100, 'loyal_0', 'not_loyal_0', 'past_turnout_point_0', 85.47, 1, 1000, 'electronic', 76),
     (52.41, 2, 'fact_1', 1, 101, 'loyal_1', 'not_loyal_1', 'past_turnout_point_1', 91.08, 2, 1007, 'paper', 17),
@@ -1170,8 +1145,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_forecast_count
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_map_forecast_count";
-CREATE TABLE "municipal_map_forecast_count" (
+CREATE TABLE test."municipal_map_forecast_count" (
     block_type VARCHAR(50),
     count_district INTEGER,
     district_id INTEGER,
@@ -1182,7 +1156,7 @@ CREATE TABLE "municipal_map_forecast_count" (
     source_id INTEGER
 );
 
-INSERT INTO "municipal_map_forecast_count" (block_type, count_district, district_id, forecast_color_mo, forecast_type, now_color_mo, sort, source_id)
+INSERT INTO test."municipal_map_forecast_count" (block_type, count_district, district_id, forecast_color_mo, forecast_type, now_color_mo, sort, source_id)
 VALUES
     ('candidate', 31, 1, '#44B3EE', 'optimistic', '#44B3EE', 0, 1),
     ('party', 9, 2, '#957AEB', 'pessimistic', '#957AEB', 1, 2),
@@ -1206,10 +1180,9 @@ VALUES
     ('party', 2, 20, '#FFEAA7', 'target', '#FFEAA7', 19, 2);
 
 -- -------------------------------------------------------------
--- dit_data.elections.municipal.municipal_map_mo
+-- dit_data.elections.municipal.municipal_map_mo (renamed → dit_municipal_map_mo)
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS dit_data."municipal_map_mo";
-CREATE TABLE dit_data."municipal_map_mo" (
+CREATE TABLE test."dit_municipal_map_mo" (
     ao_okato VARCHAR(20),
     district_id INTEGER,
     filter_name TEXT,
@@ -1217,7 +1190,7 @@ CREATE TABLE dit_data."municipal_map_mo" (
     source_name VARCHAR(100)
 );
 
-INSERT INTO dit_data."municipal_map_mo" (ao_okato, district_id, filter_name, perc_dim, source_name)
+INSERT INTO test."dit_municipal_map_mo" (ao_okato, district_id, filter_name, perc_dim, source_name)
 VALUES
     ('8955347538', 1, 'mobile', 'dim_0', 'Dremio'),
     ('6638034087', 2, 'all', 'dim_1', 'ЦЕСНА'),
@@ -1243,8 +1216,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_mandates
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_mandates";
-CREATE TABLE "municipal_mandates" (
+CREATE TABLE test."municipal_mandates" (
     ao_code TEXT,
     ao_id INTEGER,
     ao_name VARCHAR(100),
@@ -1261,7 +1233,7 @@ CREATE TABLE "municipal_mandates" (
     uik_id INTEGER
 );
 
-INSERT INTO "municipal_mandates" (ao_code, ao_id, ao_name, ao_okato, color, "count", count_all, district_id, filter_name, flag, io_id, source_id, source_name, uik_id)
+INSERT INTO test."municipal_mandates" (ao_code, ao_id, ao_name, ao_okato, color, "count", count_all, district_id, filter_name, flag, io_id, source_id, source_name, uik_id)
 VALUES
     ('AO01', 1, 'АО-1', '8940731272', '#44B3EE', 31, 10, 1, 'pc', '1', 100, 1, 'Dremio', 1000),
     ('AO02', 2, 'АО-2', '2377111768', '#957AEB', 21, 17, 2, 'pc', '0', 101, 2, 'ЦЕСНА', 1007),
@@ -1287,8 +1259,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_voters_ao_chart
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_voters_ao_chart";
-CREATE TABLE "municipal_voters_ao_chart" (
+CREATE TABLE test."municipal_voters_ao_chart" (
     "type" VARCHAR(50),
     ao_id INTEGER,
     district_id INTEGER,
@@ -1302,7 +1273,7 @@ CREATE TABLE "municipal_voters_ao_chart" (
     voted_value_all BIGINT
 );
 
-INSERT INTO "municipal_voters_ao_chart" ("type", ao_id, district_id, io_id, okato, sort, source_id, source_name, uik_id, voted_percent_all, voted_value_all)
+INSERT INTO test."municipal_voters_ao_chart" ("type", ao_id, district_id, io_id, okato, sort, source_id, source_name, uik_id, voted_percent_all, voted_value_all)
 VALUES
     ('type_0', 1, 1, 100, '6558433027', 0, 1, 'Dremio', 1000, 80.48, 28111),
     ('type_1', 2, 2, 101, '8991678061', 1, 2, 'ЦЕСНА', 1007, 71.19, 82559),
@@ -1328,15 +1299,14 @@ VALUES
 -- -------------------------------------------------------------
 -- dit_data.elections.municipal.municipal_voters_district
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS dit_data."municipal_voters_district";
-CREATE TABLE dit_data."municipal_voters_district" (
+CREATE TABLE test."municipal_voters_district" (
     district_okato VARCHAR(20),
     filter_name TEXT,
     voted_percent NUMERIC(10,2),
     voted_value BIGINT
 );
 
-INSERT INTO dit_data."municipal_voters_district" (district_okato, filter_name, voted_percent, voted_value)
+INSERT INTO test."municipal_voters_district" (district_okato, filter_name, voted_percent, voted_value)
 VALUES
     ('2134900434', 'pc', 58.4, 43425),
     ('5319212967', 'mobile', 70.97, 30290),
@@ -1362,8 +1332,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_voters_msk
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_voters_msk";
-CREATE TABLE "municipal_voters_msk" (
+CREATE TABLE test."municipal_voters_msk" (
     ao_id INTEGER,
     district_id INTEGER,
     io_id INTEGER,
@@ -1378,7 +1347,7 @@ CREATE TABLE "municipal_voters_msk" (
     voted_value_offline BIGINT
 );
 
-INSERT INTO "municipal_voters_msk" (ao_id, district_id, io_id, registered_voters, source_id, uik_id, voted_percent, voted_percent_deg, voted_percent_offline, voted_value, voted_value_deg, voted_value_offline)
+INSERT INTO test."municipal_voters_msk" (ao_id, district_id, io_id, registered_voters, source_id, uik_id, voted_percent, voted_percent_deg, voted_percent_offline, voted_value, voted_value_deg, voted_value_offline)
 VALUES
     (1, 1, 100, '61931', 1, 1000, 70.09, 7.26, 92.8, 23911, 47989, 49498),
     (2, 2, 101, '72676', 2, 1007, 28.15, 92.67, 38.14, 14039, 72126, 30489),
@@ -1404,8 +1373,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_protocol_district_unpivot
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_protocol_district_unpivot";
-CREATE TABLE "municipal_protocol_district_unpivot" (
+CREATE TABLE test."municipal_protocol_district_unpivot" (
     district_id INTEGER,
     district_name VARCHAR(100),
     io_id INTEGER,
@@ -1418,7 +1386,7 @@ CREATE TABLE "municipal_protocol_district_unpivot" (
     uik_all INTEGER
 );
 
-INSERT INTO "municipal_protocol_district_unpivot" (district_id, district_name, io_id, io_number, protocol_percent, protocol_value, rec_attr, source_id, status, uik_all)
+INSERT INTO test."municipal_protocol_district_unpivot" (district_id, district_name, io_id, io_number, protocol_percent, protocol_value, rec_attr, source_id, status, uik_all)
 VALUES
     (1, 'Москворецкий', 100, 1, 93.92, 10, 'protocol', 1, 'processed', 134),
     (2, 'Замоскворецкий', 101, 2, 23.17, 67, 'statement', 2, 'pending', 69),
@@ -1444,8 +1412,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_protocol_uik
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_protocol_uik";
-CREATE TABLE "municipal_protocol_uik" (
+CREATE TABLE test."municipal_protocol_uik" (
     ao_code TEXT,
     ao_id INTEGER,
     ao_name VARCHAR(100),
@@ -1463,7 +1430,7 @@ CREATE TABLE "municipal_protocol_uik" (
     uik_number INTEGER
 );
 
-INSERT INTO "municipal_protocol_uik" (ao_code, ao_id, ao_name, district_id, district_name, election_id, io_id, io_name, io_number, rec_attr, source_id, source_name, status, uik_id, uik_number)
+INSERT INTO test."municipal_protocol_uik" (ao_code, ao_id, ao_name, district_id, district_name, election_id, io_id, io_name, io_number, rec_attr, source_id, source_name, status, uik_id, uik_number)
 VALUES
     ('AO01', 1, 'АО-1', 1, 'Москворецкий', 2024, 100, 'ИО № 100', 1, 'protocol', 1, 'Dremio', 'processed', 1000, 1),
     ('AO02', 2, 'АО-2', 2, 'Замоскворецкий', 2024, 101, 'ИО № 101', 2, 'statement', 2, 'ЦЕСНА', 'pending', 1007, 2),
@@ -1489,8 +1456,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_protocol_io_uik_download
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_protocol_io_uik_download";
-CREATE TABLE "municipal_protocol_io_uik_download" (
+CREATE TABLE test."municipal_protocol_io_uik_download" (
     district_id INTEGER,
     district_name VARCHAR(100),
     io_id INTEGER,
@@ -1504,7 +1470,7 @@ CREATE TABLE "municipal_protocol_io_uik_download" (
     uik_number INTEGER
 );
 
-INSERT INTO "municipal_protocol_io_uik_download" (district_id, district_name, io_id, io_number, protocol_percent, protocol_value, sort, status, uik_all, uik_id, uik_number)
+INSERT INTO test."municipal_protocol_io_uik_download" (district_id, district_name, io_id, io_number, protocol_percent, protocol_value, sort, status, uik_all, uik_id, uik_number)
 VALUES
     (1, 'Москворецкий', 100, 1, 13.22, 4, 0, 'processed', 61, 1000, 1),
     (2, 'Замоскворецкий', 101, 2, 52.27, 129, 1, 'pending', 185, 1007, 2),
@@ -1530,8 +1496,7 @@ VALUES
 -- -------------------------------------------------------------
 -- Studenikin.mamaanarchia
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS studenikin."mamaanarchia";
-CREATE TABLE studenikin."mamaanarchia" (
+CREATE TABLE test."mamaanarchia" (
     ao TEXT,
     come TEXT,
     country TEXT,
@@ -1539,7 +1504,7 @@ CREATE TABLE studenikin."mamaanarchia" (
     yi TEXT
 );
 
-INSERT INTO studenikin."mamaanarchia" (ao, come, country, percent, yi)
+INSERT INTO test."mamaanarchia" (ao, come, country, percent, yi)
 VALUES
     ('АО-1', '50155', 'Россия', 65.45, '89'),
     ('АО-2', '42405', 'Россия', 40.88, '14'),
@@ -1565,8 +1530,7 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_invalid_bulletin
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "municipal_invalid_bulletin";
-CREATE TABLE "municipal_invalid_bulletin" (
+CREATE TABLE test."municipal_invalid_bulletin" (
     ao_code TEXT,
     ao_id INTEGER,
     ao_name VARCHAR(100),
@@ -1588,7 +1552,7 @@ CREATE TABLE "municipal_invalid_bulletin" (
     uik_number INTEGER
 );
 
-INSERT INTO "municipal_invalid_bulletin" (ao_code, ao_id, ao_name, ao_okato, district_id, district_name, district_okato, invalid, invalid_deg, invalid_offline, invalid_per, invalid_per_deg, invalid_per_offline, io_id, io_number, source_id, source_name, uik_id, uik_number)
+INSERT INTO test."municipal_invalid_bulletin" (ao_code, ao_id, ao_name, ao_okato, district_id, district_name, district_okato, invalid, invalid_deg, invalid_offline, invalid_per, invalid_per_deg, invalid_per_offline, io_id, io_number, source_id, source_name, uik_id, uik_number)
 VALUES
     ('AO01', 1, 'АО-1', '2592724766', 1, 'Москворецкий', '3615759047', 'invalid_0', 'invalid_deg_0', 'invalid_offline_0', 'invalid_per_0', 'invalid_per_deg_0', 'invalid_per_offline_0', 100, 1, 1, 'Dremio', 1000, 1),
     ('AO02', 2, 'АО-2', '8406648395', 2, 'Замоскворецкий', '7418263314', 'invalid_1', 'invalid_deg_1', 'invalid_offline_1', 'invalid_per_1', 'invalid_per_deg_1', 'invalid_per_offline_1', 101, 2, 2, 'ЦЕСНА', 1007, 2),
@@ -1614,8 +1578,7 @@ VALUES
 -- -------------------------------------------------------------
 -- d_all_slices
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS "d_all_slices";
-CREATE TABLE "d_all_slices" (
+CREATE TABLE test."d_all_slices" (
     ao_id INTEGER,
     district_id INTEGER,
     election_id INTEGER,
@@ -1625,7 +1588,7 @@ CREATE TABLE "d_all_slices" (
     uik_type_id INTEGER
 );
 
-INSERT INTO "d_all_slices" (ao_id, district_id, election_id, io_id, uik_id, uik_number, uik_type_id)
+INSERT INTO test."d_all_slices" (ao_id, district_id, election_id, io_id, uik_id, uik_number, uik_type_id)
 VALUES
     (1, 1, 2024, 100, 1000, 1, 1),
     (2, 2, 2024, 101, 1007, 2, 2),

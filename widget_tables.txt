@@ -9,7 +9,6 @@ CREATE SCHEMA IF NOT EXISTS test;
 -- -------------------------------------------------------------
 -- db_menu
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."db_menu";
 CREATE TABLE test."db_menu" (
     contur TEXT,
     "filter" TEXT,
@@ -44,7 +43,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_kpi_msk
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_kpi_msk";
 CREATE TABLE test."municipal_kpi_msk" (
     ao_code TEXT,
     ao_id INTEGER,
@@ -93,7 +91,6 @@ VALUES
 -- -------------------------------------------------------------
 -- datetime_integration666
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."datetime_integration666";
 CREATE TABLE test."datetime_integration666" (
     date_integration VARCHAR(30),
     datetime_integration_db VARCHAR(30),
@@ -127,7 +124,6 @@ VALUES
 -- -------------------------------------------------------------
 -- d_all_filters
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."d_all_filters";
 CREATE TABLE test."d_all_filters" (
     event TEXT,
     "name" VARCHAR(100),
@@ -163,7 +159,6 @@ VALUES
 -- -------------------------------------------------------------
 -- refresh_bc
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."refresh_bc";
 CREATE TABLE test."refresh_bc" (
     contur TEXT,
     id INTEGER,
@@ -196,7 +191,6 @@ VALUES
 -- -------------------------------------------------------------
 -- custom_radio_btn_abs_per
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."custom_radio_btn_abs_per";
 CREATE TABLE test."custom_radio_btn_abs_per" (
     "name" VARCHAR(100),
     ord INTEGER
@@ -228,7 +222,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_io
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_map_io";
 CREATE TABLE test."municipal_map_io" (
     color VARCHAR(20),
     color_id INTEGER,
@@ -271,7 +264,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_uik
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_map_uik";
 CREATE TABLE test."municipal_map_uik" (
     color VARCHAR(20),
     count_number INTEGER,
@@ -316,7 +308,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_io_forecast
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_map_io_forecast";
 CREATE TABLE test."municipal_map_io_forecast" (
     ao_code TEXT,
     ao_id INTEGER,
@@ -364,7 +355,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_mo
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_map_mo";
 CREATE TABLE test."municipal_map_mo" (
     color VARCHAR(20),
     color_id INTEGER,
@@ -402,7 +392,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_mo_forecast
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_map_mo_forecast";
 CREATE TABLE test."municipal_map_mo_forecast" (
     ao_code TEXT,
     ao_id INTEGER,
@@ -462,7 +451,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_mo
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_forecast_table_mo";
 CREATE TABLE test."municipal_forecast_table_mo" (
     amount INTEGER,
     block_type VARCHAR(50),
@@ -527,7 +515,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_mo_only_io
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_forecast_table_mo_only_io";
 CREATE TABLE test."municipal_forecast_table_mo_only_io" (
     block_type VARCHAR(50),
     concat_for_group TEXT,
@@ -578,7 +565,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_io_only_io
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_forecast_table_io_only_io";
 CREATE TABLE test."municipal_forecast_table_io_only_io" (
     block_type VARCHAR(50),
     concat_for_group TEXT,
@@ -629,7 +615,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_candidates_mo
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_candidates_mo";
 CREATE TABLE test."municipal_candidates_mo" (
     amount INTEGER,
     anomaly_type VARCHAR(50),
@@ -719,7 +704,6 @@ VALUES
 -- -------------------------------------------------------------
 -- custom_radio_btn_all_deg_intramural
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."custom_radio_btn_all_deg_intramural";
 CREATE TABLE test."custom_radio_btn_all_deg_intramural" (
     "name" VARCHAR(100)
 );
@@ -750,7 +734,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_mandates_by_party
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_mandates_by_party";
 CREATE TABLE test."municipal_mandates_by_party" (
     ao_code TEXT,
     ao_id INTEGER,
@@ -804,7 +787,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_io
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_forecast_table_io";
 CREATE TABLE test."municipal_forecast_table_io" (
     amount INTEGER,
     block_type VARCHAR(50),
@@ -870,7 +852,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_forecast_table_mo_det
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_forecast_table_mo_det";
 CREATE TABLE test."municipal_forecast_table_mo_det" (
     amount INTEGER,
     block_type VARCHAR(50),
@@ -933,7 +914,6 @@ VALUES
 -- -------------------------------------------------------------
 -- dict_not_one_table_checkbox
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."dict_not_one_table_checkbox";
 CREATE TABLE test."dict_not_one_table_checkbox" (
     id_name VARCHAR(100),
     id_type_checkbox INTEGER,
@@ -967,7 +947,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_turnout_not_one_table_det
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_turnout_not_one_table_det";
 CREATE TABLE test."municipal_turnout_not_one_table_det" (
     "00_00" NUMERIC(10,2),
     "01_00" NUMERIC(10,2),
@@ -1053,7 +1032,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_turnout_not_one
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_turnout_not_one";
 CREATE TABLE test."municipal_turnout_not_one" (
     "20_15" NUMERIC(10,2),
     district_id INTEGER,
@@ -1093,7 +1071,6 @@ VALUES
 -- -------------------------------------------------------------
 -- turnout_not_one_time
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."turnout_not_one_time";
 CREATE TABLE test."turnout_not_one_time" (
     election_id INTEGER,
     left_time VARCHAR(30),
@@ -1126,7 +1103,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_turnout_loyal
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_turnout_loyal";
 CREATE TABLE test."municipal_turnout_loyal" (
     "20_15" NUMERIC(10,2),
     district_id INTEGER,
@@ -1169,7 +1145,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_map_forecast_count
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_map_forecast_count";
 CREATE TABLE test."municipal_map_forecast_count" (
     block_type VARCHAR(50),
     count_district INTEGER,
@@ -1207,7 +1182,6 @@ VALUES
 -- -------------------------------------------------------------
 -- dit_data.elections.municipal.municipal_map_mo (renamed → dit_municipal_map_mo)
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."dit_municipal_map_mo";
 CREATE TABLE test."dit_municipal_map_mo" (
     ao_okato VARCHAR(20),
     district_id INTEGER,
@@ -1242,7 +1216,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_mandates
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_mandates";
 CREATE TABLE test."municipal_mandates" (
     ao_code TEXT,
     ao_id INTEGER,
@@ -1286,7 +1259,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_voters_ao_chart
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_voters_ao_chart";
 CREATE TABLE test."municipal_voters_ao_chart" (
     "type" VARCHAR(50),
     ao_id INTEGER,
@@ -1327,7 +1299,6 @@ VALUES
 -- -------------------------------------------------------------
 -- dit_data.elections.municipal.municipal_voters_district
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_voters_district";
 CREATE TABLE test."municipal_voters_district" (
     district_okato VARCHAR(20),
     filter_name TEXT,
@@ -1361,7 +1332,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_voters_msk
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_voters_msk";
 CREATE TABLE test."municipal_voters_msk" (
     ao_id INTEGER,
     district_id INTEGER,
@@ -1403,7 +1373,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_protocol_district_unpivot
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_protocol_district_unpivot";
 CREATE TABLE test."municipal_protocol_district_unpivot" (
     district_id INTEGER,
     district_name VARCHAR(100),
@@ -1443,7 +1412,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_protocol_uik
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_protocol_uik";
 CREATE TABLE test."municipal_protocol_uik" (
     ao_code TEXT,
     ao_id INTEGER,
@@ -1488,7 +1456,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_protocol_io_uik_download
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_protocol_io_uik_download";
 CREATE TABLE test."municipal_protocol_io_uik_download" (
     district_id INTEGER,
     district_name VARCHAR(100),
@@ -1529,7 +1496,6 @@ VALUES
 -- -------------------------------------------------------------
 -- Studenikin.mamaanarchia
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."mamaanarchia";
 CREATE TABLE test."mamaanarchia" (
     ao TEXT,
     come TEXT,
@@ -1564,7 +1530,6 @@ VALUES
 -- -------------------------------------------------------------
 -- municipal_invalid_bulletin
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."municipal_invalid_bulletin";
 CREATE TABLE test."municipal_invalid_bulletin" (
     ao_code TEXT,
     ao_id INTEGER,
@@ -1613,7 +1578,6 @@ VALUES
 -- -------------------------------------------------------------
 -- d_all_slices
 -- -------------------------------------------------------------
-DROP TABLE IF EXISTS test."d_all_slices";
 CREATE TABLE test."d_all_slices" (
     ao_id INTEGER,
     district_id INTEGER,

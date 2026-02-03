@@ -1,0 +1,1649 @@
+-- =============================================================
+-- Таблицы виджетов из Dremio-конфигурации
+-- 36 таблиц, по 20 записей в каждой
+-- Колонки взяты из $fields, типы определены по именам
+-- =============================================================
+
+CREATE SCHEMA IF NOT EXISTS dit_data;
+CREATE SCHEMA IF NOT EXISTS studenikin;
+
+-- -------------------------------------------------------------
+-- db_menu
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "db_menu";
+CREATE TABLE "db_menu" (
+    contur TEXT,
+    "filter" TEXT,
+    menu_link TEXT,
+    menu_name VARCHAR(100),
+    "order" INTEGER
+);
+
+INSERT INTO "db_menu" (contur, "filter", menu_link, menu_name, "order")
+VALUES
+    ('main', 'filter_0', '/page/1', 'Меню 1', 0),
+    ('main', 'filter_1', '/page/2', 'Меню 2', 1),
+    ('secondary', 'filter_2', '/page/3', 'Меню 3', 2),
+    ('main', 'filter_3', '/page/4', 'Меню 4', 3),
+    ('main', 'filter_4', '/page/5', 'Меню 5', 4),
+    ('main', 'filter_5', '/page/6', 'Меню 6', 5),
+    ('main', 'filter_6', '/page/7', 'Меню 7', 6),
+    ('main', 'filter_7', '/page/8', 'Меню 8', 7),
+    ('secondary', 'filter_8', '/page/9', 'Меню 9', 8),
+    ('main', 'filter_9', '/page/10', 'Меню 10', 9),
+    ('main', 'filter_10', '/page/11', 'Меню 11', 10),
+    ('main', 'filter_11', '/page/12', 'Меню 12', 11),
+    ('main', 'filter_12', '/page/13', 'Меню 13', 12),
+    ('main', 'filter_13', '/page/14', 'Меню 14', 13),
+    ('main', 'filter_14', '/page/15', 'Меню 15', 14),
+    ('main', 'filter_15', '/page/16', 'Меню 16', 15),
+    ('secondary', 'filter_16', '/page/17', 'Меню 17', 16),
+    ('main', 'filter_17', '/page/18', 'Меню 18', 17),
+    ('secondary', 'filter_18', '/page/19', 'Меню 19', 18),
+    ('secondary', 'filter_19', '/page/20', 'Меню 20', 19);
+
+-- -------------------------------------------------------------
+-- municipal_kpi_msk
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_kpi_msk";
+CREATE TABLE "municipal_kpi_msk" (
+    ao_code TEXT,
+    ao_id INTEGER,
+    ao_name VARCHAR(100),
+    ao_okato VARCHAR(20),
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    district_okato VARCHAR(20),
+    filter_name TEXT,
+    io_id INTEGER,
+    io_number INTEGER,
+    protocol_received_percent NUMERIC(10,2),
+    protocol_received_value BIGINT,
+    sort INTEGER,
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    statement_processed_percent NUMERIC(10,2),
+    statement_processed_value BIGINT,
+    uik_id INTEGER,
+    uik_number INTEGER
+);
+
+INSERT INTO "municipal_kpi_msk" (ao_code, ao_id, ao_name, ao_okato, district_id, district_name, district_okato, filter_name, io_id, io_number, protocol_received_percent, protocol_received_value, sort, source_id, source_name, statement_processed_percent, statement_processed_value, uik_id, uik_number)
+VALUES
+    ('AO01', 1, 'АО-1', '4460967357', 1, 'Москворецкий', '8293453178', 'mobile', 100, 1, 27.79, 220, 0, 1, 'Dremio', 95.72, 172, 1000, 1),
+    ('AO02', 2, 'АО-2', '1438989805', 2, 'Замоскворецкий', '2631775357', 'mobile', 101, 2, 84.75, 618, 1, 2, 'ЦЕСНА', 26.45, 22, 1007, 2),
+    ('AO03', 3, 'АО-3', '8429141456', 3, 'Тверской', '3303082117', 'mobile', 102, 3, 7.88, 300, 2, 3, 'GIS', 82.94, 316, 1014, 3),
+    ('AO04', 4, 'АО-4', '1298737106', 4, 'Пресненский', '3840104345', 'mobile', 103, 4, 98.52, 238, 3, 4, 'API', 86.65, 194, 1021, 4),
+    ('AO05', 5, 'АО-5', '6488854841', 5, 'Якиманский', '2566942273', 'mobile', 104, 5, 35.53, 686, 4, 5, 'Архив', 26.7, 479, 1028, 5),
+    ('AO06', 6, 'АО-6', '9896606039', 6, 'Донской', '3727210979', 'all', 105, 6, 72.91, 167, 5, 6, 'Портал', 46.23, 138, 1035, 6),
+    ('AO07', 7, 'АО-7', '3392080953', 7, 'Нагатинский', '8235363119', 'pc', 106, 7, 22.9, 32, 6, 1, 'Dremio', 80.5, 205, 1042, 7),
+    ('AO08', 8, 'АО-8', '2149938334', 8, 'Чертановский', '2351531223', 'all', 107, 8, 49.92, 658, 7, 2, 'ЦЕСНА', 45.89, 135, 1049, 8),
+    ('AO09', 9, 'АО-9', '1599707677', 9, 'Бутирский', '7609857128', 'all', 108, 9, 58.46, 597, 8, 3, 'GIS', 39.94, 112, 1056, 9),
+    ('AO10', 10, 'АО-10', '3119634399', 10, 'Перовский', '4246059658', 'pc', 109, 10, 15.28, 163, 9, 4, 'API', 79.21, 216, 1063, 10),
+    ('AO01', 1, 'АО-1', '3561557300', 11, 'Кузьминский', '6947530309', 'all', 110, 11, 99.61, 541, 10, 5, 'Архив', 25.14, 283, 1070, 11),
+    ('AO02', 2, 'АО-2', '9639245200', 12, 'Выхайловский', '4095476665', 'all', 111, 12, 88.48, 768, 11, 6, 'Портал', 26.68, 328, 1077, 12),
+    ('AO03', 3, 'АО-3', '2461042543', 13, 'Люблинский', '6555540744', 'pc', 112, 13, 45.37, 739, 12, 1, 'Dremio', 87.59, 134, 1084, 13),
+    ('AO04', 4, 'АО-4', '4272602734', 14, 'Капотнянский', '7980611182', 'all', 113, 14, 50.77, 203, 13, 2, 'ЦЕСНА', 15.28, 390, 1091, 14),
+    ('AO05', 5, 'АО-5', '4944899549', 15, 'Марьинский', '7867414708', 'mobile', 114, 15, 1.95, 371, 14, 3, 'GIS', 87.87, 425, 1098, 15),
+    ('AO06', 6, 'АО-6', '8760038701', 16, 'Печатниковский', '2028439863', 'pc', 115, 16, 87.8, 80, 15, 4, 'API', 8.57, 248, 1105, 16),
+    ('AO07', 7, 'АО-7', '4504793184', 17, 'Солнцевский', '1540137296', 'all', 116, 17, 47.53, 562, 16, 5, 'Архив', 16.51, 270, 1112, 17),
+    ('AO08', 8, 'АО-8', '6633778586', 18, 'Одинцовский', '8086172302', 'mobile', 117, 18, 89.96, 462, 17, 6, 'Портал', 12.1, 115, 1119, 18),
+    ('AO09', 9, 'АО-9', '5569956444', 19, 'Ленинский', '9680276057', 'all', 118, 19, 23.01, 225, 18, 1, 'Dremio', 0.72, 362, 1126, 19),
+    ('AO10', 10, 'АО-10', '3710566582', 20, 'Видный', '1983297492', 'pc', 119, 20, 85.96, 72, 19, 2, 'ЦЕСНА', 51.42, 142, 1133, 20);
+
+-- -------------------------------------------------------------
+-- datetime_integration666
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "datetime_integration666";
+CREATE TABLE "datetime_integration666" (
+    date_integration VARCHAR(30),
+    datetime_integration_db VARCHAR(30),
+    datetime_integration_true VARCHAR(30),
+    time_integration VARCHAR(30)
+);
+
+INSERT INTO "datetime_integration666" (date_integration, datetime_integration_db, datetime_integration_true, time_integration)
+VALUES
+    ('2024-09-01', '2024-09-08 20:00:00', '2024-09-08 20:00:00', '20:00'),
+    ('2024-09-02', '2024-09-08 21:03:00', '2024-09-08 21:03:00', '21:03'),
+    ('2024-09-03', '2024-09-08 22:06:00', '2024-09-08 22:06:00', '22:06'),
+    ('2024-09-04', '2024-09-08 23:09:00', '2024-09-08 23:09:00', '23:09'),
+    ('2024-09-05', '2024-09-08 20:12:00', '2024-09-08 20:12:00', '24:12'),
+    ('2024-09-06', '2024-09-08 21:15:00', '2024-09-08 21:15:00', '25:15'),
+    ('2024-09-07', '2024-09-08 22:18:00', '2024-09-08 22:18:00', '26:18'),
+    ('2024-09-08', '2024-09-08 23:21:00', '2024-09-08 23:21:00', '20:21'),
+    ('2024-09-09', '2024-09-08 20:24:00', '2024-09-08 20:24:00', '21:24'),
+    ('2024-09-10', '2024-09-08 21:27:00', '2024-09-08 21:27:00', '22:27'),
+    ('2024-09-11', '2024-09-08 22:30:00', '2024-09-08 22:30:00', '23:30'),
+    ('2024-09-12', '2024-09-08 23:33:00', '2024-09-08 23:33:00', '24:33'),
+    ('2024-09-13', '2024-09-08 20:36:00', '2024-09-08 20:36:00', '25:36'),
+    ('2024-09-14', '2024-09-08 21:39:00', '2024-09-08 21:39:00', '26:39'),
+    ('2024-09-15', '2024-09-08 22:42:00', '2024-09-08 22:42:00', '20:42'),
+    ('2024-09-16', '2024-09-08 23:45:00', '2024-09-08 23:45:00', '21:45'),
+    ('2024-09-17', '2024-09-08 20:48:00', '2024-09-08 20:48:00', '22:48'),
+    ('2024-09-18', '2024-09-08 21:51:00', '2024-09-08 21:51:00', '23:51'),
+    ('2024-09-19', '2024-09-08 22:54:00', '2024-09-08 22:54:00', '24:54'),
+    ('2024-09-20', '2024-09-08 23:57:00', '2024-09-08 23:57:00', '25:57');
+
+-- -------------------------------------------------------------
+-- d_all_filters
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "d_all_filters";
+CREATE TABLE "d_all_filters" (
+    event TEXT,
+    "name" VARCHAR(100),
+    name_en VARCHAR(100),
+    ord INTEGER,
+    "type" VARCHAR(50),
+    variable TEXT
+);
+
+INSERT INTO "d_all_filters" (event, "name", name_en, ord, "type", variable)
+VALUES
+    ('municipal_2024', 'фильтр_0', 'фильтр_0', 0, 'type_0', 'var_0'),
+    ('municipal_2024', 'фильтр_1', 'фильтр_1', 1, 'type_1', 'var_1'),
+    ('municipal_2024', 'фильтр_2', 'фильтр_2', 2, 'type_2', 'var_2'),
+    ('municipal_2024', 'фильтр_3', 'фильтр_3', 3, 'type_3', 'var_3'),
+    ('municipal_2024', 'фильтр_4', 'фильтр_4', 4, 'type_4', 'var_4'),
+    ('municipal_2024', 'фильтр_5', 'фильтр_5', 5, 'type_5', 'var_5'),
+    ('municipal_2024', 'фильтр_6', 'фильтр_6', 6, 'type_6', 'var_6'),
+    ('municipal_2024', 'фильтр_7', 'фильтр_7', 7, 'type_7', 'var_7'),
+    ('municipal_2024', 'фильтр_8', 'фильтр_8', 8, 'type_8', 'var_8'),
+    ('municipal_2024', 'фильтр_9', 'фильтр_9', 9, 'type_9', 'var_9'),
+    ('municipal_2024', 'фильтр_10', 'фильтр_10', 10, 'type_10', 'var_10'),
+    ('municipal_2024', 'фильтр_11', 'фильтр_11', 11, 'type_11', 'var_11'),
+    ('municipal_2024', 'фильтр_12', 'фильтр_12', 12, 'type_12', 'var_12'),
+    ('municipal_2024', 'фильтр_13', 'фильтр_13', 13, 'type_13', 'var_13'),
+    ('municipal_2024', 'фильтр_14', 'фильтр_14', 14, 'type_14', 'var_14'),
+    ('municipal_2024', 'фильтр_15', 'фильтр_15', 15, 'type_15', 'var_15'),
+    ('municipal_2024', 'фильтр_16', 'фильтр_16', 16, 'type_16', 'var_16'),
+    ('municipal_2024', 'фильтр_17', 'фильтр_17', 17, 'type_17', 'var_17'),
+    ('municipal_2024', 'фильтр_18', 'фильтр_18', 18, 'type_18', 'var_18'),
+    ('municipal_2024', 'фильтр_19', 'фильтр_19', 19, 'type_19', 'var_19');
+
+-- -------------------------------------------------------------
+-- refresh_bc
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "refresh_bc";
+CREATE TABLE "refresh_bc" (
+    contur TEXT,
+    id INTEGER,
+    status VARCHAR(30)
+);
+
+INSERT INTO "refresh_bc" (contur, id, status)
+VALUES
+    ('secondary', 27, 'processed'),
+    ('main', 92, 'pending'),
+    ('secondary', 31, 'received'),
+    ('secondary', 52, 'not_received'),
+    ('main', 12, 'processed'),
+    ('main', 84, 'pending'),
+    ('secondary', 45, 'received'),
+    ('secondary', 52, 'not_received'),
+    ('secondary', 93, 'processed'),
+    ('main', 86, 'pending'),
+    ('main', 7, 'received'),
+    ('secondary', 93, 'not_received'),
+    ('secondary', 13, 'processed'),
+    ('main', 24, 'pending'),
+    ('main', 68, 'received'),
+    ('secondary', 17, 'not_received'),
+    ('secondary', 23, 'processed'),
+    ('secondary', 59, 'pending'),
+    ('main', 9, 'received'),
+    ('secondary', 70, 'not_received');
+
+-- -------------------------------------------------------------
+-- custom_radio_btn_abs_per
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "custom_radio_btn_abs_per";
+CREATE TABLE "custom_radio_btn_abs_per" (
+    "name" VARCHAR(100),
+    ord INTEGER
+);
+
+INSERT INTO "custom_radio_btn_abs_per" ("name", ord)
+VALUES
+    ('фильтр_0', 0),
+    ('фильтр_1', 1),
+    ('фильтр_2', 2),
+    ('фильтр_3', 3),
+    ('фильтр_4', 4),
+    ('фильтр_5', 5),
+    ('фильтр_6', 6),
+    ('фильтр_7', 7),
+    ('фильтр_8', 8),
+    ('фильтр_9', 9),
+    ('фильтр_10', 10),
+    ('фильтр_11', 11),
+    ('фильтр_12', 12),
+    ('фильтр_13', 13),
+    ('фильтр_14', 14),
+    ('фильтр_15', 15),
+    ('фильтр_16', 16),
+    ('фильтр_17', 17),
+    ('фильтр_18', 18),
+    ('фильтр_19', 19);
+
+-- -------------------------------------------------------------
+-- municipal_map_io
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_map_io";
+CREATE TABLE "municipal_map_io" (
+    color VARCHAR(20),
+    color_id INTEGER,
+    count_number INTEGER,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    filter_name TEXT,
+    io_id INTEGER,
+    io_name VARCHAR(100),
+    io_name_full VARCHAR(100),
+    io_number INTEGER,
+    mo_percent NUMERIC(10,2),
+    source_id INTEGER,
+    source_name VARCHAR(100)
+);
+
+INSERT INTO "municipal_map_io" (color, color_id, count_number, district_id, district_name, filter_name, io_id, io_name, io_name_full, io_number, mo_percent, source_id, source_name)
+VALUES
+    ('#44B3EE', 1, 1, 1, 'Москворецкий', 'pc', 100, 'ИО № 100', 'Итоговый орган № 100', 1, 5.06, 1, 'Dremio'),
+    ('#957AEB', 2, 2, 2, 'Замоскворецкий', 'all', 101, 'ИО № 101', 'Итоговый орган № 101', 2, 83.6, 2, 'ЦЕСНА'),
+    ('#BFD8EA', 3, 3, 3, 'Тверской', 'pc', 102, 'ИО № 102', 'Итоговый орган № 102', 3, 92.64, 3, 'GIS'),
+    ('#FF6B6B', 4, 4, 4, 'Пресненский', 'pc', 103, 'ИО № 103', 'Итоговый орган № 103', 4, 16.63, 4, 'API'),
+    ('#4ECDC4', 5, 5, 5, 'Якиманский', 'mobile', 104, 'ИО № 104', 'Итоговый орган № 104', 5, 48.14, 5, 'Архив'),
+    ('#45B7D1', 6, 6, 6, 'Донской', 'mobile', 105, 'ИО № 105', 'Итоговый орган № 105', 6, 90.24, 6, 'Портал'),
+    ('#96CEB4', 7, 7, 7, 'Нагатинский', 'pc', 106, 'ИО № 106', 'Итоговый орган № 106', 7, 37.9, 1, 'Dremio'),
+    ('#FFEAA7', 8, 8, 8, 'Чертановский', 'mobile', 107, 'ИО № 107', 'Итоговый орган № 107', 8, 26.52, 2, 'ЦЕСНА'),
+    ('#DDA0DD', 9, 9, 9, 'Бутирский', 'mobile', 108, 'ИО № 108', 'Итоговый орган № 108', 9, 28.52, 3, 'GIS'),
+    ('#F0E68C', 10, 10, 10, 'Перовский', 'all', 109, 'ИО № 109', 'Итоговый орган № 109', 10, 95.73, 4, 'API'),
+    ('#E74C3C', 11, 11, 11, 'Кузьминский', 'all', 110, 'ИО № 110', 'Итоговый орган № 110', 11, 66.19, 5, 'Архив'),
+    ('#3498DB', 12, 12, 12, 'Выхайловский', 'mobile', 111, 'ИО № 111', 'Итоговый орган № 111', 12, 15.48, 6, 'Портал'),
+    ('#44B3EE', 1, 13, 13, 'Люблинский', 'mobile', 112, 'ИО № 112', 'Итоговый орган № 112', 13, 21.77, 1, 'Dremio'),
+    ('#957AEB', 2, 14, 14, 'Капотнянский', 'pc', 113, 'ИО № 113', 'Итоговый орган № 113', 14, 57.92, 2, 'ЦЕСНА'),
+    ('#BFD8EA', 3, 15, 15, 'Марьинский', 'all', 114, 'ИО № 114', 'Итоговый орган № 114', 15, 6.1, 3, 'GIS'),
+    ('#FF6B6B', 4, 16, 16, 'Печатниковский', 'mobile', 115, 'ИО № 115', 'Итоговый орган № 115', 16, 5.72, 4, 'API'),
+    ('#4ECDC4', 5, 17, 17, 'Солнцевский', 'all', 116, 'ИО № 116', 'Итоговый орган № 116', 17, 47.68, 5, 'Архив'),
+    ('#45B7D1', 6, 18, 18, 'Одинцовский', 'all', 117, 'ИО № 117', 'Итоговый орган № 117', 18, 15.74, 6, 'Портал'),
+    ('#96CEB4', 7, 19, 19, 'Ленинский', 'all', 118, 'ИО № 118', 'Итоговый орган № 118', 19, 8.01, 1, 'Dremio'),
+    ('#FFEAA7', 8, 20, 20, 'Видный', 'pc', 119, 'ИО № 119', 'Итоговый орган № 119', 20, 6.85, 2, 'ЦЕСНА');
+
+-- -------------------------------------------------------------
+-- municipal_map_uik
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_map_uik";
+CREATE TABLE "municipal_map_uik" (
+    color VARCHAR(20),
+    count_number INTEGER,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    filter_name TEXT,
+    io_id INTEGER,
+    io_name VARCHAR(100),
+    io_number INTEGER,
+    latt NUMERIC(12,6),
+    long NUMERIC(12,6),
+    source_id INTEGER,
+    statement_processed_value BIGINT,
+    uik_id INTEGER,
+    uik_number INTEGER,
+    uik_size INTEGER
+);
+
+INSERT INTO "municipal_map_uik" (color, count_number, district_id, district_name, filter_name, io_id, io_name, io_number, latt, long, source_id, statement_processed_value, uik_id, uik_number, uik_size)
+VALUES
+    ('#44B3EE', 1, 1, 'Москворецкий', 'pc', 100, 'ИО № 100', 1, 55.705128, 37.341122, 1, 61, 1000, 1, 2433),
+    ('#957AEB', 2, 2, 'Замоскворецкий', 'pc', 101, 'ИО № 101', 2, 55.647351, 37.223845, 2, 41, 1007, 2, 1817),
+    ('#BFD8EA', 3, 3, 'Тверской', 'all', 102, 'ИО № 102', 3, 55.650203, 37.51367, 3, 478, 1014, 3, 1168),
+    ('#FF6B6B', 4, 4, 'Пресненский', 'pc', 103, 'ИО № 103', 4, 55.701836, 37.38851, 4, 135, 1021, 4, 1721),
+    ('#4ECDC4', 5, 5, 'Якиманский', 'pc', 104, 'ИО № 104', 5, 55.703014, 37.379998, 5, 161, 1028, 5, 397),
+    ('#45B7D1', 6, 6, 'Донской', 'pc', 105, 'ИО № 105', 6, 55.574971, 37.799073, 6, 51, 1035, 6, 400),
+    ('#96CEB4', 7, 7, 'Нагатинский', 'all', 106, 'ИО № 106', 7, 55.427893, 37.35912, 1, 477, 1042, 7, 1529),
+    ('#FFEAA7', 8, 8, 'Чертановский', 'pc', 107, 'ИО № 107', 8, 55.827562, 37.421716, 2, 80, 1049, 8, 1894),
+    ('#DDA0DD', 9, 9, 'Бутирский', 'all', 108, 'ИО № 108', 9, 55.722124, 37.567007, 3, 413, 1056, 9, 2778),
+    ('#F0E68C', 10, 10, 'Перовский', 'all', 109, 'ИО № 109', 10, 55.304694, 37.690262, 4, 153, 1063, 10, 2817),
+    ('#E74C3C', 11, 11, 'Кузьминский', 'pc', 110, 'ИО № 110', 11, 55.863358, 37.280575, 5, 59, 1070, 11, 538),
+    ('#3498DB', 12, 12, 'Выхайловский', 'all', 111, 'ИО № 111', 12, 55.631934, 37.363409, 6, 309, 1077, 12, 962),
+    ('#44B3EE', 13, 13, 'Люблинский', 'all', 112, 'ИО № 112', 13, 55.505728, 37.612498, 1, 436, 1084, 13, 1181),
+    ('#957AEB', 14, 14, 'Капотнянский', 'all', 113, 'ИО № 113', 14, 55.593119, 37.743202, 2, 433, 1091, 14, 308),
+    ('#BFD8EA', 15, 15, 'Марьинский', 'pc', 114, 'ИО № 114', 15, 55.680571, 37.697609, 3, 22, 1098, 15, 114),
+    ('#FF6B6B', 16, 16, 'Печатниковский', 'mobile', 115, 'ИО № 115', 16, 55.762672, 37.582268, 4, 134, 1105, 16, 761),
+    ('#4ECDC4', 17, 17, 'Солнцевский', 'all', 116, 'ИО № 116', 17, 55.565101, 37.6234, 5, 287, 1112, 17, 139),
+    ('#45B7D1', 18, 18, 'Одинцовский', 'pc', 117, 'ИО № 117', 18, 55.345146, 37.729864, 6, 462, 1119, 18, 710),
+    ('#96CEB4', 19, 19, 'Ленинский', 'all', 118, 'ИО № 118', 19, 55.321617, 37.42153, 1, 282, 1126, 19, 706),
+    ('#FFEAA7', 20, 20, 'Видный', 'mobile', 119, 'ИО № 119', 20, 55.376467, 37.384955, 2, 460, 1133, 20, 263);
+
+-- -------------------------------------------------------------
+-- municipal_map_io_forecast
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_map_io_forecast";
+CREATE TABLE "municipal_map_io_forecast" (
+    ao_code TEXT,
+    ao_id INTEGER,
+    ao_name VARCHAR(100),
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    forecast_color_mo VARCHAR(20),
+    forecast_type VARCHAR(50),
+    id_concat TEXT,
+    io_id INTEGER,
+    io_name VARCHAR(100),
+    io_number INTEGER,
+    latt NUMERIC(12,6),
+    long NUMERIC(12,6),
+    name_concat VARCHAR(100),
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    voice_min TEXT,
+    voice_min_per TEXT
+);
+
+INSERT INTO "municipal_map_io_forecast" (ao_code, ao_id, ao_name, district_id, district_name, forecast_color_mo, forecast_type, id_concat, io_id, io_name, io_number, latt, long, name_concat, source_id, source_name, voice_min, voice_min_per)
+VALUES
+    ('AO01', 1, 'АО-1', 1, 'Москворецкий', '#44B3EE', 'optimistic', 'concat_0', 100, 'ИО № 100', 1, 55.839355, 37.326046, 'name_0', 1, 'Dremio', 'voice_min_0', 'voice_min_per_0'),
+    ('AO02', 2, 'АО-2', 2, 'Замоскворецкий', '#957AEB', 'pessimistic', 'concat_1', 101, 'ИО № 101', 2, 55.449718, 37.261676, 'name_1', 2, 'ЦЕСНА', 'voice_min_1', 'voice_min_per_1'),
+    ('AO03', 3, 'АО-3', 3, 'Тверской', '#BFD8EA', 'base', 'concat_2', 102, 'ИО № 102', 3, 55.76807, 37.730481, 'name_2', 3, 'GIS', 'voice_min_2', 'voice_min_per_2'),
+    ('AO04', 4, 'АО-4', 4, 'Пресненский', '#FF6B6B', 'target', 'concat_3', 103, 'ИО № 103', 4, 55.543826, 37.572397, 'name_3', 4, 'API', 'voice_min_3', 'voice_min_per_3'),
+    ('AO05', 5, 'АО-5', 5, 'Якиманский', '#4ECDC4', 'optimistic', 'concat_4', 104, 'ИО № 104', 5, 55.392732, 37.757929, 'name_4', 5, 'Архив', 'voice_min_4', 'voice_min_per_4'),
+    ('AO06', 6, 'АО-6', 6, 'Донской', '#45B7D1', 'pessimistic', 'concat_5', 105, 'ИО № 105', 6, 55.818763, 37.785724, 'name_5', 6, 'Портал', 'voice_min_5', 'voice_min_per_5'),
+    ('AO07', 7, 'АО-7', 7, 'Нагатинский', '#96CEB4', 'base', 'concat_6', 106, 'ИО № 106', 7, 55.786463, 37.72885, 'name_6', 1, 'Dremio', 'voice_min_6', 'voice_min_per_6'),
+    ('AO08', 8, 'АО-8', 8, 'Чертановский', '#FFEAA7', 'target', 'concat_7', 107, 'ИО № 107', 8, 55.314872, 37.641939, 'name_7', 2, 'ЦЕСНА', 'voice_min_7', 'voice_min_per_7'),
+    ('AO09', 9, 'АО-9', 9, 'Бутирский', '#DDA0DD', 'optimistic', 'concat_8', 108, 'ИО № 108', 9, 55.499311, 37.75849, 'name_8', 3, 'GIS', 'voice_min_8', 'voice_min_per_8'),
+    ('AO10', 10, 'АО-10', 10, 'Перовский', '#F0E68C', 'pessimistic', 'concat_9', 109, 'ИО № 109', 10, 55.781341, 37.718438, 'name_9', 4, 'API', 'voice_min_9', 'voice_min_per_9'),
+    ('AO01', 1, 'АО-1', 11, 'Кузьминский', '#E74C3C', 'base', 'concat_10', 110, 'ИО № 110', 11, 55.78645, 37.360083, 'name_10', 5, 'Архив', 'voice_min_10', 'voice_min_per_10'),
+    ('AO02', 2, 'АО-2', 12, 'Выхайловский', '#3498DB', 'target', 'concat_11', 111, 'ИО № 111', 12, 55.772425, 37.264857, 'name_11', 6, 'Портал', 'voice_min_11', 'voice_min_per_11'),
+    ('AO03', 3, 'АО-3', 13, 'Люблинский', '#44B3EE', 'optimistic', 'concat_12', 112, 'ИО № 112', 13, 55.8233, 37.715156, 'name_12', 1, 'Dremio', 'voice_min_12', 'voice_min_per_12'),
+    ('AO04', 4, 'АО-4', 14, 'Капотнянский', '#957AEB', 'pessimistic', 'concat_13', 113, 'ИО № 113', 14, 55.43346, 37.689952, 'name_13', 2, 'ЦЕСНА', 'voice_min_13', 'voice_min_per_13'),
+    ('AO05', 5, 'АО-5', 15, 'Марьинский', '#BFD8EA', 'base', 'concat_14', 114, 'ИО № 114', 15, 55.576182, 37.383115, 'name_14', 3, 'GIS', 'voice_min_14', 'voice_min_per_14'),
+    ('AO06', 6, 'АО-6', 16, 'Печатниковский', '#FF6B6B', 'target', 'concat_15', 115, 'ИО № 115', 16, 55.777207, 37.336557, 'name_15', 4, 'API', 'voice_min_15', 'voice_min_per_15'),
+    ('AO07', 7, 'АО-7', 17, 'Солнцевский', '#4ECDC4', 'optimistic', 'concat_16', 116, 'ИО № 116', 17, 55.314199, 37.315878, 'name_16', 5, 'Архив', 'voice_min_16', 'voice_min_per_16'),
+    ('AO08', 8, 'АО-8', 18, 'Одинцовский', '#45B7D1', 'pessimistic', 'concat_17', 117, 'ИО № 117', 18, 55.496957, 37.718612, 'name_17', 6, 'Портал', 'voice_min_17', 'voice_min_per_17'),
+    ('AO09', 9, 'АО-9', 19, 'Ленинский', '#96CEB4', 'base', 'concat_18', 118, 'ИО № 118', 19, 55.880133, 37.367475, 'name_18', 1, 'Dremio', 'voice_min_18', 'voice_min_per_18'),
+    ('AO10', 10, 'АО-10', 20, 'Видный', '#FFEAA7', 'target', 'concat_19', 119, 'ИО № 119', 20, 55.684889, 37.439807, 'name_19', 2, 'ЦЕСНА', 'voice_min_19', 'voice_min_per_19');
+
+-- -------------------------------------------------------------
+-- municipal_map_mo
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_map_mo";
+CREATE TABLE "municipal_map_mo" (
+    color VARCHAR(20),
+    color_id INTEGER,
+    count_number INTEGER,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    filter_name TEXT,
+    mo_percent NUMERIC(10,2),
+    source_id INTEGER
+);
+
+INSERT INTO "municipal_map_mo" (color, color_id, count_number, district_id, district_name, filter_name, mo_percent, source_id)
+VALUES
+    ('#44B3EE', 1, 1, 1, 'Москворецкий', 'all', 33.11, 1),
+    ('#957AEB', 2, 2, 2, 'Замоскворецкий', 'pc', 11.53, 2),
+    ('#BFD8EA', 3, 3, 3, 'Тверской', 'mobile', 17.86, 3),
+    ('#FF6B6B', 4, 4, 4, 'Пресненский', 'mobile', 3.83, 4),
+    ('#4ECDC4', 5, 5, 5, 'Якиманский', 'all', 43.46, 5),
+    ('#45B7D1', 6, 6, 6, 'Донской', 'all', 78.64, 6),
+    ('#96CEB4', 7, 7, 7, 'Нагатинский', 'mobile', 60.62, 1),
+    ('#FFEAA7', 8, 8, 8, 'Чертановский', 'all', 11.56, 2),
+    ('#DDA0DD', 9, 9, 9, 'Бутирский', 'all', 19.01, 3),
+    ('#F0E68C', 10, 10, 10, 'Перовский', 'pc', 70.88, 4),
+    ('#E74C3C', 11, 11, 11, 'Кузьминский', 'pc', 51.99, 5),
+    ('#3498DB', 12, 12, 12, 'Выхайловский', 'all', 68.69, 6),
+    ('#44B3EE', 1, 13, 13, 'Люблинский', 'all', 73.7, 1),
+    ('#957AEB', 2, 14, 14, 'Капотнянский', 'pc', 36.42, 2),
+    ('#BFD8EA', 3, 15, 15, 'Марьинский', 'pc', 94.89, 3),
+    ('#FF6B6B', 4, 16, 16, 'Печатниковский', 'mobile', 62.32, 4),
+    ('#4ECDC4', 5, 17, 17, 'Солнцевский', 'all', 84.8, 5),
+    ('#45B7D1', 6, 18, 18, 'Одинцовский', 'all', 90.0, 6),
+    ('#96CEB4', 7, 19, 19, 'Ленинский', 'all', 30.93, 1),
+    ('#FFEAA7', 8, 20, 20, 'Видный', 'mobile', 32.62, 2);
+
+-- -------------------------------------------------------------
+-- municipal_map_mo_forecast
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_map_mo_forecast";
+CREATE TABLE "municipal_map_mo_forecast" (
+    ao_code TEXT,
+    ao_id INTEGER,
+    ao_name VARCHAR(100),
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    forecast_color_mo VARCHAR(20),
+    forecast_type VARCHAR(50),
+    id_concat TEXT,
+    io_number_1 TEXT,
+    io_number_2 TEXT,
+    io_number_3 TEXT,
+    io_number_4 TEXT,
+    io_number_5 TEXT,
+    latt NUMERIC(12,6),
+    long NUMERIC(12,6),
+    name_concat VARCHAR(100),
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    voice_1 TEXT,
+    voice_2 TEXT,
+    voice_3 TEXT,
+    voice_4 TEXT,
+    voice_5 TEXT,
+    voice_min TEXT,
+    voice_min_per TEXT,
+    voice_per_1 TEXT,
+    voice_per_2 TEXT,
+    voice_per_3 TEXT,
+    voice_per_4 TEXT,
+    voice_per_5 TEXT
+);
+
+INSERT INTO "municipal_map_mo_forecast" (ao_code, ao_id, ao_name, district_id, district_name, forecast_color_mo, forecast_type, id_concat, io_number_1, io_number_2, io_number_3, io_number_4, io_number_5, latt, long, name_concat, source_id, source_name, voice_1, voice_2, voice_3, voice_4, voice_5, voice_min, voice_min_per, voice_per_1, voice_per_2, voice_per_3, voice_per_4, voice_per_5)
+VALUES
+    ('AO01', 1, 'АО-1', 1, 'Москворецкий', '#44B3EE', 'optimistic', 'concat_0', '109', '117', '104', '106', '113', 55.698958, 37.427487, 'name_0', 1, 'Dremio', '1425', '4662', '2465', '3326', '4488', 'voice_min_0', 'voice_min_per_0', '83.37', '30.39', '21.02', '78.58', '60.67'),
+    ('AO02', 2, 'АО-2', 2, 'Замоскворецкий', '#957AEB', 'pessimistic', 'concat_1', '110', '114', '114', '114', '106', 55.606704, 37.676241, 'name_1', 2, 'ЦЕСНА', '1390', '694', '2324', '4222', '2745', 'voice_min_1', 'voice_min_per_1', '9.34', '95.2', '23.49', '31.04', '80.66'),
+    ('AO03', 3, 'АО-3', 3, 'Тверской', '#BFD8EA', 'base', 'concat_2', '104', '100', '101', '107', '115', 55.666764, 37.661094, 'name_2', 3, 'GIS', '3730', '3395', '4715', '1592', '3145', 'voice_min_2', 'voice_min_per_2', '49.44', '24.4', '65.61', '0.55', '75.1'),
+    ('AO04', 4, 'АО-4', 4, 'Пресненский', '#FF6B6B', 'target', 'concat_3', '103', '113', '107', '105', '116', 55.57873, 37.534443, 'name_3', 4, 'API', '994', '3739', '1092', '3806', '4351', 'voice_min_3', 'voice_min_per_3', '98.79', '59.55', '95.0', '89.14', '61.27'),
+    ('AO05', 5, 'АО-5', 5, 'Якиманский', '#4ECDC4', 'optimistic', 'concat_4', '116', '113', '117', '114', '105', 55.746193, 37.484805, 'name_4', 5, 'Архив', '2123', '2025', '2271', '4270', '3969', 'voice_min_4', 'voice_min_per_4', '62.67', '27.46', '7.75', '28.57', '27.17'),
+    ('AO06', 6, 'АО-6', 6, 'Донской', '#45B7D1', 'pessimistic', 'concat_5', '110', '117', '102', '104', '104', 55.438757, 37.61637, 'name_5', 6, 'Портал', '1752', '526', '3398', '3339', '2710', 'voice_min_5', 'voice_min_per_5', '54.26', '41.58', '20.68', '42.01', '90.48'),
+    ('AO07', 7, 'АО-7', 7, 'Нагатинский', '#96CEB4', 'base', 'concat_6', '118', '100', '118', '112', '115', 55.303538, 37.411055, 'name_6', 1, 'Dremio', '3194', '3432', '4409', '4473', '4941', 'voice_min_6', 'voice_min_per_6', '89.78', '48.82', '27.29', '48.56', '38.89'),
+    ('AO08', 8, 'АО-8', 8, 'Чертановский', '#FFEAA7', 'target', 'concat_7', '112', '105', '114', '104', '119', 55.620474, 37.744157, 'name_7', 2, 'ЦЕСНА', '4848', '4623', '222', '687', '3511', 'voice_min_7', 'voice_min_per_7', '13.57', '46.17', '5.03', '37.91', '21.17'),
+    ('AO09', 9, 'АО-9', 9, 'Бутирский', '#DDA0DD', 'optimistic', 'concat_8', '110', '110', '112', '108', '113', 55.451363, 37.249144, 'name_8', 3, 'GIS', '158', '4418', '426', '2866', '1836', 'voice_min_8', 'voice_min_per_8', '65.01', '78.12', '65.18', '75.42', '94.96'),
+    ('AO10', 10, 'АО-10', 10, 'Перовский', '#F0E68C', 'pessimistic', 'concat_9', '106', '100', '119', '104', '107', 55.375733, 37.601675, 'name_9', 4, 'API', '4620', '1785', '3809', '2099', '3021', 'voice_min_9', 'voice_min_per_9', '16.78', '60.72', '74.79', '11.45', '81.93'),
+    ('AO01', 1, 'АО-1', 11, 'Кузьминский', '#E74C3C', 'base', 'concat_10', '109', '103', '118', '100', '109', 55.645478, 37.744816, 'name_10', 5, 'Архив', '3074', '3249', '1624', '622', '4850', 'voice_min_10', 'voice_min_per_10', '69.06', '62.72', '10.19', '77.25', '85.03'),
+    ('AO02', 2, 'АО-2', 12, 'Выхайловский', '#3498DB', 'target', 'concat_11', '119', '103', '118', '101', '111', 55.619647, 37.596913, 'name_11', 6, 'Портал', '564', '4144', '2795', '103', '3441', 'voice_min_11', 'voice_min_per_11', '82.23', '10.55', '96.08', '63.56', '82.87'),
+    ('AO03', 3, 'АО-3', 13, 'Люблинский', '#44B3EE', 'optimistic', 'concat_12', '104', '113', '105', '116', '120', 55.462049, 37.68492, 'name_12', 1, 'Dremio', '4408', '3960', '3808', '3568', '4853', 'voice_min_12', 'voice_min_per_12', '26.84', '85.17', '83.07', '8.67', '88.16'),
+    ('AO04', 4, 'АО-4', 14, 'Капотнянский', '#957AEB', 'pessimistic', 'concat_13', '107', '114', '118', '119', '112', 55.501838, 37.496584, 'name_13', 2, 'ЦЕСНА', '2662', '1489', '3994', '1737', '2906', 'voice_min_13', 'voice_min_per_13', '79.78', '34.03', '88.03', '70.12', '27.63'),
+    ('AO05', 5, 'АО-5', 15, 'Марьинский', '#BFD8EA', 'base', 'concat_14', '100', '116', '106', '102', '107', 55.732045, 37.493147, 'name_14', 3, 'GIS', '1968', '3900', '4020', '3671', '141', 'voice_min_14', 'voice_min_per_14', '9.31', '22.16', '69.18', '30.62', '58.16'),
+    ('AO06', 6, 'АО-6', 16, 'Печатниковский', '#FF6B6B', 'target', 'concat_15', '115', '117', '116', '111', '113', 55.897979, 37.530233, 'name_15', 4, 'API', '2882', '3717', '2219', '2511', '2059', 'voice_min_15', 'voice_min_per_15', '23.05', '72.13', '31.55', '74.29', '95.09'),
+    ('AO07', 7, 'АО-7', 17, 'Солнцевский', '#4ECDC4', 'optimistic', 'concat_16', '105', '106', '106', '115', '108', 55.734751, 37.785964, 'name_16', 5, 'Архив', '4297', '4888', '2318', '823', '1590', 'voice_min_16', 'voice_min_per_16', '29.62', '36.09', '30.23', '70.8', '12.66'),
+    ('AO08', 8, 'АО-8', 18, 'Одинцовский', '#45B7D1', 'pessimistic', 'concat_17', '101', '101', '117', '109', '104', 55.682722, 37.651675, 'name_17', 6, 'Портал', '840', '100', '4702', '2329', '3845', 'voice_min_17', 'voice_min_per_17', '47.87', '34.07', '96.55', '25.25', '86.17'),
+    ('AO09', 9, 'АО-9', 19, 'Ленинский', '#96CEB4', 'base', 'concat_18', '103', '102', '112', '115', '102', 55.646213, 37.611871, 'name_18', 1, 'Dremio', '1242', '1222', '4610', '2489', '697', 'voice_min_18', 'voice_min_per_18', '99.39', '11.85', '76.44', '60.63', '79.07'),
+    ('AO10', 10, 'АО-10', 20, 'Видный', '#FFEAA7', 'target', 'concat_19', '107', '116', '112', '114', '114', 55.478412, 37.553115, 'name_19', 2, 'ЦЕСНА', '3512', '2501', '4658', '493', '4994', 'voice_min_19', 'voice_min_per_19', '96.01', '9.92', '76.27', '62.55', '26.46');
+
+-- -------------------------------------------------------------
+-- municipal_forecast_table_mo
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_forecast_table_mo";
+CREATE TABLE "municipal_forecast_table_mo" (
+    amount INTEGER,
+    block_type VARCHAR(50),
+    candidate_short VARCHAR(30),
+    candidate_type VARCHAR(30),
+    color_candidate VARCHAR(20),
+    concat_for_group TEXT,
+    digital_percent NUMERIC(10,2),
+    digital_value BIGINT,
+    digital_win TEXT,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    flag TEXT,
+    forecast_color_mo VARCHAR(20),
+    forecast_type VARCHAR(50),
+    general_percent NUMERIC(10,2),
+    general_value BIGINT,
+    general_win TEXT,
+    io_id INTEGER,
+    io_number INTEGER,
+    now_color_mo VARCHAR(20),
+    paper_goal_per TEXT,
+    paper_goal_value BIGINT,
+    paper_percent NUMERIC(10,2),
+    paper_value BIGINT,
+    paper_win TEXT,
+    party_name VARCHAR(100),
+    required_ballots_percent NUMERIC(10,2),
+    required_ballots_percent_io NUMERIC(10,2),
+    required_ballots_value BIGINT,
+    required_ballots_value_io BIGINT,
+    required_ballots_value_plus_num_io BIGINT,
+    required_ballots_value_plus_num_mo BIGINT,
+    source_id INTEGER,
+    total_unprocessed_ballots TEXT,
+    total_unprocessed_ballots_io TEXT
+);
+
+INSERT INTO "municipal_forecast_table_mo" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num_io, required_ballots_value_plus_num_mo, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
+VALUES
+    (42, 'candidate', '2024-09-01', '2024-09-01', '#44B3EE', 'group_1', 15.71, 1423, 'digital_win_0', 1, 'Москворецкий', '0', '#44B3EE', 'optimistic', 15.65, 3346, 'general_win_0', 100, 1, '#44B3EE', 'paper_goal_per_0', 3890, 68.94, 3849, 'paper_win_0', 'Единая Россия', 29.13, 23.15, 2995, 1258, 2979, 1959, 1, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
+    (37, 'party', '2024-09-02', '2024-09-02', '#957AEB', 'group_2', 68.74, 7568, 'digital_win_1', 2, 'Замоскворецкий', '1', '#957AEB', 'pessimistic', 78.78, 5120, 'general_win_1', 101, 2, '#957AEB', 'paper_goal_per_1', 1820, 42.51, 4461, 'paper_win_1', 'ЛДПР', 22.48, 14.9, 1188, 682, 392, 344, 2, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
+    (85, 'summary', '2024-09-03', '2024-09-03', '#BFD8EA', 'group_3', 79.26, 4874, 'digital_win_2', 3, 'Тверской', '1', '#BFD8EA', 'base', 43.92, 3839, 'general_win_2', 102, 3, '#BFD8EA', 'paper_goal_per_2', 2691, 69.97, 7722, 'paper_win_2', 'КПРФ', 27.22, 54.0, 1893, 429, 2549, 263, 3, 'total_unprocessed_ballots_2', 'total_unprocessed_ballots_io_2'),
+    (456, 'candidate', '2024-09-04', '2024-09-04', '#FF6B6B', 'group_4', 43.2, 2640, 'digital_win_3', 4, 'Пресненский', '1', '#FF6B6B', 'target', 2.59, 1875, 'general_win_3', 103, 4, '#FF6B6B', 'paper_goal_per_3', 4912, 58.71, 169, 'paper_win_3', 'Справедливая Россия', 99.96, 67.23, 1203, 2460, 264, 817, 4, 'total_unprocessed_ballots_3', 'total_unprocessed_ballots_io_3'),
+    (241, 'party', '2024-09-05', '2024-09-05', '#4ECDC4', 'group_5', 51.9, 3622, 'digital_win_4', 5, 'Якиманский', '1', '#4ECDC4', 'optimistic', 18.15, 4795, 'general_win_4', 104, 5, '#4ECDC4', 'paper_goal_per_4', 3770, 63.48, 4028, 'paper_win_4', 'Яблоко', 96.91, 47.0, 1772, 1465, 1415, 2844, 5, 'total_unprocessed_ballots_4', 'total_unprocessed_ballots_io_4'),
+    (54, 'summary', '2024-09-06', '2024-09-06', '#45B7D1', 'group_1', 85.77, 2701, 'digital_win_5', 6, 'Донской', '1', '#45B7D1', 'pessimistic', 69.37, 2361, 'general_win_5', 105, 6, '#45B7D1', 'paper_goal_per_5', 3480, 81.36, 4506, 'paper_win_5', 'Самовыдвиженец', 3.67, 8.81, 1133, 1424, 574, 1755, 6, 'total_unprocessed_ballots_5', 'total_unprocessed_ballots_io_5'),
+    (443, 'candidate', '2024-09-07', '2024-09-07', '#96CEB4', 'group_2', 51.46, 9, 'digital_win_6', 7, 'Нагатинский', '1', '#96CEB4', 'base', 41.32, 1536, 'general_win_6', 106, 7, '#96CEB4', 'paper_goal_per_6', 4447, 36.18, 6196, 'paper_win_6', 'Новые люди', 49.85, 44.2, 311, 933, 1193, 2349, 1, 'total_unprocessed_ballots_6', 'total_unprocessed_ballots_io_6'),
+    (68, 'party', '2024-09-08', '2024-09-08', '#FFEAA7', 'group_3', 92.77, 3589, 'digital_win_7', 8, 'Чертановский', '1', '#FFEAA7', 'target', 12.14, 7972, 'general_win_7', 107, 8, '#FFEAA7', 'paper_goal_per_7', 2160, 70.98, 2545, 'paper_win_7', 'Партия роста', 55.08, 55.23, 481, 1020, 564, 1990, 2, 'total_unprocessed_ballots_7', 'total_unprocessed_ballots_io_7'),
+    (485, 'summary', '2024-09-09', '2024-09-09', '#DDA0DD', 'group_4', 11.75, 6816, 'digital_win_8', 9, 'Бутирский', '0', '#DDA0DD', 'optimistic', 49.84, 5870, 'general_win_8', 108, 9, '#DDA0DD', 'paper_goal_per_8', 2590, 50.89, 2239, 'paper_win_8', 'Единая Россия', 41.55, 48.25, 2034, 1098, 1970, 2357, 3, 'total_unprocessed_ballots_8', 'total_unprocessed_ballots_io_8'),
+    (75, 'candidate', '2024-09-10', '2024-09-10', '#F0E68C', 'group_5', 38.36, 7551, 'digital_win_9', 10, 'Перовский', '0', '#F0E68C', 'pessimistic', 86.4, 2263, 'general_win_9', 109, 10, '#F0E68C', 'paper_goal_per_9', 3599, 33.99, 6452, 'paper_win_9', 'ЛДПР', 50.77, 82.05, 1258, 1322, 2504, 2475, 4, 'total_unprocessed_ballots_9', 'total_unprocessed_ballots_io_9'),
+    (338, 'party', '2024-09-11', '2024-09-11', '#E74C3C', 'group_1', 48.96, 1217, 'digital_win_10', 11, 'Кузьминский', '1', '#E74C3C', 'base', 53.86, 2827, 'general_win_10', 110, 11, '#E74C3C', 'paper_goal_per_10', 2923, 55.19, 4451, 'paper_win_10', 'КПРФ', 37.72, 93.29, 872, 2956, 1078, 2442, 5, 'total_unprocessed_ballots_10', 'total_unprocessed_ballots_io_10'),
+    (197, 'summary', '2024-09-12', '2024-09-12', '#3498DB', 'group_2', 23.36, 6353, 'digital_win_11', 12, 'Выхайловский', '1', '#3498DB', 'target', 4.36, 6100, 'general_win_11', 111, 12, '#3498DB', 'paper_goal_per_11', 4074, 70.52, 6647, 'paper_win_11', 'Справедливая Россия', 38.12, 98.84, 2770, 723, 2128, 251, 6, 'total_unprocessed_ballots_11', 'total_unprocessed_ballots_io_11'),
+    (65, 'candidate', '2024-09-13', '2024-09-13', '#44B3EE', 'group_3', 50.23, 4834, 'digital_win_12', 13, 'Люблинский', '1', '#44B3EE', 'optimistic', 86.97, 7161, 'general_win_12', 112, 13, '#44B3EE', 'paper_goal_per_12', 3806, 9.97, 7458, 'paper_win_12', 'Яблоко', 45.69, 72.24, 1779, 2781, 732, 406, 1, 'total_unprocessed_ballots_12', 'total_unprocessed_ballots_io_12'),
+    (241, 'party', '2024-09-14', '2024-09-14', '#957AEB', 'group_4', 78.15, 2171, 'digital_win_13', 14, 'Капотнянский', '1', '#957AEB', 'pessimistic', 62.33, 3256, 'general_win_13', 113, 14, '#957AEB', 'paper_goal_per_13', 857, 85.18, 6982, 'paper_win_13', 'Самовыдвиженец', 67.44, 53.36, 1397, 2667, 2098, 2316, 2, 'total_unprocessed_ballots_13', 'total_unprocessed_ballots_io_13'),
+    (19, 'summary', '2024-09-15', '2024-09-15', '#BFD8EA', 'group_5', 61.75, 1923, 'digital_win_14', 15, 'Марьинский', '1', '#BFD8EA', 'base', 99.74, 6117, 'general_win_14', 114, 15, '#BFD8EA', 'paper_goal_per_14', 940, 43.4, 806, 'paper_win_14', 'Новые люди', 76.04, 70.39, 511, 1917, 781, 2942, 3, 'total_unprocessed_ballots_14', 'total_unprocessed_ballots_io_14'),
+    (154, 'candidate', '2024-09-16', '2024-09-16', '#FF6B6B', 'group_1', 90.34, 376, 'digital_win_15', 16, 'Печатниковский', '1', '#FF6B6B', 'target', 79.61, 2403, 'general_win_15', 115, 16, '#FF6B6B', 'paper_goal_per_15', 3136, 37.48, 1192, 'paper_win_15', 'Партия роста', 24.42, 41.21, 2892, 837, 796, 817, 4, 'total_unprocessed_ballots_15', 'total_unprocessed_ballots_io_15'),
+    (41, 'party', '2024-09-17', '2024-09-17', '#4ECDC4', 'group_2', 60.95, 3133, 'digital_win_16', 17, 'Солнцевский', '0', '#4ECDC4', 'optimistic', 49.77, 4777, 'general_win_16', 116, 17, '#4ECDC4', 'paper_goal_per_16', 1372, 23.22, 5225, 'paper_win_16', 'Единая Россия', 25.4, 25.53, 138, 2005, 1278, 2875, 5, 'total_unprocessed_ballots_16', 'total_unprocessed_ballots_io_16'),
+    (280, 'summary', '2024-09-18', '2024-09-18', '#45B7D1', 'group_3', 15.8, 3618, 'digital_win_17', 18, 'Одинцовский', '1', '#45B7D1', 'pessimistic', 98.77, 2450, 'general_win_17', 117, 18, '#45B7D1', 'paper_goal_per_17', 3675, 69.03, 3742, 'paper_win_17', 'ЛДПР', 84.53, 19.92, 1675, 2079, 536, 1071, 6, 'total_unprocessed_ballots_17', 'total_unprocessed_ballots_io_17'),
+    (196, 'candidate', '2024-09-19', '2024-09-19', '#96CEB4', 'group_4', 57.19, 4708, 'digital_win_18', 19, 'Ленинский', '1', '#96CEB4', 'base', 99.27, 2418, 'general_win_18', 118, 19, '#96CEB4', 'paper_goal_per_18', 379, 97.79, 5392, 'paper_win_18', 'КПРФ', 39.58, 0.81, 2909, 300, 2583, 2134, 1, 'total_unprocessed_ballots_18', 'total_unprocessed_ballots_io_18'),
+    (427, 'party', '2024-09-20', '2024-09-20', '#FFEAA7', 'group_5', 90.42, 2344, 'digital_win_19', 20, 'Видный', '0', '#FFEAA7', 'target', 60.71, 2886, 'general_win_19', 119, 20, '#FFEAA7', 'paper_goal_per_19', 1994, 63.66, 5086, 'paper_win_19', 'Справедливая Россия', 25.06, 75.56, 2800, 2888, 660, 2673, 2, 'total_unprocessed_ballots_19', 'total_unprocessed_ballots_io_19');
+
+-- -------------------------------------------------------------
+-- municipal_forecast_table_mo_only_io
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_forecast_table_mo_only_io";
+CREATE TABLE "municipal_forecast_table_mo_only_io" (
+    block_type VARCHAR(50),
+    concat_for_group TEXT,
+    concat_for_mo_group TEXT,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    district_okato VARCHAR(20),
+    forecast_color_io VARCHAR(20),
+    forecast_color_mo VARCHAR(20),
+    forecast_type VARCHAR(50),
+    io_id INTEGER,
+    io_name VARCHAR(100),
+    io_number INTEGER,
+    now_color_io VARCHAR(20),
+    now_color_mo VARCHAR(20),
+    required_ballots_percent NUMERIC(10,2),
+    required_ballots_percent_io NUMERIC(10,2),
+    required_ballots_value BIGINT,
+    required_ballots_value_io BIGINT,
+    required_ballots_value_plus_num BIGINT,
+    total_unprocessed_ballots TEXT,
+    total_unprocessed_ballots_io TEXT
+);
+
+INSERT INTO "municipal_forecast_table_mo_only_io" (block_type, concat_for_group, concat_for_mo_group, district_id, district_name, district_okato, forecast_color_io, forecast_color_mo, forecast_type, io_id, io_name, io_number, now_color_io, now_color_mo, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, total_unprocessed_ballots, total_unprocessed_ballots_io)
+VALUES
+    ('candidate', 'group_1', 'mo_grp_1', 1, 'Москворецкий', '5464285982', '#44B3EE', '#44B3EE', 'optimistic', 100, 'ИО № 100', 1, '#44B3EE', '#44B3EE', 78.86, 3.34, 1594, 638, 469, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
+    ('party', 'group_2', 'mo_grp_2', 2, 'Замоскворецкий', '9201789018', '#957AEB', '#957AEB', 'pessimistic', 101, 'ИО № 101', 2, '#957AEB', '#957AEB', 32.67, 41.55, 922, 641, 2309, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
+    ('summary', 'group_3', 'mo_grp_3', 3, 'Тверской', '6001680218', '#BFD8EA', '#BFD8EA', 'base', 102, 'ИО № 102', 3, '#BFD8EA', '#BFD8EA', 91.4, 94.42, 1308, 1487, 571, 'total_unprocessed_ballots_2', 'total_unprocessed_ballots_io_2'),
+    ('candidate', 'group_4', 'mo_grp_4', 4, 'Пресненский', '1323408297', '#FF6B6B', '#FF6B6B', 'target', 103, 'ИО № 103', 4, '#FF6B6B', '#FF6B6B', 75.42, 22.56, 2870, 2862, 1727, 'total_unprocessed_ballots_3', 'total_unprocessed_ballots_io_3'),
+    ('party', 'group_5', 'mo_grp_1', 5, 'Якиманский', '2570991899', '#4ECDC4', '#4ECDC4', 'optimistic', 104, 'ИО № 104', 5, '#4ECDC4', '#4ECDC4', 79.07, 1.39, 2297, 606, 1962, 'total_unprocessed_ballots_4', 'total_unprocessed_ballots_io_4'),
+    ('summary', 'group_1', 'mo_grp_2', 6, 'Донской', '2595467139', '#45B7D1', '#45B7D1', 'pessimistic', 105, 'ИО № 105', 6, '#45B7D1', '#45B7D1', 67.48, 47.15, 2637, 2399, 1443, 'total_unprocessed_ballots_5', 'total_unprocessed_ballots_io_5'),
+    ('candidate', 'group_2', 'mo_grp_3', 7, 'Нагатинский', '9861449701', '#96CEB4', '#96CEB4', 'base', 106, 'ИО № 106', 7, '#96CEB4', '#96CEB4', 82.39, 90.94, 1337, 2759, 1772, 'total_unprocessed_ballots_6', 'total_unprocessed_ballots_io_6'),
+    ('party', 'group_3', 'mo_grp_4', 8, 'Чертановский', '1501119337', '#FFEAA7', '#FFEAA7', 'target', 107, 'ИО № 107', 8, '#FFEAA7', '#FFEAA7', 4.53, 3.72, 2117, 575, 498, 'total_unprocessed_ballots_7', 'total_unprocessed_ballots_io_7'),
+    ('summary', 'group_4', 'mo_grp_1', 9, 'Бутирский', '3308745090', '#DDA0DD', '#DDA0DD', 'optimistic', 108, 'ИО № 108', 9, '#DDA0DD', '#DDA0DD', 38.86, 37.1, 2952, 2312, 1816, 'total_unprocessed_ballots_8', 'total_unprocessed_ballots_io_8'),
+    ('candidate', 'group_5', 'mo_grp_2', 10, 'Перовский', '4120719599', '#F0E68C', '#F0E68C', 'pessimistic', 109, 'ИО № 109', 10, '#F0E68C', '#F0E68C', 88.54, 65.49, 2104, 2621, 1771, 'total_unprocessed_ballots_9', 'total_unprocessed_ballots_io_9'),
+    ('party', 'group_1', 'mo_grp_3', 11, 'Кузьминский', '2201474778', '#E74C3C', '#E74C3C', 'base', 110, 'ИО № 110', 11, '#E74C3C', '#E74C3C', 69.03, 21.73, 1921, 1067, 1585, 'total_unprocessed_ballots_10', 'total_unprocessed_ballots_io_10'),
+    ('summary', 'group_2', 'mo_grp_4', 12, 'Выхайловский', '8239941612', '#3498DB', '#3498DB', 'target', 111, 'ИО № 111', 12, '#3498DB', '#3498DB', 54.45, 97.78, 1569, 348, 1730, 'total_unprocessed_ballots_11', 'total_unprocessed_ballots_io_11'),
+    ('candidate', 'group_3', 'mo_grp_1', 13, 'Люблинский', '2184901787', '#44B3EE', '#44B3EE', 'optimistic', 112, 'ИО № 112', 13, '#44B3EE', '#44B3EE', 96.82, 94.9, 1962, 475, 2814, 'total_unprocessed_ballots_12', 'total_unprocessed_ballots_io_12'),
+    ('party', 'group_4', 'mo_grp_2', 14, 'Капотнянский', '5170814022', '#957AEB', '#957AEB', 'pessimistic', 113, 'ИО № 113', 14, '#957AEB', '#957AEB', 5.06, 33.35, 615, 2412, 940, 'total_unprocessed_ballots_13', 'total_unprocessed_ballots_io_13'),
+    ('summary', 'group_5', 'mo_grp_3', 15, 'Марьинский', '4735313433', '#BFD8EA', '#BFD8EA', 'base', 114, 'ИО № 114', 15, '#BFD8EA', '#BFD8EA', 32.86, 14.76, 2541, 111, 1235, 'total_unprocessed_ballots_14', 'total_unprocessed_ballots_io_14'),
+    ('candidate', 'group_1', 'mo_grp_4', 16, 'Печатниковский', '1749459431', '#FF6B6B', '#FF6B6B', 'target', 115, 'ИО № 115', 16, '#FF6B6B', '#FF6B6B', 66.11, 2.58, 160, 1567, 1074, 'total_unprocessed_ballots_15', 'total_unprocessed_ballots_io_15'),
+    ('party', 'group_2', 'mo_grp_1', 17, 'Солнцевский', '7824071339', '#4ECDC4', '#4ECDC4', 'optimistic', 116, 'ИО № 116', 17, '#4ECDC4', '#4ECDC4', 1.58, 26.54, 619, 1824, 2254, 'total_unprocessed_ballots_16', 'total_unprocessed_ballots_io_16'),
+    ('summary', 'group_3', 'mo_grp_2', 18, 'Одинцовский', '5567946981', '#45B7D1', '#45B7D1', 'pessimistic', 117, 'ИО № 117', 18, '#45B7D1', '#45B7D1', 44.83, 36.2, 2531, 546, 1951, 'total_unprocessed_ballots_17', 'total_unprocessed_ballots_io_17'),
+    ('candidate', 'group_4', 'mo_grp_3', 19, 'Ленинский', '3163970710', '#96CEB4', '#96CEB4', 'base', 118, 'ИО № 118', 19, '#96CEB4', '#96CEB4', 94.54, 4.34, 2798, 2235, 1335, 'total_unprocessed_ballots_18', 'total_unprocessed_ballots_io_18'),
+    ('party', 'group_5', 'mo_grp_4', 20, 'Видный', '5140460939', '#FFEAA7', '#FFEAA7', 'target', 119, 'ИО № 119', 20, '#FFEAA7', '#FFEAA7', 6.08, 47.9, 1745, 1846, 2910, 'total_unprocessed_ballots_19', 'total_unprocessed_ballots_io_19');
+
+-- -------------------------------------------------------------
+-- municipal_forecast_table_io_only_io
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_forecast_table_io_only_io";
+CREATE TABLE "municipal_forecast_table_io_only_io" (
+    block_type VARCHAR(50),
+    concat_for_group TEXT,
+    concat_for_mo_group TEXT,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    district_okato VARCHAR(20),
+    forecast_color_io VARCHAR(20),
+    forecast_color_mo VARCHAR(20),
+    forecast_type VARCHAR(50),
+    io_id INTEGER,
+    io_name VARCHAR(100),
+    io_number INTEGER,
+    now_color_io VARCHAR(20),
+    now_color_mo VARCHAR(20),
+    required_ballots_percent NUMERIC(10,2),
+    required_ballots_percent_io NUMERIC(10,2),
+    required_ballots_value BIGINT,
+    required_ballots_value_io BIGINT,
+    required_ballots_value_plus_num BIGINT,
+    total_unprocessed_ballots TEXT,
+    total_unprocessed_ballots_io TEXT
+);
+
+INSERT INTO "municipal_forecast_table_io_only_io" (block_type, concat_for_group, concat_for_mo_group, district_id, district_name, district_okato, forecast_color_io, forecast_color_mo, forecast_type, io_id, io_name, io_number, now_color_io, now_color_mo, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, total_unprocessed_ballots, total_unprocessed_ballots_io)
+VALUES
+    ('candidate', 'group_1', 'mo_grp_1', 1, 'Москворецкий', '5758659815', '#44B3EE', '#44B3EE', 'optimistic', 100, 'ИО № 100', 1, '#44B3EE', '#44B3EE', 71.24, 44.36, 430, 1419, 2591, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
+    ('party', 'group_2', 'mo_grp_2', 2, 'Замоскворецкий', '1637088959', '#957AEB', '#957AEB', 'pessimistic', 101, 'ИО № 101', 2, '#957AEB', '#957AEB', 12.62, 62.43, 2497, 2346, 1431, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
+    ('summary', 'group_3', 'mo_grp_3', 3, 'Тверской', '6561543484', '#BFD8EA', '#BFD8EA', 'base', 102, 'ИО № 102', 3, '#BFD8EA', '#BFD8EA', 50.56, 43.02, 2974, 568, 2781, 'total_unprocessed_ballots_2', 'total_unprocessed_ballots_io_2'),
+    ('candidate', 'group_4', 'mo_grp_4', 4, 'Пресненский', '6218484323', '#FF6B6B', '#FF6B6B', 'target', 103, 'ИО № 103', 4, '#FF6B6B', '#FF6B6B', 45.16, 22.85, 1488, 1957, 1733, 'total_unprocessed_ballots_3', 'total_unprocessed_ballots_io_3'),
+    ('party', 'group_5', 'mo_grp_1', 5, 'Якиманский', '5703357871', '#4ECDC4', '#4ECDC4', 'optimistic', 104, 'ИО № 104', 5, '#4ECDC4', '#4ECDC4', 42.68, 66.51, 1633, 725, 2913, 'total_unprocessed_ballots_4', 'total_unprocessed_ballots_io_4'),
+    ('summary', 'group_1', 'mo_grp_2', 6, 'Донской', '9259157845', '#45B7D1', '#45B7D1', 'pessimistic', 105, 'ИО № 105', 6, '#45B7D1', '#45B7D1', 6.71, 83.18, 481, 1868, 495, 'total_unprocessed_ballots_5', 'total_unprocessed_ballots_io_5'),
+    ('candidate', 'group_2', 'mo_grp_3', 7, 'Нагатинский', '9847550931', '#96CEB4', '#96CEB4', 'base', 106, 'ИО № 106', 7, '#96CEB4', '#96CEB4', 95.66, 56.17, 2844, 600, 1782, 'total_unprocessed_ballots_6', 'total_unprocessed_ballots_io_6'),
+    ('party', 'group_3', 'mo_grp_4', 8, 'Чертановский', '8517413631', '#FFEAA7', '#FFEAA7', 'target', 107, 'ИО № 107', 8, '#FFEAA7', '#FFEAA7', 86.81, 72.11, 1278, 2559, 1379, 'total_unprocessed_ballots_7', 'total_unprocessed_ballots_io_7'),
+    ('summary', 'group_4', 'mo_grp_1', 9, 'Бутирский', '2510308881', '#DDA0DD', '#DDA0DD', 'optimistic', 108, 'ИО № 108', 9, '#DDA0DD', '#DDA0DD', 57.79, 21.27, 2789, 2075, 1018, 'total_unprocessed_ballots_8', 'total_unprocessed_ballots_io_8'),
+    ('candidate', 'group_5', 'mo_grp_2', 10, 'Перовский', '4639017775', '#F0E68C', '#F0E68C', 'pessimistic', 109, 'ИО № 109', 10, '#F0E68C', '#F0E68C', 35.01, 55.63, 570, 1241, 2451, 'total_unprocessed_ballots_9', 'total_unprocessed_ballots_io_9'),
+    ('party', 'group_1', 'mo_grp_3', 11, 'Кузьминский', '3391179068', '#E74C3C', '#E74C3C', 'base', 110, 'ИО № 110', 11, '#E74C3C', '#E74C3C', 60.9, 65.78, 2940, 1195, 218, 'total_unprocessed_ballots_10', 'total_unprocessed_ballots_io_10'),
+    ('summary', 'group_2', 'mo_grp_4', 12, 'Выхайловский', '6069848439', '#3498DB', '#3498DB', 'target', 111, 'ИО № 111', 12, '#3498DB', '#3498DB', 70.27, 30.9, 1491, 1537, 125, 'total_unprocessed_ballots_11', 'total_unprocessed_ballots_io_11'),
+    ('candidate', 'group_3', 'mo_grp_1', 13, 'Люблинский', '8118240999', '#44B3EE', '#44B3EE', 'optimistic', 112, 'ИО № 112', 13, '#44B3EE', '#44B3EE', 6.96, 74.1, 225, 475, 2272, 'total_unprocessed_ballots_12', 'total_unprocessed_ballots_io_12'),
+    ('party', 'group_4', 'mo_grp_2', 14, 'Капотнянский', '6218955985', '#957AEB', '#957AEB', 'pessimistic', 113, 'ИО № 113', 14, '#957AEB', '#957AEB', 41.98, 34.09, 1615, 1376, 1428, 'total_unprocessed_ballots_13', 'total_unprocessed_ballots_io_13'),
+    ('summary', 'group_5', 'mo_grp_3', 15, 'Марьинский', '1225953184', '#BFD8EA', '#BFD8EA', 'base', 114, 'ИО № 114', 15, '#BFD8EA', '#BFD8EA', 15.74, 61.78, 2860, 434, 1214, 'total_unprocessed_ballots_14', 'total_unprocessed_ballots_io_14'),
+    ('candidate', 'group_1', 'mo_grp_4', 16, 'Печатниковский', '7116096874', '#FF6B6B', '#FF6B6B', 'target', 115, 'ИО № 115', 16, '#FF6B6B', '#FF6B6B', 60.71, 41.42, 982, 2198, 566, 'total_unprocessed_ballots_15', 'total_unprocessed_ballots_io_15'),
+    ('party', 'group_2', 'mo_grp_1', 17, 'Солнцевский', '6777473414', '#4ECDC4', '#4ECDC4', 'optimistic', 116, 'ИО № 116', 17, '#4ECDC4', '#4ECDC4', 11.09, 67.82, 2529, 2093, 2258, 'total_unprocessed_ballots_16', 'total_unprocessed_ballots_io_16'),
+    ('summary', 'group_3', 'mo_grp_2', 18, 'Одинцовский', '8160279830', '#45B7D1', '#45B7D1', 'pessimistic', 117, 'ИО № 117', 18, '#45B7D1', '#45B7D1', 4.54, 39.53, 2554, 324, 131, 'total_unprocessed_ballots_17', 'total_unprocessed_ballots_io_17'),
+    ('candidate', 'group_4', 'mo_grp_3', 19, 'Ленинский', '6172957943', '#96CEB4', '#96CEB4', 'base', 118, 'ИО № 118', 19, '#96CEB4', '#96CEB4', 94.53, 76.73, 1146, 1285, 1443, 'total_unprocessed_ballots_18', 'total_unprocessed_ballots_io_18'),
+    ('party', 'group_5', 'mo_grp_4', 20, 'Видный', '1515328854', '#FFEAA7', '#FFEAA7', 'target', 119, 'ИО № 119', 20, '#FFEAA7', '#FFEAA7', 49.74, 43.07, 629, 1657, 2281, 'total_unprocessed_ballots_19', 'total_unprocessed_ballots_io_19');
+
+-- -------------------------------------------------------------
+-- municipal_candidates_mo
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_candidates_mo";
+CREATE TABLE "municipal_candidates_mo" (
+    amount INTEGER,
+    anomaly_type VARCHAR(50),
+    ao_code TEXT,
+    ao_id INTEGER,
+    ao_name VARCHAR(100),
+    ao_okato VARCHAR(20),
+    candidate_full VARCHAR(30),
+    candidate_id INTEGER,
+    candidate_short VARCHAR(30),
+    digital_percent NUMERIC(10,2),
+    digital_rang INTEGER,
+    digital_value BIGINT,
+    digital_winner SMALLINT,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    district_okato VARCHAR(20),
+    filter_name TEXT,
+    flag_color VARCHAR(20),
+    flag_text TEXT,
+    forecast_type VARCHAR(50),
+    general_percent NUMERIC(10,2),
+    general_value BIGINT,
+    io_id INTEGER,
+    io_name VARCHAR(100),
+    io_number INTEGER,
+    "name" VARCHAR(100),
+    paper_percent NUMERIC(10,2),
+    paper_rang INTEGER,
+    paper_value BIGINT,
+    paper_winner SMALLINT,
+    party_id INTEGER,
+    party_name VARCHAR(100),
+    patronymic TEXT,
+    percent_all NUMERIC(10,2),
+    percent_digital NUMERIC(10,2),
+    percent_offline NUMERIC(10,2),
+    protocol_received_percent_all NUMERIC(10,2),
+    protocol_received_percent_digital NUMERIC(10,2),
+    protocol_received_percent_offline NUMERIC(10,2),
+    protocol_received_value_all BIGINT,
+    protocol_received_value_digital BIGINT,
+    protocol_received_value_offline BIGINT,
+    rang INTEGER,
+    slice TEXT,
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    style_attr_id INTEGER,
+    style_attr_name VARCHAR(100),
+    style_attr_name_corr VARCHAR(100),
+    surname VARCHAR(100),
+    uik_id INTEGER,
+    uik_ids TEXT,
+    uik_number INTEGER,
+    value_all BIGINT,
+    value_digital BIGINT,
+    value_offline BIGINT,
+    winner SMALLINT,
+    winner_sort INTEGER,
+    winner_sort_text TEXT,
+    winner_text TEXT
+);
+
+INSERT INTO "municipal_candidates_mo" (amount, anomaly_type, ao_code, ao_id, ao_name, ao_okato, candidate_full, candidate_id, candidate_short, digital_percent, digital_rang, digital_value, digital_winner, district_id, district_name, district_okato, filter_name, flag_color, flag_text, forecast_type, general_percent, general_value, io_id, io_name, io_number, "name", paper_percent, paper_rang, paper_value, paper_winner, party_id, party_name, patronymic, percent_all, percent_digital, percent_offline, protocol_received_percent_all, protocol_received_percent_digital, protocol_received_percent_offline, protocol_received_value_all, protocol_received_value_digital, protocol_received_value_offline, rang, slice, source_id, source_name, style_attr_id, style_attr_name, style_attr_name_corr, surname, uik_id, uik_ids, uik_number, value_all, value_digital, value_offline, winner, winner_sort, winner_sort_text, winner_text)
+VALUES
+    (361, 'type_0', 'AO01', 1, 'АО-1', '2521136431', '2024-09-01', 1, '2024-09-01', 39.71, 1, 6078, 0, 1, 'Москворецкий', '2873548915', 'mobile', '#44B3EE', '', 'optimistic', 86.21, 4716, 100, 'ИО № 100', 1, 'фильтр_0', 42.93, 1, 3313, 1, 1, 'Единая Россия', 'Сидорович', 11.52, 2.09, 32.48, 80.13, 61.81, 83.2, 370, 90, 447, 1, 'all', 1, 'Dremio', 1, 'attr_0', 'attr_0', 'name_0', 1000, 'uik_ids_0', 1, 3986, 7138, 9648, 1, 0, '—', 'Победитель'),
+    (203, 'type_1', 'AO02', 2, 'АО-2', '9033841191', '2024-09-02', 2, '2024-09-02', 74.58, 2, 1815, 1, 2, 'Замоскворецкий', '4346285771', 'pc', '#957AEB', 'аномалия', 'pessimistic', 63.32, 4346, 101, 'ИО № 101', 2, 'фильтр_1', 51.0, 2, 7421, 1, 2, 'ЛДПР', 'Сидорович', 72.74, 81.89, 81.5, 23.63, 14.64, 19.73, 616, 156, 778, 2, 'io', 2, 'ЦЕСНА', 2, 'attr_1', 'attr_1', 'name_1', 1007, 'uik_ids_1', 2, 1234, 2902, 8095, 1, 1, '—', '—'),
+    (349, 'type_2', 'AO03', 3, 'АО-3', '7977267911', '2024-09-03', 3, '2024-09-03', 86.42, 3, 5138, 1, 3, 'Тверской', '5943324387', 'pc', '#BFD8EA', '!', 'base', 44.22, 2480, 102, 'ИО № 102', 3, 'фильтр_2', 79.63, 3, 4844, 0, 3, 'КПРФ', 'Сидорович', 50.73, 31.04, 45.19, 5.69, 83.17, 7.67, 92, 629, 608, 3, 'io', 3, 'GIS', 3, 'attr_2', 'attr_2', 'name_2', 1014, 'uik_ids_2', 3, 6299, 7581, 9508, 0, 2, '2', 'Победитель'),
+    (165, 'type_3', 'AO04', 4, 'АО-4', '7893447569', '2024-09-04', 4, '2024-09-04', 50.14, 4, 7845, 0, 4, 'Пресненский', '2934982045', 'mobile', '#FF6B6B', 'аномалия', 'target', 8.43, 5293, 103, 'ИО № 103', 4, 'фильтр_3', 17.26, 4, 2029, 1, 4, 'Справедливая Россия', 'Кузнецович', 52.41, 60.98, 36.39, 91.79, 38.74, 77.45, 695, 612, 53, 4, 'io', 4, 'API', 4, 'attr_3', 'attr_3', 'name_3', 1021, 'uik_ids_3', 4, 5482, 1079, 5401, 0, 3, '—', '—'),
+    (146, 'type_4', 'AO05', 5, 'АО-5', '5940815822', '2024-09-05', 5, '2024-09-05', 8.15, 5, 5436, 0, 5, 'Якиманский', '9232363331', 'mobile', '#4ECDC4', 'аномалия', 'optimistic', 69.85, 3210, 104, 'ИО № 104', 5, 'фильтр_4', 12.9, 5, 5806, 0, 5, 'Яблоко', 'Сидорович', 55.89, 64.35, 32.85, 12.78, 70.28, 94.71, 701, 539, 95, 5, 'io', 5, 'Архив', 5, 'attr_4', 'attr_4', 'name_4', 1028, 'uik_ids_4', 5, 6937, 8331, 5928, 0, 4, '2', '—'),
+    (93, 'type_5', 'AO06', 6, 'АО-6', '5085241101', '2024-09-06', 6, '2024-09-06', 34.17, 6, 6276, 1, 6, 'Донской', '1824656200', 'pc', '#45B7D1', '', 'pessimistic', 7.72, 6917, 105, 'ИО № 105', 6, 'фильтр_5', 78.81, 6, 4158, 0, 6, 'Самовыдвиженец', 'Сидорович', 87.64, 61.8, 59.72, 15.43, 18.08, 69.28, 639, 169, 738, 6, 'district', 6, 'Портал', 1, 'attr_5', 'attr_5', 'name_5', 1035, 'uik_ids_5', 6, 715, 6731, 5968, 0, 5, '2', '—'),
+    (386, 'type_6', 'AO07', 7, 'АО-7', '2928130926', '2024-09-07', 7, '2024-09-07', 53.4, 7, 2535, 1, 7, 'Нагатинский', '6128260438', 'all', '#96CEB4', 'аномалия', 'base', 98.44, 3782, 106, 'ИО № 106', 7, 'фильтр_6', 76.94, 7, 6374, 1, 7, 'Новые люди', 'Кузнецович', 96.63, 81.69, 80.13, 13.84, 25.0, 64.12, 380, 567, 105, 7, 'io', 1, 'Dremio', 2, 'attr_6', 'attr_6', 'name_6', 1042, 'uik_ids_6', 7, 8452, 2042, 4670, 0, 6, '1', '—'),
+    (231, 'type_7', 'AO08', 8, 'АО-8', '2878930355', '2024-09-08', 8, '2024-09-08', 94.64, 8, 1818, 1, 8, 'Чертановский', '9094423237', 'pc', '#FFEAA7', '!', 'target', 5.33, 4112, 107, 'ИО № 107', 8, 'фильтр_7', 37.4, 8, 3163, 0, 8, 'Партия роста', 'Сидорович', 22.45, 31.87, 9.91, 71.47, 33.53, 14.6, 39, 293, 483, 8, 'io', 2, 'ЦЕСНА', 3, 'attr_7', 'attr_7', 'name_7', 1049, 'uik_ids_7', 8, 2273, 7685, 7349, 0, 7, '1', 'Победитель'),
+    (132, 'type_8', 'AO09', 9, 'АО-9', '2817865363', '2024-09-09', 9, '2024-09-09', 77.62, 9, 1946, 1, 9, 'Бутирский', '1523334661', 'pc', '#DDA0DD', '!', 'optimistic', 63.9, 5102, 108, 'ИО № 108', 9, 'фильтр_8', 45.71, 9, 908, 1, 1, 'Единая Россия', 'Иванович', 63.2, 57.5, 71.85, 29.13, 0.16, 35.28, 584, 426, 191, 9, 'io', 3, 'GIS', 4, 'attr_8', 'attr_8', 'name_8', 1056, 'uik_ids_8', 9, 1402, 8576, 5908, 0, 8, '—', 'Победитель'),
+    (200, 'type_9', 'AO10', 10, 'АО-10', '9045897249', '2024-09-10', 10, '2024-09-10', 4.35, 10, 3169, 1, 10, 'Перовский', '5364727160', 'pc', '#F0E68C', '!', 'pessimistic', 24.11, 5382, 109, 'ИО № 109', 10, 'фильтр_9', 62.83, 10, 6320, 1, 2, 'ЛДПР', 'Петрович', 4.43, 54.6, 81.35, 17.51, 77.91, 46.46, 712, 490, 646, 10, 'all', 4, 'API', 5, 'attr_9', 'attr_9', 'name_9', 1063, 'uik_ids_9', 10, 2209, 1033, 7498, 0, 9, '2', 'Победитель'),
+    (23, 'type_10', 'AO01', 1, 'АО-1', '4397788197', '2024-09-11', 11, '2024-09-11', 88.58, 11, 2585, 1, 11, 'Кузьминский', '7508522951', 'all', '#E74C3C', '!', 'base', 25.33, 6170, 110, 'ИО № 110', 11, 'фильтр_10', 64.69, 11, 2343, 1, 3, 'КПРФ', 'Иванович', 86.58, 33.19, 12.45, 36.8, 88.95, 74.33, 395, 347, 191, 11, 'district', 5, 'Архив', 1, 'attr_10', 'attr_10', 'name_10', 1070, 'uik_ids_10', 11, 8151, 6018, 8507, 1, 10, '1', '—'),
+    (41, 'type_11', 'AO02', 2, 'АО-2', '6556684476', '2024-09-12', 12, '2024-09-12', 10.26, 12, 2686, 1, 12, 'Выхайловский', '6611356986', 'all', '#3498DB', 'аномалия', 'target', 42.61, 5650, 111, 'ИО № 111', 12, 'фильтр_11', 44.39, 12, 3662, 0, 4, 'Справедливая Россия', 'Сидорович', 61.49, 43.49, 63.95, 79.15, 5.74, 67.12, 415, 372, 525, 12, 'io', 6, 'Портал', 2, 'attr_11', 'attr_11', 'name_11', 1077, 'uik_ids_11', 12, 2621, 510, 2339, 1, 11, '1', 'Победитель'),
+    (35, 'type_12', 'AO03', 3, 'АО-3', '8065920767', '2024-09-13', 13, '2024-09-13', 36.22, 13, 7778, 0, 13, 'Люблинский', '3598862507', 'all', '#44B3EE', '!', 'optimistic', 94.88, 3047, 112, 'ИО № 112', 13, 'фильтр_12', 44.39, 13, 629, 0, 5, 'Яблоко', 'Сидорович', 39.8, 64.96, 24.96, 11.34, 73.57, 49.9, 396, 575, 120, 13, 'district', 1, 'Dremio', 3, 'attr_12', 'attr_12', 'name_12', 1084, 'uik_ids_12', 13, 4264, 7311, 3515, 1, 12, '—', '—'),
+    (103, 'type_13', 'AO04', 4, 'АО-4', '1526723719', '2024-09-14', 14, '2024-09-14', 85.28, 14, 3703, 0, 14, 'Капотнянский', '9868845806', 'all', '#957AEB', '!', 'pessimistic', 89.13, 6974, 113, 'ИО № 113', 14, 'фильтр_13', 15.75, 14, 5812, 0, 6, 'Самовыдвиженец', 'Сидорович', 50.88, 12.14, 20.1, 13.89, 79.04, 2.63, 567, 586, 377, 14, 'district', 2, 'ЦЕСНА', 4, 'attr_13', 'attr_13', 'name_13', 1091, 'uik_ids_13', 14, 9038, 2126, 1412, 0, 13, '2', '—'),
+    (368, 'type_14', 'AO05', 5, 'АО-5', '8382488970', '2024-09-15', 15, '2024-09-15', 52.57, 15, 6300, 1, 15, 'Марьинский', '1316756902', 'mobile', '#BFD8EA', 'аномалия', 'base', 7.42, 3816, 114, 'ИО № 114', 15, 'фильтр_14', 68.01, 15, 2822, 0, 7, 'Новые люди', 'Петрович', 76.78, 12.9, 50.29, 86.82, 83.14, 51.81, 311, 168, 165, 15, 'district', 3, 'GIS', 5, 'attr_14', 'attr_14', 'name_14', 1098, 'uik_ids_14', 15, 3694, 5669, 8501, 1, 14, '1', '—'),
+    (101, 'type_15', 'AO06', 6, 'АО-6', '7660813178', '2024-09-16', 16, '2024-09-16', 12.52, 1, 2480, 0, 16, 'Печатниковский', '1662259333', 'all', '#FF6B6B', 'аномалия', 'target', 72.06, 4957, 115, 'ИО № 115', 16, 'фильтр_15', 33.76, 1, 7568, 0, 8, 'Партия роста', 'Иванович', 8.12, 94.85, 77.1, 26.47, 21.08, 57.21, 632, 654, 31, 1, 'district', 4, 'API', 1, 'attr_15', 'attr_15', 'name_15', 1105, 'uik_ids_15', 16, 8938, 4745, 4949, 1, 15, '1', '—'),
+    (153, 'type_16', 'AO07', 7, 'АО-7', '2947957237', '2024-09-17', 17, '2024-09-17', 68.86, 2, 1294, 1, 17, 'Солнцевский', '7080049102', 'mobile', '#4ECDC4', '', 'optimistic', 34.02, 1176, 116, 'ИО № 116', 17, 'фильтр_16', 31.26, 2, 5884, 1, 1, 'Единая Россия', 'Сидорович', 97.54, 13.08, 37.05, 56.17, 31.91, 46.65, 273, 460, 253, 2, 'all', 5, 'Архив', 2, 'attr_16', 'attr_16', 'name_16', 1112, 'uik_ids_16', 17, 1586, 829, 4754, 1, 16, '—', '—'),
+    (128, 'type_17', 'AO08', 8, 'АО-8', '4875395503', '2024-09-18', 18, '2024-09-18', 81.35, 3, 7649, 1, 18, 'Одинцовский', '5979337757', 'all', '#45B7D1', '!', 'pessimistic', 49.88, 2527, 117, 'ИО № 117', 18, 'фильтр_17', 49.74, 3, 737, 1, 2, 'ЛДПР', 'Кузнецович', 96.67, 21.51, 35.29, 5.05, 49.49, 88.23, 669, 688, 481, 3, 'district', 6, 'Портал', 3, 'attr_17', 'attr_17', 'name_17', 1119, 'uik_ids_17', 18, 8793, 133, 1761, 1, 17, '1', '—'),
+    (373, 'type_18', 'AO09', 9, 'АО-9', '7026930365', '2024-09-19', 19, '2024-09-19', 4.52, 4, 419, 0, 19, 'Ленинский', '2239534867', 'mobile', '#96CEB4', 'аномалия', 'base', 45.04, 4504, 118, 'ИО № 118', 19, 'фильтр_18', 27.97, 4, 5105, 0, 3, 'КПРФ', 'Петрович', 97.51, 39.39, 79.49, 33.91, 93.89, 75.5, 203, 616, 521, 4, 'district', 1, 'Dremio', 4, 'attr_18', 'attr_18', 'name_18', 1126, 'uik_ids_18', 19, 8193, 659, 742, 0, 18, '1', '—'),
+    (412, 'type_19', 'AO10', 10, 'АО-10', '2962750929', '2024-09-20', 20, '2024-09-20', 60.63, 5, 4223, 0, 20, 'Видный', '7928074841', 'pc', '#FFEAA7', '!', 'target', 99.06, 6056, 119, 'ИО № 119', 20, 'фильтр_19', 84.26, 5, 4863, 1, 4, 'Справедливая Россия', 'Кузнецович', 70.87, 29.98, 81.57, 36.84, 67.38, 97.99, 597, 315, 742, 5, 'io', 2, 'ЦЕСНА', 5, 'attr_19', 'attr_19', 'name_19', 1133, 'uik_ids_19', 20, 436, 9779, 7775, 1, 19, '—', 'Победитель');
+
+-- -------------------------------------------------------------
+-- custom_radio_btn_all_deg_intramural
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "custom_radio_btn_all_deg_intramural";
+CREATE TABLE "custom_radio_btn_all_deg_intramural" (
+    "name" VARCHAR(100)
+);
+
+INSERT INTO "custom_radio_btn_all_deg_intramural" ("name")
+VALUES
+    ('фильтр_0'),
+    ('фильтр_1'),
+    ('фильтр_2'),
+    ('фильтр_3'),
+    ('фильтр_4'),
+    ('фильтр_5'),
+    ('фильтр_6'),
+    ('фильтр_7'),
+    ('фильтр_8'),
+    ('фильтр_9'),
+    ('фильтр_10'),
+    ('фильтр_11'),
+    ('фильтр_12'),
+    ('фильтр_13'),
+    ('фильтр_14'),
+    ('фильтр_15'),
+    ('фильтр_16'),
+    ('фильтр_17'),
+    ('фильтр_18'),
+    ('фильтр_19');
+
+-- -------------------------------------------------------------
+-- municipal_mandates_by_party
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_mandates_by_party";
+CREATE TABLE "municipal_mandates_by_party" (
+    ao_code TEXT,
+    ao_id INTEGER,
+    ao_name VARCHAR(100),
+    ao_okato VARCHAR(20),
+    color VARCHAR(20),
+    color_v VARCHAR(20),
+    "count" INTEGER,
+    count_mandate INTEGER,
+    count_v INTEGER,
+    district_id INTEGER,
+    filter_name TEXT,
+    io_id INTEGER,
+    party_id INTEGER,
+    party_name VARCHAR(100),
+    percent NUMERIC(10,2),
+    percent_mandate NUMERIC(10,2),
+    percent_v NUMERIC(10,2),
+    rank_num_mandates VARCHAR(30),
+    rank_num_voices TEXT,
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    uik_id INTEGER,
+    voice_percent_by_party NUMERIC(10,2),
+    voice_value_by_party BIGINT
+);
+
+INSERT INTO "municipal_mandates_by_party" (ao_code, ao_id, ao_name, ao_okato, color, color_v, "count", count_mandate, count_v, district_id, filter_name, io_id, party_id, party_name, percent, percent_mandate, percent_v, rank_num_mandates, rank_num_voices, source_id, source_name, uik_id, voice_percent_by_party, voice_value_by_party)
+VALUES
+    ('AO01', 1, 'АО-1', '4098389895', '#44B3EE', '#44B3EE', 37, 30, 10, 1, 'all', 100, 1, 'Единая Россия', 62.9, 61.97, 84.12, '2024-09-01', 'rank_num_voices_0', 1, 'Dremio', 1000, 14.78, 44612),
+    ('AO02', 2, 'АО-2', '2040226318', '#957AEB', '#957AEB', 36, 44, 7, 2, 'pc', 101, 2, 'ЛДПР', 1.89, 31.37, 15.14, '2024-09-02', 'rank_num_voices_1', 2, 'ЦЕСНА', 1007, 69.05, 26894),
+    ('AO03', 3, 'АО-3', '4124168227', '#BFD8EA', '#BFD8EA', 45, 8, 33, 3, 'pc', 102, 3, 'КПРФ', 56.09, 99.81, 47.84, '2024-09-03', 'rank_num_voices_2', 3, 'GIS', 1014, 37.68, 11349),
+    ('AO04', 4, 'АО-4', '7584730597', '#FF6B6B', '#FF6B6B', 34, 22, 43, 4, 'all', 103, 4, 'Справедливая Россия', 68.07, 80.37, 26.44, '2024-09-04', 'rank_num_voices_3', 4, 'API', 1021, 48.42, 16155),
+    ('AO05', 5, 'АО-5', '2282044148', '#4ECDC4', '#4ECDC4', 19, 49, 18, 5, 'all', 104, 5, 'Яблоко', 20.73, 70.5, 31.7, '2024-09-05', 'rank_num_voices_4', 5, 'Архив', 1028, 34.88, 47294),
+    ('AO06', 6, 'АО-6', '6469458472', '#45B7D1', '#45B7D1', 7, 36, 43, 6, 'all', 105, 6, 'Самовыдвиженец', 37.97, 98.02, 81.84, '2024-09-06', 'rank_num_voices_5', 6, 'Портал', 1035, 95.46, 9599),
+    ('AO07', 7, 'АО-7', '2247484671', '#96CEB4', '#96CEB4', 18, 45, 5, 7, 'mobile', 106, 7, 'Новые люди', 92.4, 65.6, 74.73, '2024-09-07', 'rank_num_voices_6', 1, 'Dremio', 1042, 21.4, 35296),
+    ('AO08', 8, 'АО-8', '2166605339', '#FFEAA7', '#FFEAA7', 6, 39, 47, 8, 'all', 107, 8, 'Партия роста', 23.93, 5.08, 90.52, '2024-09-08', 'rank_num_voices_7', 2, 'ЦЕСНА', 1049, 22.57, 15259),
+    ('AO09', 9, 'АО-9', '1225447588', '#DDA0DD', '#DDA0DD', 26, 21, 45, 9, 'mobile', 108, 1, 'Единая Россия', 10.05, 77.08, 0.52, '2024-09-09', 'rank_num_voices_8', 3, 'GIS', 1056, 55.04, 10350),
+    ('AO10', 10, 'АО-10', '9067664957', '#F0E68C', '#F0E68C', 30, 41, 12, 10, 'mobile', 109, 2, 'ЛДПР', 32.12, 64.59, 90.79, '2024-09-10', 'rank_num_voices_9', 4, 'API', 1063, 8.95, 37626),
+    ('AO01', 1, 'АО-1', '4957687327', '#E74C3C', '#E74C3C', 26, 11, 2, 11, 'mobile', 110, 3, 'КПРФ', 78.8, 18.63, 74.9, '2024-09-11', 'rank_num_voices_10', 5, 'Архив', 1070, 87.23, 18970),
+    ('AO02', 2, 'АО-2', '4765583254', '#3498DB', '#3498DB', 0, 19, 36, 12, 'all', 111, 4, 'Справедливая Россия', 10.73, 98.3, 28.46, '2024-09-12', 'rank_num_voices_11', 6, 'Портал', 1077, 98.91, 35605),
+    ('AO03', 3, 'АО-3', '7546898241', '#44B3EE', '#44B3EE', 8, 32, 29, 13, 'mobile', 112, 5, 'Яблоко', 19.28, 11.26, 16.25, '2024-09-13', 'rank_num_voices_12', 1, 'Dremio', 1084, 45.89, 16860),
+    ('AO04', 4, 'АО-4', '4086355679', '#957AEB', '#957AEB', 0, 47, 21, 14, 'mobile', 113, 6, 'Самовыдвиженец', 56.78, 75.73, 17.55, '2024-09-14', 'rank_num_voices_13', 2, 'ЦЕСНА', 1091, 85.61, 26574),
+    ('AO05', 5, 'АО-5', '8846861559', '#BFD8EA', '#BFD8EA', 32, 20, 5, 15, 'mobile', 114, 7, 'Новые люди', 66.93, 18.48, 14.06, '2024-09-15', 'rank_num_voices_14', 3, 'GIS', 1098, 32.36, 16256),
+    ('AO06', 6, 'АО-6', '5324302451', '#FF6B6B', '#FF6B6B', 24, 15, 28, 16, 'mobile', 115, 8, 'Партия роста', 95.4, 30.19, 72.29, '2024-09-16', 'rank_num_voices_15', 4, 'API', 1105, 1.14, 42839),
+    ('AO07', 7, 'АО-7', '2014911848', '#4ECDC4', '#4ECDC4', 42, 7, 29, 17, 'mobile', 116, 1, 'Единая Россия', 15.97, 68.61, 92.31, '2024-09-17', 'rank_num_voices_16', 5, 'Архив', 1112, 88.78, 20380),
+    ('AO08', 8, 'АО-8', '3964774623', '#45B7D1', '#45B7D1', 40, 18, 23, 18, 'all', 117, 2, 'ЛДПР', 22.08, 95.74, 47.82, '2024-09-18', 'rank_num_voices_17', 6, 'Портал', 1119, 45.5, 39697),
+    ('AO09', 9, 'АО-9', '6899673770', '#96CEB4', '#96CEB4', 44, 35, 30, 19, 'all', 118, 3, 'КПРФ', 80.2, 82.56, 76.19, '2024-09-19', 'rank_num_voices_18', 1, 'Dremio', 1126, 68.03, 39047),
+    ('AO10', 10, 'АО-10', '9941564880', '#FFEAA7', '#FFEAA7', 28, 33, 45, 20, 'mobile', 119, 4, 'Справедливая Россия', 7.81, 56.42, 6.18, '2024-09-20', 'rank_num_voices_19', 2, 'ЦЕСНА', 1133, 54.76, 33127);
+
+-- -------------------------------------------------------------
+-- municipal_forecast_table_io
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_forecast_table_io";
+CREATE TABLE "municipal_forecast_table_io" (
+    amount INTEGER,
+    block_type VARCHAR(50),
+    candidate_short VARCHAR(30),
+    candidate_type VARCHAR(30),
+    color_candidate VARCHAR(20),
+    concat_for_group TEXT,
+    digital_percent NUMERIC(10,2),
+    digital_value BIGINT,
+    digital_win TEXT,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    flag TEXT,
+    forecast_color_io VARCHAR(20),
+    forecast_color_mo VARCHAR(20),
+    forecast_type VARCHAR(50),
+    general_percent NUMERIC(10,2),
+    general_value BIGINT,
+    general_win TEXT,
+    io_id INTEGER,
+    io_number INTEGER,
+    now_color_io VARCHAR(20),
+    now_color_mo VARCHAR(20),
+    paper_goal_per TEXT,
+    paper_goal_value BIGINT,
+    paper_percent NUMERIC(10,2),
+    paper_value BIGINT,
+    paper_win TEXT,
+    party_name VARCHAR(100),
+    required_ballots_percent NUMERIC(10,2),
+    required_ballots_percent_io NUMERIC(10,2),
+    required_ballots_value BIGINT,
+    required_ballots_value_io BIGINT,
+    required_ballots_value_plus_num BIGINT,
+    source_id INTEGER,
+    total_unprocessed_ballots TEXT,
+    total_unprocessed_ballots_io TEXT
+);
+
+INSERT INTO "municipal_forecast_table_io" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_io, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_io, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, required_ballots_value_plus_num, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
+VALUES
+    (104, 'candidate', '2024-09-01', '2024-09-01', '#44B3EE', 'group_1', 57.27, 1227, 'digital_win_0', 1, 'Москворецкий', '0', '#44B3EE', '#44B3EE', 'optimistic', 32.81, 4262, 'general_win_0', 100, 1, '#44B3EE', '#44B3EE', 'paper_goal_per_0', 3819, 11.62, 1682, 'paper_win_0', 'Единая Россия', 71.69, 48.88, 2190, 1924, 327, 1, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
+    (233, 'party', '2024-09-02', '2024-09-02', '#957AEB', 'group_2', 13.19, 3403, 'digital_win_1', 2, 'Замоскворецкий', '1', '#957AEB', '#957AEB', 'pessimistic', 56.39, 4577, 'general_win_1', 101, 2, '#957AEB', '#957AEB', 'paper_goal_per_1', 3987, 67.28, 2524, 'paper_win_1', 'ЛДПР', 72.33, 39.59, 112, 992, 2468, 2, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
+    (38, 'summary', '2024-09-03', '2024-09-03', '#BFD8EA', 'group_3', 4.53, 2822, 'digital_win_2', 3, 'Тверской', '0', '#BFD8EA', '#BFD8EA', 'base', 54.12, 493, 'general_win_2', 102, 3, '#BFD8EA', '#BFD8EA', 'paper_goal_per_2', 765, 98.61, 3867, 'paper_win_2', 'КПРФ', 3.17, 40.89, 654, 2727, 2745, 3, 'total_unprocessed_ballots_2', 'total_unprocessed_ballots_io_2'),
+    (494, 'candidate', '2024-09-04', '2024-09-04', '#FF6B6B', 'group_4', 42.04, 7301, 'digital_win_3', 4, 'Пресненский', '1', '#FF6B6B', '#FF6B6B', 'target', 44.85, 7513, 'general_win_3', 103, 4, '#FF6B6B', '#FF6B6B', 'paper_goal_per_3', 3292, 37.56, 5592, 'paper_win_3', 'Справедливая Россия', 96.41, 87.46, 644, 2776, 1524, 4, 'total_unprocessed_ballots_3', 'total_unprocessed_ballots_io_3'),
+    (61, 'party', '2024-09-05', '2024-09-05', '#4ECDC4', 'group_5', 17.85, 4401, 'digital_win_4', 5, 'Якиманский', '1', '#4ECDC4', '#4ECDC4', 'optimistic', 52.88, 5962, 'general_win_4', 104, 5, '#4ECDC4', '#4ECDC4', 'paper_goal_per_4', 2024, 83.48, 6194, 'paper_win_4', 'Яблоко', 2.27, 29.84, 2858, 2330, 1837, 5, 'total_unprocessed_ballots_4', 'total_unprocessed_ballots_io_4'),
+    (273, 'summary', '2024-09-06', '2024-09-06', '#45B7D1', 'group_1', 37.93, 1881, 'digital_win_5', 6, 'Донской', '0', '#45B7D1', '#45B7D1', 'pessimistic', 46.06, 1270, 'general_win_5', 105, 6, '#45B7D1', '#45B7D1', 'paper_goal_per_5', 2458, 18.85, 7169, 'paper_win_5', 'Самовыдвиженец', 72.5, 11.28, 2804, 1817, 2618, 6, 'total_unprocessed_ballots_5', 'total_unprocessed_ballots_io_5'),
+    (393, 'candidate', '2024-09-07', '2024-09-07', '#96CEB4', 'group_2', 93.62, 7283, 'digital_win_6', 7, 'Нагатинский', '0', '#96CEB4', '#96CEB4', 'base', 24.07, 551, 'general_win_6', 106, 7, '#96CEB4', '#96CEB4', 'paper_goal_per_6', 1026, 59.39, 3657, 'paper_win_6', 'Новые люди', 59.78, 70.33, 299, 1102, 281, 1, 'total_unprocessed_ballots_6', 'total_unprocessed_ballots_io_6'),
+    (206, 'party', '2024-09-08', '2024-09-08', '#FFEAA7', 'group_3', 43.9, 4421, 'digital_win_7', 8, 'Чертановский', '0', '#FFEAA7', '#FFEAA7', 'target', 75.44, 6357, 'general_win_7', 107, 8, '#FFEAA7', '#FFEAA7', 'paper_goal_per_7', 662, 14.01, 2369, 'paper_win_7', 'Партия роста', 23.42, 91.64, 2459, 1406, 2465, 2, 'total_unprocessed_ballots_7', 'total_unprocessed_ballots_io_7'),
+    (307, 'summary', '2024-09-09', '2024-09-09', '#DDA0DD', 'group_4', 77.25, 6704, 'digital_win_8', 9, 'Бутирский', '1', '#DDA0DD', '#DDA0DD', 'optimistic', 23.69, 7178, 'general_win_8', 108, 9, '#DDA0DD', '#DDA0DD', 'paper_goal_per_8', 1373, 98.57, 4270, 'paper_win_8', 'Единая Россия', 22.1, 30.05, 349, 2380, 2523, 3, 'total_unprocessed_ballots_8', 'total_unprocessed_ballots_io_8'),
+    (451, 'candidate', '2024-09-10', '2024-09-10', '#F0E68C', 'group_5', 73.52, 1434, 'digital_win_9', 10, 'Перовский', '1', '#F0E68C', '#F0E68C', 'pessimistic', 55.59, 384, 'general_win_9', 109, 10, '#F0E68C', '#F0E68C', 'paper_goal_per_9', 3021, 94.16, 5499, 'paper_win_9', 'ЛДПР', 38.12, 52.45, 2952, 1805, 1772, 4, 'total_unprocessed_ballots_9', 'total_unprocessed_ballots_io_9'),
+    (77, 'party', '2024-09-11', '2024-09-11', '#E74C3C', 'group_1', 29.99, 1506, 'digital_win_10', 11, 'Кузьминский', '1', '#E74C3C', '#E74C3C', 'base', 24.1, 1846, 'general_win_10', 110, 11, '#E74C3C', '#E74C3C', 'paper_goal_per_10', 2663, 85.75, 1182, 'paper_win_10', 'КПРФ', 80.58, 91.47, 2403, 1790, 1806, 5, 'total_unprocessed_ballots_10', 'total_unprocessed_ballots_io_10'),
+    (286, 'summary', '2024-09-12', '2024-09-12', '#3498DB', 'group_2', 53.0, 3181, 'digital_win_11', 12, 'Выхайловский', '0', '#3498DB', '#3498DB', 'target', 25.5, 2705, 'general_win_11', 111, 12, '#3498DB', '#3498DB', 'paper_goal_per_11', 847, 92.22, 6939, 'paper_win_11', 'Справедливая Россия', 37.11, 53.56, 880, 311, 1199, 6, 'total_unprocessed_ballots_11', 'total_unprocessed_ballots_io_11'),
+    (194, 'candidate', '2024-09-13', '2024-09-13', '#44B3EE', 'group_3', 67.37, 4939, 'digital_win_12', 13, 'Люблинский', '0', '#44B3EE', '#44B3EE', 'optimistic', 87.36, 1541, 'general_win_12', 112, 13, '#44B3EE', '#44B3EE', 'paper_goal_per_12', 4778, 21.7, 1711, 'paper_win_12', 'Яблоко', 86.95, 33.3, 162, 967, 878, 1, 'total_unprocessed_ballots_12', 'total_unprocessed_ballots_io_12'),
+    (493, 'party', '2024-09-14', '2024-09-14', '#957AEB', 'group_4', 74.15, 6118, 'digital_win_13', 14, 'Капотнянский', '1', '#957AEB', '#957AEB', 'pessimistic', 91.44, 5698, 'general_win_13', 113, 14, '#957AEB', '#957AEB', 'paper_goal_per_13', 1875, 39.66, 1960, 'paper_win_13', 'Самовыдвиженец', 55.21, 77.55, 1659, 2009, 2285, 2, 'total_unprocessed_ballots_13', 'total_unprocessed_ballots_io_13'),
+    (333, 'summary', '2024-09-15', '2024-09-15', '#BFD8EA', 'group_5', 35.93, 2142, 'digital_win_14', 15, 'Марьинский', '1', '#BFD8EA', '#BFD8EA', 'base', 51.28, 4073, 'general_win_14', 114, 15, '#BFD8EA', '#BFD8EA', 'paper_goal_per_14', 4017, 9.86, 5918, 'paper_win_14', 'Новые люди', 46.95, 83.97, 932, 1618, 1381, 3, 'total_unprocessed_ballots_14', 'total_unprocessed_ballots_io_14'),
+    (212, 'candidate', '2024-09-16', '2024-09-16', '#FF6B6B', 'group_1', 4.57, 7078, 'digital_win_15', 16, 'Печатниковский', '0', '#FF6B6B', '#FF6B6B', 'target', 74.13, 132, 'general_win_15', 115, 16, '#FF6B6B', '#FF6B6B', 'paper_goal_per_15', 2336, 55.33, 4784, 'paper_win_15', 'Партия роста', 57.91, 41.76, 724, 903, 1451, 4, 'total_unprocessed_ballots_15', 'total_unprocessed_ballots_io_15'),
+    (118, 'party', '2024-09-17', '2024-09-17', '#4ECDC4', 'group_2', 37.98, 6826, 'digital_win_16', 17, 'Солнцевский', '0', '#4ECDC4', '#4ECDC4', 'optimistic', 49.93, 5362, 'general_win_16', 116, 17, '#4ECDC4', '#4ECDC4', 'paper_goal_per_16', 2965, 25.73, 6730, 'paper_win_16', 'Единая Россия', 48.86, 72.36, 2109, 1987, 789, 5, 'total_unprocessed_ballots_16', 'total_unprocessed_ballots_io_16'),
+    (376, 'summary', '2024-09-18', '2024-09-18', '#45B7D1', 'group_3', 79.5, 1386, 'digital_win_17', 18, 'Одинцовский', '0', '#45B7D1', '#45B7D1', 'pessimistic', 72.03, 4000, 'general_win_17', 117, 18, '#45B7D1', '#45B7D1', 'paper_goal_per_17', 1707, 91.69, 4441, 'paper_win_17', 'ЛДПР', 99.03, 95.72, 2246, 238, 404, 6, 'total_unprocessed_ballots_17', 'total_unprocessed_ballots_io_17'),
+    (484, 'candidate', '2024-09-19', '2024-09-19', '#96CEB4', 'group_4', 81.8, 397, 'digital_win_18', 19, 'Ленинский', '0', '#96CEB4', '#96CEB4', 'base', 41.24, 6902, 'general_win_18', 118, 19, '#96CEB4', '#96CEB4', 'paper_goal_per_18', 2095, 6.8, 1237, 'paper_win_18', 'КПРФ', 0.91, 50.57, 1628, 347, 2630, 1, 'total_unprocessed_ballots_18', 'total_unprocessed_ballots_io_18'),
+    (327, 'party', '2024-09-20', '2024-09-20', '#FFEAA7', 'group_5', 66.68, 5050, 'digital_win_19', 20, 'Видный', '1', '#FFEAA7', '#FFEAA7', 'target', 65.93, 128, 'general_win_19', 119, 20, '#FFEAA7', '#FFEAA7', 'paper_goal_per_19', 254, 53.22, 3369, 'paper_win_19', 'Справедливая Россия', 1.19, 52.94, 1225, 2294, 1274, 2, 'total_unprocessed_ballots_19', 'total_unprocessed_ballots_io_19');
+
+-- -------------------------------------------------------------
+-- municipal_forecast_table_mo_det
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_forecast_table_mo_det";
+CREATE TABLE "municipal_forecast_table_mo_det" (
+    amount INTEGER,
+    block_type VARCHAR(50),
+    candidate_short VARCHAR(30),
+    candidate_type VARCHAR(30),
+    color_candidate VARCHAR(20),
+    concat_for_group TEXT,
+    digital_percent NUMERIC(10,2),
+    digital_value BIGINT,
+    digital_win TEXT,
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    flag TEXT,
+    forecast_color_mo VARCHAR(20),
+    forecast_type VARCHAR(50),
+    general_percent NUMERIC(10,2),
+    general_value BIGINT,
+    general_win TEXT,
+    io_id INTEGER,
+    io_number INTEGER,
+    now_color_mo VARCHAR(20),
+    paper_goal_per TEXT,
+    paper_goal_value BIGINT,
+    paper_percent NUMERIC(10,2),
+    paper_value BIGINT,
+    paper_win TEXT,
+    party_name VARCHAR(100),
+    required_ballots_percent NUMERIC(10,2),
+    required_ballots_percent_io NUMERIC(10,2),
+    required_ballots_value BIGINT,
+    required_ballots_value_io BIGINT,
+    source_id INTEGER,
+    total_unprocessed_ballots TEXT,
+    total_unprocessed_ballots_io TEXT
+);
+
+INSERT INTO "municipal_forecast_table_mo_det" (amount, block_type, candidate_short, candidate_type, color_candidate, concat_for_group, digital_percent, digital_value, digital_win, district_id, district_name, flag, forecast_color_mo, forecast_type, general_percent, general_value, general_win, io_id, io_number, now_color_mo, paper_goal_per, paper_goal_value, paper_percent, paper_value, paper_win, party_name, required_ballots_percent, required_ballots_percent_io, required_ballots_value, required_ballots_value_io, source_id, total_unprocessed_ballots, total_unprocessed_ballots_io)
+VALUES
+    (9, 'candidate', '2024-09-01', '2024-09-01', '#44B3EE', 'group_1', 50.22, 5716, 'digital_win_0', 1, 'Москворецкий', '1', '#44B3EE', 'optimistic', 80.62, 7452, 'general_win_0', 100, 1, '#44B3EE', 'paper_goal_per_0', 1668, 10.7, 789, 'paper_win_0', 'Единая Россия', 52.44, 24.1, 2638, 2256, 1, 'total_unprocessed_ballots_0', 'total_unprocessed_ballots_io_0'),
+    (130, 'party', '2024-09-02', '2024-09-02', '#957AEB', 'group_2', 81.52, 2189, 'digital_win_1', 2, 'Замоскворецкий', '1', '#957AEB', 'pessimistic', 7.9, 7858, 'general_win_1', 101, 2, '#957AEB', 'paper_goal_per_1', 3526, 45.9, 1992, 'paper_win_1', 'ЛДПР', 99.02, 22.59, 2901, 430, 2, 'total_unprocessed_ballots_1', 'total_unprocessed_ballots_io_1'),
+    (335, 'summary', '2024-09-03', '2024-09-03', '#BFD8EA', 'group_3', 99.17, 5323, 'digital_win_2', 3, 'Тверской', '0', '#BFD8EA', 'base', 9.35, 3106, 'general_win_2', 102, 3, '#BFD8EA', 'paper_goal_per_2', 3289, 55.27, 459, 'paper_win_2', 'КПРФ', 63.67, 70.28, 438, 2147, 3, 'total_unprocessed_ballots_2', 'total_unprocessed_ballots_io_2'),
+    (433, 'candidate', '2024-09-04', '2024-09-04', '#FF6B6B', 'group_4', 43.39, 6425, 'digital_win_3', 4, 'Пресненский', '1', '#FF6B6B', 'target', 56.59, 7028, 'general_win_3', 103, 4, '#FF6B6B', 'paper_goal_per_3', 981, 89.48, 7529, 'paper_win_3', 'Справедливая Россия', 4.26, 21.14, 2935, 2421, 4, 'total_unprocessed_ballots_3', 'total_unprocessed_ballots_io_3'),
+    (244, 'party', '2024-09-05', '2024-09-05', '#4ECDC4', 'group_5', 27.11, 7570, 'digital_win_4', 5, 'Якиманский', '0', '#4ECDC4', 'optimistic', 68.44, 2296, 'general_win_4', 104, 5, '#4ECDC4', 'paper_goal_per_4', 4648, 56.35, 269, 'paper_win_4', 'Яблоко', 17.94, 85.04, 164, 948, 5, 'total_unprocessed_ballots_4', 'total_unprocessed_ballots_io_4'),
+    (301, 'summary', '2024-09-06', '2024-09-06', '#45B7D1', 'group_1', 14.42, 6723, 'digital_win_5', 6, 'Донской', '1', '#45B7D1', 'pessimistic', 92.89, 2451, 'general_win_5', 105, 6, '#45B7D1', 'paper_goal_per_5', 1530, 56.4, 4642, 'paper_win_5', 'Самовыдвиженец', 83.47, 38.92, 2314, 1458, 6, 'total_unprocessed_ballots_5', 'total_unprocessed_ballots_io_5'),
+    (197, 'candidate', '2024-09-07', '2024-09-07', '#96CEB4', 'group_2', 75.56, 1146, 'digital_win_6', 7, 'Нагатинский', '0', '#96CEB4', 'base', 50.08, 7981, 'general_win_6', 106, 7, '#96CEB4', 'paper_goal_per_6', 3033, 5.37, 3580, 'paper_win_6', 'Новые люди', 23.21, 7.6, 2578, 2614, 1, 'total_unprocessed_ballots_6', 'total_unprocessed_ballots_io_6'),
+    (489, 'party', '2024-09-08', '2024-09-08', '#FFEAA7', 'group_3', 59.56, 7937, 'digital_win_7', 8, 'Чертановский', '1', '#FFEAA7', 'target', 2.96, 2239, 'general_win_7', 107, 8, '#FFEAA7', 'paper_goal_per_7', 3890, 49.06, 2914, 'paper_win_7', 'Партия роста', 55.3, 37.54, 860, 2884, 2, 'total_unprocessed_ballots_7', 'total_unprocessed_ballots_io_7'),
+    (300, 'summary', '2024-09-09', '2024-09-09', '#DDA0DD', 'group_4', 66.07, 702, 'digital_win_8', 9, 'Бутирский', '1', '#DDA0DD', 'optimistic', 79.81, 5841, 'general_win_8', 108, 9, '#DDA0DD', 'paper_goal_per_8', 802, 8.2, 1263, 'paper_win_8', 'Единая Россия', 38.0, 78.39, 731, 1695, 3, 'total_unprocessed_ballots_8', 'total_unprocessed_ballots_io_8'),
+    (163, 'candidate', '2024-09-10', '2024-09-10', '#F0E68C', 'group_5', 36.07, 749, 'digital_win_9', 10, 'Перовский', '0', '#F0E68C', 'pessimistic', 94.3, 3643, 'general_win_9', 109, 10, '#F0E68C', 'paper_goal_per_9', 3148, 76.13, 837, 'paper_win_9', 'ЛДПР', 13.25, 18.74, 1938, 2381, 4, 'total_unprocessed_ballots_9', 'total_unprocessed_ballots_io_9'),
+    (285, 'party', '2024-09-11', '2024-09-11', '#E74C3C', 'group_1', 51.24, 846, 'digital_win_10', 11, 'Кузьминский', '0', '#E74C3C', 'base', 8.96, 4540, 'general_win_10', 110, 11, '#E74C3C', 'paper_goal_per_10', 962, 59.69, 6426, 'paper_win_10', 'КПРФ', 32.44, 38.52, 1295, 1794, 5, 'total_unprocessed_ballots_10', 'total_unprocessed_ballots_io_10'),
+    (199, 'summary', '2024-09-12', '2024-09-12', '#3498DB', 'group_2', 77.92, 5937, 'digital_win_11', 12, 'Выхайловский', '0', '#3498DB', 'target', 57.2, 1389, 'general_win_11', 111, 12, '#3498DB', 'paper_goal_per_11', 3318, 16.95, 2202, 'paper_win_11', 'Справедливая Россия', 30.11, 49.31, 359, 784, 6, 'total_unprocessed_ballots_11', 'total_unprocessed_ballots_io_11'),
+    (223, 'candidate', '2024-09-13', '2024-09-13', '#44B3EE', 'group_3', 27.6, 2455, 'digital_win_12', 13, 'Люблинский', '1', '#44B3EE', 'optimistic', 78.27, 2958, 'general_win_12', 112, 13, '#44B3EE', 'paper_goal_per_12', 2261, 94.42, 5905, 'paper_win_12', 'Яблоко', 62.5, 59.38, 900, 1975, 1, 'total_unprocessed_ballots_12', 'total_unprocessed_ballots_io_12'),
+    (55, 'party', '2024-09-14', '2024-09-14', '#957AEB', 'group_4', 13.55, 55, 'digital_win_13', 14, 'Капотнянский', '1', '#957AEB', 'pessimistic', 33.22, 5080, 'general_win_13', 113, 14, '#957AEB', 'paper_goal_per_13', 3312, 80.41, 2699, 'paper_win_13', 'Самовыдвиженец', 44.02, 43.06, 2766, 2534, 2, 'total_unprocessed_ballots_13', 'total_unprocessed_ballots_io_13'),
+    (70, 'summary', '2024-09-15', '2024-09-15', '#BFD8EA', 'group_5', 30.04, 4941, 'digital_win_14', 15, 'Марьинский', '0', '#BFD8EA', 'base', 47.9, 1455, 'general_win_14', 114, 15, '#BFD8EA', 'paper_goal_per_14', 3462, 96.87, 2387, 'paper_win_14', 'Новые люди', 73.49, 63.29, 2458, 1092, 3, 'total_unprocessed_ballots_14', 'total_unprocessed_ballots_io_14'),
+    (167, 'candidate', '2024-09-16', '2024-09-16', '#FF6B6B', 'group_1', 37.61, 6688, 'digital_win_15', 16, 'Печатниковский', '1', '#FF6B6B', 'target', 36.5, 7635, 'general_win_15', 115, 16, '#FF6B6B', 'paper_goal_per_15', 4819, 19.98, 4469, 'paper_win_15', 'Партия роста', 17.99, 76.76, 210, 1990, 4, 'total_unprocessed_ballots_15', 'total_unprocessed_ballots_io_15'),
+    (483, 'party', '2024-09-17', '2024-09-17', '#4ECDC4', 'group_2', 70.84, 3591, 'digital_win_16', 17, 'Солнцевский', '1', '#4ECDC4', 'optimistic', 83.13, 566, 'general_win_16', 116, 17, '#4ECDC4', 'paper_goal_per_16', 3551, 67.3, 1140, 'paper_win_16', 'Единая Россия', 63.33, 24.2, 2797, 731, 5, 'total_unprocessed_ballots_16', 'total_unprocessed_ballots_io_16'),
+    (367, 'summary', '2024-09-18', '2024-09-18', '#45B7D1', 'group_3', 42.31, 3088, 'digital_win_17', 18, 'Одинцовский', '0', '#45B7D1', 'pessimistic', 44.91, 4898, 'general_win_17', 117, 18, '#45B7D1', 'paper_goal_per_17', 4125, 58.22, 4377, 'paper_win_17', 'ЛДПР', 50.66, 92.04, 2933, 1813, 6, 'total_unprocessed_ballots_17', 'total_unprocessed_ballots_io_17'),
+    (279, 'candidate', '2024-09-19', '2024-09-19', '#96CEB4', 'group_4', 3.68, 7933, 'digital_win_18', 19, 'Ленинский', '1', '#96CEB4', 'base', 70.16, 6654, 'general_win_18', 118, 19, '#96CEB4', 'paper_goal_per_18', 4598, 59.38, 7490, 'paper_win_18', 'КПРФ', 8.5, 76.9, 2793, 2822, 1, 'total_unprocessed_ballots_18', 'total_unprocessed_ballots_io_18'),
+    (182, 'party', '2024-09-20', '2024-09-20', '#FFEAA7', 'group_5', 16.63, 5019, 'digital_win_19', 20, 'Видный', '0', '#FFEAA7', 'target', 56.32, 5284, 'general_win_19', 119, 20, '#FFEAA7', 'paper_goal_per_19', 3473, 96.68, 2716, 'paper_win_19', 'Справедливая Россия', 96.57, 43.05, 143, 503, 2, 'total_unprocessed_ballots_19', 'total_unprocessed_ballots_io_19');
+
+-- -------------------------------------------------------------
+-- dict_not_one_table_checkbox
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "dict_not_one_table_checkbox";
+CREATE TABLE "dict_not_one_table_checkbox" (
+    id_name VARCHAR(100),
+    id_type_checkbox INTEGER,
+    "name" VARCHAR(100),
+    type_checkbox VARCHAR(50)
+);
+
+INSERT INTO "dict_not_one_table_checkbox" (id_name, id_type_checkbox, "name", type_checkbox)
+VALUES
+    ('name_0', 1, 'фильтр_0', 'type_0'),
+    ('name_1', 2, 'фильтр_1', 'type_1'),
+    ('name_2', 3, 'фильтр_2', 'type_2'),
+    ('name_3', 4, 'фильтр_3', 'type_3'),
+    ('name_4', 1, 'фильтр_4', 'type_4'),
+    ('name_5', 2, 'фильтр_5', 'type_5'),
+    ('name_6', 3, 'фильтр_6', 'type_6'),
+    ('name_7', 4, 'фильтр_7', 'type_7'),
+    ('name_8', 1, 'фильтр_8', 'type_8'),
+    ('name_9', 2, 'фильтр_9', 'type_9'),
+    ('name_10', 3, 'фильтр_10', 'type_10'),
+    ('name_11', 4, 'фильтр_11', 'type_11'),
+    ('name_12', 1, 'фильтр_12', 'type_12'),
+    ('name_13', 2, 'фильтр_13', 'type_13'),
+    ('name_14', 3, 'фильтр_14', 'type_14'),
+    ('name_15', 4, 'фильтр_15', 'type_15'),
+    ('name_16', 1, 'фильтр_16', 'type_16'),
+    ('name_17', 2, 'фильтр_17', 'type_17'),
+    ('name_18', 3, 'фильтр_18', 'type_18'),
+    ('name_19', 4, 'фильтр_19', 'type_19');
+
+-- -------------------------------------------------------------
+-- municipal_turnout_not_one_table_det
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_turnout_not_one_table_det";
+CREATE TABLE "municipal_turnout_not_one_table_det" (
+    "00_00" NUMERIC(10,2),
+    "01_00" NUMERIC(10,2),
+    "02_00" NUMERIC(10,2),
+    "03_00" NUMERIC(10,2),
+    "20_00" NUMERIC(10,2),
+    "20_15" NUMERIC(10,2),
+    "20_15_sum" NUMERIC(10,2),
+    "21_00" NUMERIC(10,2),
+    "22_00" NUMERIC(10,2),
+    "23_00" NUMERIC(10,2),
+    concat TEXT,
+    deviation_abs NUMERIC(10,2),
+    deviation_percent NUMERIC(10,2),
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    district_okato VARCHAR(20),
+    flag_down_00_00_filter SMALLINT,
+    flag_down_01_00_filter SMALLINT,
+    flag_down_02_00_filter SMALLINT,
+    flag_down_03_00_filter SMALLINT,
+    flag_down_20_15_filter SMALLINT,
+    flag_down_21_00_filter SMALLINT,
+    flag_down_22_00_filter SMALLINT,
+    flag_down_23_00_filter SMALLINT,
+    flag_down_filter SMALLINT,
+    flag_up_00_00_filter SMALLINT,
+    flag_up_01_00_filter SMALLINT,
+    flag_up_02_00_filter SMALLINT,
+    flag_up_03_00_filter SMALLINT,
+    flag_up_20_15_filter SMALLINT,
+    flag_up_21_00_filter SMALLINT,
+    flag_up_22_00_filter SMALLINT,
+    flag_up_23_00_filter SMALLINT,
+    flag_up_down SMALLINT,
+    flag_up_down_00_00 SMALLINT,
+    flag_up_down_01_00 SMALLINT,
+    flag_up_down_02_00 SMALLINT,
+    flag_up_down_03_00 SMALLINT,
+    flag_up_down_20_00 SMALLINT,
+    flag_up_down_20_15 SMALLINT,
+    flag_up_down_21_00 SMALLINT,
+    flag_up_down_22_00 SMALLINT,
+    flag_up_down_23_00 SMALLINT,
+    flag_up_filter SMALLINT,
+    flag_warn SMALLINT,
+    io_id INTEGER,
+    io_number INTEGER,
+    is_total_row SMALLINT,
+    plan NUMERIC(10,2),
+    source_id INTEGER,
+    total INTEGER,
+    uik_id INTEGER,
+    uik_number INTEGER,
+    voting_type VARCHAR(50),
+    voting_type_id INTEGER,
+    yavka_fact NUMERIC(10,2)
+);
+
+INSERT INTO "municipal_turnout_not_one_table_det" ("00_00", "01_00", "02_00", "03_00", "20_00", "20_15", "20_15_sum", "21_00", "22_00", "23_00", concat, deviation_abs, deviation_percent, district_id, district_name, district_okato, flag_down_00_00_filter, flag_down_01_00_filter, flag_down_02_00_filter, flag_down_03_00_filter, flag_down_20_15_filter, flag_down_21_00_filter, flag_down_22_00_filter, flag_down_23_00_filter, flag_down_filter, flag_up_00_00_filter, flag_up_01_00_filter, flag_up_02_00_filter, flag_up_03_00_filter, flag_up_20_15_filter, flag_up_21_00_filter, flag_up_22_00_filter, flag_up_23_00_filter, flag_up_down, flag_up_down_00_00, flag_up_down_01_00, flag_up_down_02_00, flag_up_down_03_00, flag_up_down_20_00, flag_up_down_20_15, flag_up_down_21_00, flag_up_down_22_00, flag_up_down_23_00, flag_up_filter, flag_warn, io_id, io_number, is_total_row, plan, source_id, total, uik_id, uik_number, voting_type, voting_type_id, yavka_fact)
+VALUES
+    (25.87, 51.07, 51.88, 58.05, 57.52, 44.58, 39.11, 77.23, 58.86, 50.05, 'group_1', -4.65, -14.26, 1, 'Москворецкий', '5744003377', 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 1, 100, 1, 1, 68.11, 1, 3418, 1000, 1, 'electronic', 80, 41.99),
+    (64.05, 43.21, 2.92, 61.41, 19.73, 59.22, 38.88, 70.47, 20.58, 75.23, 'group_2', 9.26, -13.12, 2, 'Замоскворецкий', '6097953682', 1, 0, 1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1, 101, 2, 1, 66.5, 2, 4502, 1007, 2, 'paper', 88, 89.75),
+    (93.07, 17.32, 16.69, 28.88, 18.71, 84.2, 61.94, 86.55, 95.18, 48.46, 'group_3', -9.15, -3.48, 3, 'Тверской', '8099880573', 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 0, 102, 3, 1, 69.2, 3, 812, 1014, 3, 'total', 56, 86.24),
+    (11.74, 81.19, 20.99, 73.76, 68.91, 86.1, 61.03, 42.82, 61.62, 78.48, 'group_4', 9.41, 9.16, 4, 'Пресненский', '7743417981', 1, 0, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 0, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 1, 1, 1, 103, 4, 1, 93.26, 4, 2781, 1021, 4, 'electronic', 74, 30.16),
+    (77.41, 73.27, 73.09, 45.84, 66.41, 35.82, 6.33, 53.44, 21.78, 42.96, 'group_5', -8.64, -6.94, 5, 'Якиманский', '8852676046', 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 104, 5, 0, 75.02, 5, 847, 1028, 5, 'paper', 90, 36.19),
+    (21.34, 7.79, 59.37, 51.94, 44.51, 0.81, 34.36, 12.06, 86.03, 69.4, 'group_1', -0.67, -8.13, 6, 'Донской', '9973608649', 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 105, 6, 1, 82.56, 6, 2132, 1035, 6, 'total', 70, 69.06),
+    (72.12, 28.49, 94.13, 2.68, 84.71, 87.58, 20.54, 60.69, 18.86, 39.18, 'group_2', 4.39, 8.51, 7, 'Нагатинский', '6322929387', 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 106, 7, 1, 62.93, 1, 747, 1042, 7, 'electronic', 65, 89.86),
+    (97.43, 15.54, 32.68, 58.64, 76.32, 64.98, 64.32, 31.02, 43.75, 95.34, 'group_3', -7.84, -7.67, 8, 'Чертановский', '9266213260', 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 107, 8, 1, 90.08, 2, 1467, 1049, 8, 'paper', 47, 40.23),
+    (77.33, 89.43, 67.41, 11.53, 74.08, 0.26, 85.87, 1.23, 4.6, 36.4, 'group_4', 12.61, -9.63, 9, 'Бутирский', '9741819989', 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 108, 9, 1, 80.71, 3, 4141, 1056, 9, 'total', 98, 80.43),
+    (73.25, 54.66, 79.6, 15.06, 93.24, 2.39, 54.15, 63.59, 69.35, 0.96, 'group_5', -4.95, 7.77, 10, 'Перовский', '2320748157', 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 109, 10, 1, 68.18, 4, 1760, 1063, 10, 'electronic', 17, 80.7),
+    (58.47, 15.54, 16.44, 46.61, 40.65, 53.59, 96.46, 20.76, 30.83, 26.5, 'group_1', -11.4, -10.27, 11, 'Кузьминский', '8241550421', 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 110, 11, 1, 92.11, 5, 714, 1070, 11, 'paper', 2, 94.82),
+    (19.78, 64.6, 80.93, 9.2, 84.73, 80.89, 12.25, 94.23, 5.06, 92.41, 'group_2', -2.01, 6.73, 12, 'Выхайловский', '3130846652', 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 111, 12, 1, 91.94, 6, 4215, 1077, 12, 'total', 41, 55.24),
+    (17.98, 31.89, 21.9, 89.58, 77.85, 5.86, 99.15, 52.94, 76.68, 99.96, 'group_3', 14.22, -12.0, 13, 'Люблинский', '3821211202', 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 112, 13, 1, 85.09, 1, 2750, 1084, 13, 'electronic', 7, 31.42),
+    (58.66, 91.72, 77.44, 84.65, 86.07, 96.06, 37.36, 94.19, 39.56, 10.1, 'group_4', -5.95, -10.91, 14, 'Капотнянский', '9369574998', 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 113, 14, 0, 69.28, 2, 2144, 1091, 14, 'paper', 88, 34.41),
+    (25.67, 10.8, 0.13, 38.59, 73.26, 96.91, 88.46, 49.31, 37.87, 54.6, 'group_5', -11.96, -0.62, 15, 'Марьинский', '3951331472', 0, 1, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 114, 15, 1, 83.12, 3, 2536, 1098, 15, 'total', 30, 36.23),
+    (39.29, 54.97, 49.09, 5.45, 0.38, 8.76, 82.39, 62.51, 48.03, 9.7, 'group_1', -8.79, 4.15, 16, 'Печатниковский', '5196430851', 1, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0, 115, 16, 0, 89.43, 4, 4380, 1105, 16, 'electronic', 53, 92.77),
+    (68.71, 93.64, 57.27, 23.56, 29.89, 39.48, 85.39, 3.47, 57.12, 51.68, 'group_2', 2.14, 14.48, 17, 'Солнцевский', '1633282877', 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 116, 17, 0, 87.5, 5, 4487, 1112, 17, 'paper', 44, 87.06),
+    (26.41, 65.48, 57.2, 47.3, 17.22, 40.3, 61.82, 68.08, 40.17, 39.58, 'group_3', 11.37, 5.72, 18, 'Одинцовский', '9801637712', 1, 1, 1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 117, 18, 0, 87.32, 6, 4394, 1119, 18, 'total', 72, 31.88),
+    (19.28, 83.29, 83.7, 24.95, 45.64, 91.8, 70.46, 27.4, 82.35, 50.51, 'group_4', 4.06, -11.28, 19, 'Ленинский', '1131267917', 1, 1, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 118, 19, 1, 84.95, 1, 2355, 1126, 19, 'electronic', 54, 88.21),
+    (85.16, 45.9, 21.82, 30.21, 52.06, 62.36, 58.45, 0.73, 99.94, 96.65, 'group_5', 10.18, 1.84, 20, 'Видный', '6509055260', 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 1, 119, 20, 1, 89.59, 2, 4673, 1133, 20, 'paper', 23, 49.1);
+
+-- -------------------------------------------------------------
+-- municipal_turnout_not_one
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_turnout_not_one";
+CREATE TABLE "municipal_turnout_not_one" (
+    "20_15" NUMERIC(10,2),
+    district_id INTEGER,
+    fact TEXT,
+    flag_up_down_00_00 SMALLINT,
+    io_id INTEGER,
+    plan NUMERIC(10,2),
+    source_id INTEGER,
+    uik_id INTEGER,
+    voting_type VARCHAR(50),
+    voting_type_id INTEGER
+);
+
+INSERT INTO "municipal_turnout_not_one" ("20_15", district_id, fact, flag_up_down_00_00, io_id, plan, source_id, uik_id, voting_type, voting_type_id)
+VALUES
+    (47.08, 1, 'fact_0', 1, 100, 85.38, 1, 1000, 'electronic', 71),
+    (76.29, 2, 'fact_1', 0, 101, 93.14, 2, 1007, 'paper', 42),
+    (65.44, 3, 'fact_2', 0, 102, 72.43, 3, 1014, 'total', 95),
+    (87.14, 4, 'fact_3', 1, 103, 87.58, 4, 1021, 'electronic', 42),
+    (37.17, 5, 'fact_4', 1, 104, 76.23, 5, 1028, 'paper', 15),
+    (47.05, 6, 'fact_5', 0, 105, 76.53, 6, 1035, 'total', 24),
+    (50.05, 7, 'fact_6', 1, 106, 78.54, 1, 1042, 'electronic', 52),
+    (5.41, 8, 'fact_7', 0, 107, 64.81, 2, 1049, 'paper', 25),
+    (34.27, 9, 'fact_8', 1, 108, 65.01, 3, 1056, 'total', 91),
+    (18.04, 10, 'fact_9', 0, 109, 77.07, 4, 1063, 'electronic', 80),
+    (98.66, 11, 'fact_10', 1, 110, 82.21, 5, 1070, 'paper', 0),
+    (45.21, 12, 'fact_11', 0, 111, 86.64, 6, 1077, 'total', 21),
+    (57.63, 13, 'fact_12', 0, 112, 77.14, 1, 1084, 'electronic', 97),
+    (77.98, 14, 'fact_13', 0, 113, 81.51, 2, 1091, 'paper', 81),
+    (42.94, 15, 'fact_14', 1, 114, 93.79, 3, 1098, 'total', 49),
+    (0.47, 16, 'fact_15', 0, 115, 85.57, 4, 1105, 'electronic', 1),
+    (89.2, 17, 'fact_16', 0, 116, 60.63, 5, 1112, 'paper', 0),
+    (62.67, 18, 'fact_17', 0, 117, 67.92, 6, 1119, 'total', 44),
+    (31.21, 19, 'fact_18', 0, 118, 73.42, 1, 1126, 'electronic', 75),
+    (30.61, 20, 'fact_19', 0, 119, 88.83, 2, 1133, 'paper', 38);
+
+-- -------------------------------------------------------------
+-- turnout_not_one_time
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "turnout_not_one_time";
+CREATE TABLE "turnout_not_one_time" (
+    election_id INTEGER,
+    left_time VARCHAR(30),
+    "time" VARCHAR(30)
+);
+
+INSERT INTO "turnout_not_one_time" (election_id, left_time, "time")
+VALUES
+    (2024, '20:00', '20:00'),
+    (2024, '21:03', '21:03'),
+    (2024, '22:06', '22:06'),
+    (2024, '23:09', '23:09'),
+    (2024, '24:12', '24:12'),
+    (2024, '25:15', '25:15'),
+    (2024, '26:18', '26:18'),
+    (2024, '20:21', '20:21'),
+    (2024, '21:24', '21:24'),
+    (2024, '22:27', '22:27'),
+    (2024, '23:30', '23:30'),
+    (2024, '24:33', '24:33'),
+    (2024, '25:36', '25:36'),
+    (2024, '26:39', '26:39'),
+    (2024, '20:42', '20:42'),
+    (2024, '21:45', '21:45'),
+    (2024, '22:48', '22:48'),
+    (2024, '23:51', '23:51'),
+    (2024, '24:54', '24:54'),
+    (2024, '25:57', '25:57');
+
+-- -------------------------------------------------------------
+-- municipal_turnout_loyal
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_turnout_loyal";
+CREATE TABLE "municipal_turnout_loyal" (
+    "20_15" NUMERIC(10,2),
+    district_id INTEGER,
+    fact TEXT,
+    flag_up_down_00_00 SMALLINT,
+    io_id INTEGER,
+    loyal TEXT,
+    not_loyal TEXT,
+    past_turnout_point TEXT,
+    plan NUMERIC(10,2),
+    source_id INTEGER,
+    uik_id INTEGER,
+    voting_type VARCHAR(50),
+    voting_type_id INTEGER
+);
+
+INSERT INTO "municipal_turnout_loyal" ("20_15", district_id, fact, flag_up_down_00_00, io_id, loyal, not_loyal, past_turnout_point, plan, source_id, uik_id, voting_type, voting_type_id)
+VALUES
+    (94.85, 1, 'fact_0', 1, 100, 'loyal_0', 'not_loyal_0', 'past_turnout_point_0', 85.47, 1, 1000, 'electronic', 76),
+    (52.41, 2, 'fact_1', 1, 101, 'loyal_1', 'not_loyal_1', 'past_turnout_point_1', 91.08, 2, 1007, 'paper', 17),
+    (34.27, 3, 'fact_2', 1, 102, 'loyal_2', 'not_loyal_2', 'past_turnout_point_2', 72.57, 3, 1014, 'total', 24),
+    (16.49, 4, 'fact_3', 1, 103, 'loyal_3', 'not_loyal_3', 'past_turnout_point_3', 60.67, 4, 1021, 'electronic', 28),
+    (72.72, 5, 'fact_4', 0, 104, 'loyal_4', 'not_loyal_4', 'past_turnout_point_4', 67.39, 5, 1028, 'paper', 2),
+    (58.97, 6, 'fact_5', 0, 105, 'loyal_5', 'not_loyal_5', 'past_turnout_point_5', 64.31, 6, 1035, 'total', 91),
+    (65.05, 7, 'fact_6', 0, 106, 'loyal_6', 'not_loyal_6', 'past_turnout_point_6', 73.13, 1, 1042, 'electronic', 81),
+    (25.58, 8, 'fact_7', 0, 107, 'loyal_7', 'not_loyal_7', 'past_turnout_point_7', 80.79, 2, 1049, 'paper', 6),
+    (66.2, 9, 'fact_8', 0, 108, 'loyal_8', 'not_loyal_8', 'past_turnout_point_8', 61.69, 3, 1056, 'total', 14),
+    (41.68, 10, 'fact_9', 1, 109, 'loyal_9', 'not_loyal_9', 'past_turnout_point_9', 64.33, 4, 1063, 'electronic', 32),
+    (47.44, 11, 'fact_10', 0, 110, 'loyal_10', 'not_loyal_10', 'past_turnout_point_10', 67.19, 5, 1070, 'paper', 87),
+    (63.03, 12, 'fact_11', 1, 111, 'loyal_11', 'not_loyal_11', 'past_turnout_point_11', 74.73, 6, 1077, 'total', 12),
+    (66.25, 13, 'fact_12', 1, 112, 'loyal_12', 'not_loyal_12', 'past_turnout_point_12', 81.8, 1, 1084, 'electronic', 89),
+    (13.72, 14, 'fact_13', 0, 113, 'loyal_13', 'not_loyal_13', 'past_turnout_point_13', 77.91, 2, 1091, 'paper', 79),
+    (11.77, 15, 'fact_14', 0, 114, 'loyal_14', 'not_loyal_14', 'past_turnout_point_14', 87.47, 3, 1098, 'total', 63),
+    (19.86, 16, 'fact_15', 0, 115, 'loyal_15', 'not_loyal_15', 'past_turnout_point_15', 87.23, 4, 1105, 'electronic', 66),
+    (97.31, 17, 'fact_16', 1, 116, 'loyal_16', 'not_loyal_16', 'past_turnout_point_16', 84.62, 5, 1112, 'paper', 37),
+    (16.04, 18, 'fact_17', 1, 117, 'loyal_17', 'not_loyal_17', 'past_turnout_point_17', 91.86, 6, 1119, 'total', 88),
+    (93.31, 19, 'fact_18', 1, 118, 'loyal_18', 'not_loyal_18', 'past_turnout_point_18', 68.21, 1, 1126, 'electronic', 1),
+    (67.16, 20, 'fact_19', 0, 119, 'loyal_19', 'not_loyal_19', 'past_turnout_point_19', 89.23, 2, 1133, 'paper', 85);
+
+-- -------------------------------------------------------------
+-- municipal_map_forecast_count
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_map_forecast_count";
+CREATE TABLE "municipal_map_forecast_count" (
+    block_type VARCHAR(50),
+    count_district INTEGER,
+    district_id INTEGER,
+    forecast_color_mo VARCHAR(20),
+    forecast_type VARCHAR(50),
+    now_color_mo VARCHAR(20),
+    sort INTEGER,
+    source_id INTEGER
+);
+
+INSERT INTO "municipal_map_forecast_count" (block_type, count_district, district_id, forecast_color_mo, forecast_type, now_color_mo, sort, source_id)
+VALUES
+    ('candidate', 31, 1, '#44B3EE', 'optimistic', '#44B3EE', 0, 1),
+    ('party', 9, 2, '#957AEB', 'pessimistic', '#957AEB', 1, 2),
+    ('summary', 5, 3, '#BFD8EA', 'base', '#BFD8EA', 2, 3),
+    ('candidate', 49, 4, '#FF6B6B', 'target', '#FF6B6B', 3, 4),
+    ('party', 32, 5, '#4ECDC4', 'optimistic', '#4ECDC4', 4, 5),
+    ('summary', 4, 6, '#45B7D1', 'pessimistic', '#45B7D1', 5, 6),
+    ('candidate', 46, 7, '#96CEB4', 'base', '#96CEB4', 6, 1),
+    ('party', 46, 8, '#FFEAA7', 'target', '#FFEAA7', 7, 2),
+    ('summary', 6, 9, '#DDA0DD', 'optimistic', '#DDA0DD', 8, 3),
+    ('candidate', 16, 10, '#F0E68C', 'pessimistic', '#F0E68C', 9, 4),
+    ('party', 41, 11, '#E74C3C', 'base', '#E74C3C', 10, 5),
+    ('summary', 14, 12, '#3498DB', 'target', '#3498DB', 11, 6),
+    ('candidate', 29, 13, '#44B3EE', 'optimistic', '#44B3EE', 12, 1),
+    ('party', 18, 14, '#957AEB', 'pessimistic', '#957AEB', 13, 2),
+    ('summary', 16, 15, '#BFD8EA', 'base', '#BFD8EA', 14, 3),
+    ('candidate', 29, 16, '#FF6B6B', 'target', '#FF6B6B', 15, 4),
+    ('party', 3, 17, '#4ECDC4', 'optimistic', '#4ECDC4', 16, 5),
+    ('summary', 6, 18, '#45B7D1', 'pessimistic', '#45B7D1', 17, 6),
+    ('candidate', 11, 19, '#96CEB4', 'base', '#96CEB4', 18, 1),
+    ('party', 2, 20, '#FFEAA7', 'target', '#FFEAA7', 19, 2);
+
+-- -------------------------------------------------------------
+-- dit_data.elections.municipal.municipal_map_mo
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS dit_data."municipal_map_mo";
+CREATE TABLE dit_data."municipal_map_mo" (
+    ao_okato VARCHAR(20),
+    district_id INTEGER,
+    filter_name TEXT,
+    perc_dim TEXT,
+    source_name VARCHAR(100)
+);
+
+INSERT INTO dit_data."municipal_map_mo" (ao_okato, district_id, filter_name, perc_dim, source_name)
+VALUES
+    ('8955347538', 1, 'mobile', 'dim_0', 'Dremio'),
+    ('6638034087', 2, 'all', 'dim_1', 'ЦЕСНА'),
+    ('1497791242', 3, 'pc', 'dim_2', 'GIS'),
+    ('3779696951', 4, 'mobile', 'dim_3', 'API'),
+    ('7965608188', 5, 'all', 'dim_4', 'Архив'),
+    ('5694190173', 6, 'mobile', 'dim_5', 'Портал'),
+    ('1785418196', 7, 'mobile', 'dim_6', 'Dremio'),
+    ('7255786047', 8, 'mobile', 'dim_7', 'ЦЕСНА'),
+    ('1716309186', 9, 'pc', 'dim_8', 'GIS'),
+    ('1684598046', 10, 'mobile', 'dim_9', 'API'),
+    ('2881894932', 11, 'all', 'dim_10', 'Архив'),
+    ('5856127658', 12, 'mobile', 'dim_11', 'Портал'),
+    ('7061419749', 13, 'pc', 'dim_12', 'Dremio'),
+    ('5566993537', 14, 'all', 'dim_13', 'ЦЕСНА'),
+    ('2349641712', 15, 'all', 'dim_14', 'GIS'),
+    ('9045090355', 16, 'all', 'dim_15', 'API'),
+    ('5704029171', 17, 'all', 'dim_16', 'Архив'),
+    ('4120946447', 18, 'mobile', 'dim_17', 'Портал'),
+    ('2653032484', 19, 'all', 'dim_18', 'Dremio'),
+    ('3632445649', 20, 'pc', 'dim_19', 'ЦЕСНА');
+
+-- -------------------------------------------------------------
+-- municipal_mandates
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_mandates";
+CREATE TABLE "municipal_mandates" (
+    ao_code TEXT,
+    ao_id INTEGER,
+    ao_name VARCHAR(100),
+    ao_okato VARCHAR(20),
+    color VARCHAR(20),
+    "count" INTEGER,
+    count_all INTEGER,
+    district_id INTEGER,
+    filter_name TEXT,
+    flag TEXT,
+    io_id INTEGER,
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    uik_id INTEGER
+);
+
+INSERT INTO "municipal_mandates" (ao_code, ao_id, ao_name, ao_okato, color, "count", count_all, district_id, filter_name, flag, io_id, source_id, source_name, uik_id)
+VALUES
+    ('AO01', 1, 'АО-1', '8940731272', '#44B3EE', 31, 10, 1, 'pc', '1', 100, 1, 'Dremio', 1000),
+    ('AO02', 2, 'АО-2', '2377111768', '#957AEB', 21, 17, 2, 'pc', '0', 101, 2, 'ЦЕСНА', 1007),
+    ('AO03', 3, 'АО-3', '6921203386', '#BFD8EA', 15, 5, 3, 'mobile', '1', 102, 3, 'GIS', 1014),
+    ('AO04', 4, 'АО-4', '2924568778', '#FF6B6B', 31, 28, 4, 'mobile', '0', 103, 4, 'API', 1021),
+    ('AO05', 5, 'АО-5', '9506916058', '#4ECDC4', 47, 41, 5, 'pc', '0', 104, 5, 'Архив', 1028),
+    ('AO06', 6, 'АО-6', '7027727434', '#45B7D1', 2, 35, 6, 'all', '0', 105, 6, 'Портал', 1035),
+    ('AO07', 7, 'АО-7', '4547251133', '#96CEB4', 50, 38, 7, 'all', '1', 106, 1, 'Dremio', 1042),
+    ('AO08', 8, 'АО-8', '3415200001', '#FFEAA7', 41, 42, 8, 'mobile', '1', 107, 2, 'ЦЕСНА', 1049),
+    ('AO09', 9, 'АО-9', '7246858055', '#DDA0DD', 35, 49, 9, 'all', '1', 108, 3, 'GIS', 1056),
+    ('AO10', 10, 'АО-10', '2943612110', '#F0E68C', 6, 48, 10, 'all', '0', 109, 4, 'API', 1063),
+    ('AO01', 1, 'АО-1', '5304403129', '#E74C3C', 22, 40, 11, 'mobile', '1', 110, 5, 'Архив', 1070),
+    ('AO02', 2, 'АО-2', '4015479599', '#3498DB', 2, 10, 12, 'mobile', '0', 111, 6, 'Портал', 1077),
+    ('AO03', 3, 'АО-3', '2757546829', '#44B3EE', 16, 39, 13, 'pc', '0', 112, 1, 'Dremio', 1084),
+    ('AO04', 4, 'АО-4', '8955114245', '#957AEB', 13, 29, 14, 'pc', '1', 113, 2, 'ЦЕСНА', 1091),
+    ('AO05', 5, 'АО-5', '2780136605', '#BFD8EA', 40, 43, 15, 'all', '0', 114, 3, 'GIS', 1098),
+    ('AO06', 6, 'АО-6', '7229869819', '#FF6B6B', 42, 37, 16, 'all', '0', 115, 4, 'API', 1105),
+    ('AO07', 7, 'АО-7', '9434691954', '#4ECDC4', 0, 33, 17, 'all', '0', 116, 5, 'Архив', 1112),
+    ('AO08', 8, 'АО-8', '7808041613', '#45B7D1', 32, 49, 18, 'pc', '0', 117, 6, 'Портал', 1119),
+    ('AO09', 9, 'АО-9', '1551395583', '#96CEB4', 24, 42, 19, 'all', '1', 118, 1, 'Dremio', 1126),
+    ('AO10', 10, 'АО-10', '6947080764', '#FFEAA7', 38, 44, 20, 'pc', '1', 119, 2, 'ЦЕСНА', 1133);
+
+-- -------------------------------------------------------------
+-- municipal_voters_ao_chart
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_voters_ao_chart";
+CREATE TABLE "municipal_voters_ao_chart" (
+    "type" VARCHAR(50),
+    ao_id INTEGER,
+    district_id INTEGER,
+    io_id INTEGER,
+    okato VARCHAR(20),
+    sort INTEGER,
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    uik_id INTEGER,
+    voted_percent_all NUMERIC(10,2),
+    voted_value_all BIGINT
+);
+
+INSERT INTO "municipal_voters_ao_chart" ("type", ao_id, district_id, io_id, okato, sort, source_id, source_name, uik_id, voted_percent_all, voted_value_all)
+VALUES
+    ('type_0', 1, 1, 100, '6558433027', 0, 1, 'Dremio', 1000, 80.48, 28111),
+    ('type_1', 2, 2, 101, '8991678061', 1, 2, 'ЦЕСНА', 1007, 71.19, 82559),
+    ('type_2', 3, 3, 102, '3716924538', 2, 3, 'GIS', 1014, 20.09, 48086),
+    ('type_3', 4, 4, 103, '8243940366', 3, 4, 'API', 1021, 92.12, 27389),
+    ('type_4', 5, 5, 104, '5115980792', 4, 5, 'Архив', 1028, 50.39, 52255),
+    ('type_5', 6, 6, 105, '4050941750', 5, 6, 'Портал', 1035, 76.08, 83699),
+    ('type_6', 7, 7, 106, '8934097788', 6, 1, 'Dremio', 1042, 80.83, 78515),
+    ('type_7', 8, 8, 107, '1457287198', 7, 2, 'ЦЕСНА', 1049, 38.09, 16955),
+    ('type_8', 9, 9, 108, '3878719791', 8, 3, 'GIS', 1056, 19.99, 31094),
+    ('type_9', 10, 10, 109, '9519206782', 9, 4, 'API', 1063, 68.34, 29192),
+    ('type_10', 1, 11, 110, '4605117440', 10, 5, 'Архив', 1070, 69.06, 48684),
+    ('type_11', 2, 12, 111, '3324316421', 11, 6, 'Портал', 1077, 35.87, 69322),
+    ('type_12', 3, 13, 112, '4714465905', 12, 1, 'Dremio', 1084, 74.24, 83566),
+    ('type_13', 4, 14, 113, '2670255496', 13, 2, 'ЦЕСНА', 1091, 51.09, 47701),
+    ('type_14', 5, 15, 114, '6933852220', 14, 3, 'GIS', 1098, 41.66, 50980),
+    ('type_15', 6, 16, 115, '1231078662', 15, 4, 'API', 1105, 74.37, 36619),
+    ('type_16', 7, 17, 116, '9032096058', 16, 5, 'Архив', 1112, 83.0, 58200),
+    ('type_17', 8, 18, 117, '3591527330', 17, 6, 'Портал', 1119, 77.61, 35362),
+    ('type_18', 9, 19, 118, '6558450990', 18, 1, 'Dremio', 1126, 17.74, 19760),
+    ('type_19', 10, 20, 119, '3206955437', 19, 2, 'ЦЕСНА', 1133, 37.72, 66165);
+
+-- -------------------------------------------------------------
+-- dit_data.elections.municipal.municipal_voters_district
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS dit_data."municipal_voters_district";
+CREATE TABLE dit_data."municipal_voters_district" (
+    district_okato VARCHAR(20),
+    filter_name TEXT,
+    voted_percent NUMERIC(10,2),
+    voted_value BIGINT
+);
+
+INSERT INTO dit_data."municipal_voters_district" (district_okato, filter_name, voted_percent, voted_value)
+VALUES
+    ('2134900434', 'pc', 58.4, 43425),
+    ('5319212967', 'mobile', 70.97, 30290),
+    ('1171543543', 'mobile', 59.69, 49472),
+    ('2537965898', 'all', 31.79, 38830),
+    ('5110230967', 'all', 6.82, 76209),
+    ('5979458346', 'all', 53.7, 22051),
+    ('2500674245', 'pc', 66.33, 53393),
+    ('6844582171', 'pc', 95.03, 79533),
+    ('3788722772', 'pc', 66.89, 68414),
+    ('9761206076', 'mobile', 38.14, 24860),
+    ('6952291828', 'all', 72.4, 13238),
+    ('7208619610', 'pc', 29.64, 35232),
+    ('1412129737', 'all', 53.32, 18581),
+    ('8238760130', 'pc', 20.56, 67047),
+    ('5036200310', 'all', 68.6, 13113),
+    ('2424706705', 'pc', 7.32, 33329),
+    ('8706093841', 'all', 7.04, 39837),
+    ('9207624837', 'mobile', 38.8, 63011),
+    ('7154795660', 'pc', 38.95, 25506),
+    ('3297096148', 'all', 72.03, 18288);
+
+-- -------------------------------------------------------------
+-- municipal_voters_msk
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_voters_msk";
+CREATE TABLE "municipal_voters_msk" (
+    ao_id INTEGER,
+    district_id INTEGER,
+    io_id INTEGER,
+    registered_voters TEXT,
+    source_id INTEGER,
+    uik_id INTEGER,
+    voted_percent NUMERIC(10,2),
+    voted_percent_deg NUMERIC(10,2),
+    voted_percent_offline NUMERIC(10,2),
+    voted_value BIGINT,
+    voted_value_deg BIGINT,
+    voted_value_offline BIGINT
+);
+
+INSERT INTO "municipal_voters_msk" (ao_id, district_id, io_id, registered_voters, source_id, uik_id, voted_percent, voted_percent_deg, voted_percent_offline, voted_value, voted_value_deg, voted_value_offline)
+VALUES
+    (1, 1, 100, '61931', 1, 1000, 70.09, 7.26, 92.8, 23911, 47989, 49498),
+    (2, 2, 101, '72676', 2, 1007, 28.15, 92.67, 38.14, 14039, 72126, 30489),
+    (3, 3, 102, '189845', 3, 1014, 21.99, 74.68, 79.68, 81529, 48663, 28884),
+    (4, 4, 103, '128133', 4, 1021, 67.73, 91.42, 79.5, 58906, 11461, 82551),
+    (5, 5, 104, '195508', 5, 1028, 14.14, 4.18, 57.27, 61653, 80405, 81765),
+    (6, 6, 105, '72315', 6, 1035, 30.47, 74.83, 90.35, 55069, 37752, 64087),
+    (7, 7, 106, '184362', 1, 1042, 14.25, 18.4, 61.69, 43127, 35470, 25023),
+    (8, 8, 107, '97541', 2, 1049, 67.1, 56.73, 5.44, 81939, 70458, 82045),
+    (9, 9, 108, '69174', 3, 1056, 29.07, 6.74, 9.82, 86099, 73857, 53365),
+    (10, 10, 109, '143621', 4, 1063, 12.82, 65.55, 10.0, 19149, 35362, 51652),
+    (1, 11, 110, '177365', 5, 1070, 45.06, 61.63, 30.57, 86568, 29974, 84128),
+    (2, 12, 111, '198599', 6, 1077, 36.45, 31.63, 42.83, 10633, 51053, 42266),
+    (3, 13, 112, '108071', 1, 1084, 71.22, 64.08, 27.67, 57118, 27603, 53458),
+    (4, 14, 113, '175817', 2, 1091, 46.28, 35.87, 30.55, 82308, 24264, 33038),
+    (5, 15, 114, '71488', 3, 1098, 84.18, 85.87, 14.0, 80597, 35746, 44502),
+    (6, 16, 115, '70044', 4, 1105, 72.74, 89.21, 84.96, 14088, 86269, 85877),
+    (7, 17, 116, '156203', 5, 1112, 76.92, 21.28, 3.67, 44159, 81233, 80736),
+    (8, 18, 117, '173759', 6, 1119, 65.39, 14.86, 39.25, 87280, 48141, 27548),
+    (9, 19, 118, '171818', 1, 1126, 50.11, 9.06, 36.39, 11388, 41310, 31737),
+    (10, 20, 119, '184777', 2, 1133, 14.04, 15.92, 56.64, 84162, 29162, 73373);
+
+-- -------------------------------------------------------------
+-- municipal_protocol_district_unpivot
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_protocol_district_unpivot";
+CREATE TABLE "municipal_protocol_district_unpivot" (
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    io_id INTEGER,
+    io_number INTEGER,
+    protocol_percent NUMERIC(10,2),
+    protocol_value BIGINT,
+    rec_attr TEXT,
+    source_id INTEGER,
+    status VARCHAR(30),
+    uik_all INTEGER
+);
+
+INSERT INTO "municipal_protocol_district_unpivot" (district_id, district_name, io_id, io_number, protocol_percent, protocol_value, rec_attr, source_id, status, uik_all)
+VALUES
+    (1, 'Москворецкий', 100, 1, 93.92, 10, 'protocol', 1, 'processed', 134),
+    (2, 'Замоскворецкий', 101, 2, 23.17, 67, 'statement', 2, 'pending', 69),
+    (3, 'Тверской', 102, 3, 4.28, 52, 'statement', 3, 'received', 109),
+    (4, 'Пресненский', 103, 4, 46.97, 116, 'protocol', 4, 'not_received', 20),
+    (5, 'Якиманский', 104, 5, 98.06, 82, 'protocol', 5, 'processed', 190),
+    (6, 'Донской', 105, 6, 96.84, 162, 'statement', 6, 'pending', 199),
+    (7, 'Нагатинский', 106, 7, 26.33, 139, 'protocol', 1, 'received', 106),
+    (8, 'Чертановский', 107, 8, 65.37, 93, 'protocol', 2, 'not_received', 142),
+    (9, 'Бутирский', 108, 9, 25.16, 57, 'statement', 3, 'processed', 100),
+    (10, 'Перовский', 109, 10, 81.72, 88, 'statement', 4, 'pending', 133),
+    (11, 'Кузьминский', 110, 11, 88.72, 1, 'protocol', 5, 'received', 122),
+    (12, 'Выхайловский', 111, 12, 16.56, 19, 'statement', 6, 'not_received', 64),
+    (13, 'Люблинский', 112, 13, 15.02, 40, 'statement', 1, 'processed', 164),
+    (14, 'Капотнянский', 113, 14, 71.73, 30, 'protocol', 2, 'pending', 116),
+    (15, 'Марьинский', 114, 15, 81.12, 184, 'protocol', 3, 'received', 133),
+    (16, 'Печатниковский', 115, 16, 67.52, 122, 'protocol', 4, 'not_received', 161),
+    (17, 'Солнцевский', 116, 17, 16.12, 105, 'protocol', 5, 'processed', 72),
+    (18, 'Одинцовский', 117, 18, 4.31, 146, 'protocol', 6, 'pending', 44),
+    (19, 'Ленинский', 118, 19, 62.95, 10, 'protocol', 1, 'received', 24),
+    (20, 'Видный', 119, 20, 16.63, 46, 'statement', 2, 'not_received', 163);
+
+-- -------------------------------------------------------------
+-- municipal_protocol_uik
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_protocol_uik";
+CREATE TABLE "municipal_protocol_uik" (
+    ao_code TEXT,
+    ao_id INTEGER,
+    ao_name VARCHAR(100),
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    election_id INTEGER,
+    io_id INTEGER,
+    io_name VARCHAR(100),
+    io_number INTEGER,
+    rec_attr TEXT,
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    status VARCHAR(30),
+    uik_id INTEGER,
+    uik_number INTEGER
+);
+
+INSERT INTO "municipal_protocol_uik" (ao_code, ao_id, ao_name, district_id, district_name, election_id, io_id, io_name, io_number, rec_attr, source_id, source_name, status, uik_id, uik_number)
+VALUES
+    ('AO01', 1, 'АО-1', 1, 'Москворецкий', 2024, 100, 'ИО № 100', 1, 'protocol', 1, 'Dremio', 'processed', 1000, 1),
+    ('AO02', 2, 'АО-2', 2, 'Замоскворецкий', 2024, 101, 'ИО № 101', 2, 'statement', 2, 'ЦЕСНА', 'pending', 1007, 2),
+    ('AO03', 3, 'АО-3', 3, 'Тверской', 2024, 102, 'ИО № 102', 3, 'protocol', 3, 'GIS', 'received', 1014, 3),
+    ('AO04', 4, 'АО-4', 4, 'Пресненский', 2024, 103, 'ИО № 103', 4, 'protocol', 4, 'API', 'not_received', 1021, 4),
+    ('AO05', 5, 'АО-5', 5, 'Якиманский', 2024, 104, 'ИО № 104', 5, 'statement', 5, 'Архив', 'processed', 1028, 5),
+    ('AO06', 6, 'АО-6', 6, 'Донской', 2024, 105, 'ИО № 105', 6, 'statement', 6, 'Портал', 'pending', 1035, 6),
+    ('AO07', 7, 'АО-7', 7, 'Нагатинский', 2024, 106, 'ИО № 106', 7, 'statement', 1, 'Dremio', 'received', 1042, 7),
+    ('AO08', 8, 'АО-8', 8, 'Чертановский', 2024, 107, 'ИО № 107', 8, 'protocol', 2, 'ЦЕСНА', 'not_received', 1049, 8),
+    ('AO09', 9, 'АО-9', 9, 'Бутирский', 2024, 108, 'ИО № 108', 9, 'protocol', 3, 'GIS', 'processed', 1056, 9),
+    ('AO10', 10, 'АО-10', 10, 'Перовский', 2024, 109, 'ИО № 109', 10, 'statement', 4, 'API', 'pending', 1063, 10),
+    ('AO01', 1, 'АО-1', 11, 'Кузьминский', 2024, 110, 'ИО № 110', 11, 'protocol', 5, 'Архив', 'received', 1070, 11),
+    ('AO02', 2, 'АО-2', 12, 'Выхайловский', 2024, 111, 'ИО № 111', 12, 'protocol', 6, 'Портал', 'not_received', 1077, 12),
+    ('AO03', 3, 'АО-3', 13, 'Люблинский', 2024, 112, 'ИО № 112', 13, 'statement', 1, 'Dremio', 'processed', 1084, 13),
+    ('AO04', 4, 'АО-4', 14, 'Капотнянский', 2024, 113, 'ИО № 113', 14, 'protocol', 2, 'ЦЕСНА', 'pending', 1091, 14),
+    ('AO05', 5, 'АО-5', 15, 'Марьинский', 2024, 114, 'ИО № 114', 15, 'statement', 3, 'GIS', 'received', 1098, 15),
+    ('AO06', 6, 'АО-6', 16, 'Печатниковский', 2024, 115, 'ИО № 115', 16, 'statement', 4, 'API', 'not_received', 1105, 16),
+    ('AO07', 7, 'АО-7', 17, 'Солнцевский', 2024, 116, 'ИО № 116', 17, 'protocol', 5, 'Архив', 'processed', 1112, 17),
+    ('AO08', 8, 'АО-8', 18, 'Одинцовский', 2024, 117, 'ИО № 117', 18, 'protocol', 6, 'Портал', 'pending', 1119, 18),
+    ('AO09', 9, 'АО-9', 19, 'Ленинский', 2024, 118, 'ИО № 118', 19, 'statement', 1, 'Dremio', 'received', 1126, 19),
+    ('AO10', 10, 'АО-10', 20, 'Видный', 2024, 119, 'ИО № 119', 20, 'statement', 2, 'ЦЕСНА', 'not_received', 1133, 20);
+
+-- -------------------------------------------------------------
+-- municipal_protocol_io_uik_download
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_protocol_io_uik_download";
+CREATE TABLE "municipal_protocol_io_uik_download" (
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    io_id INTEGER,
+    io_number INTEGER,
+    protocol_percent NUMERIC(10,2),
+    protocol_value BIGINT,
+    sort INTEGER,
+    status VARCHAR(30),
+    uik_all INTEGER,
+    uik_id INTEGER,
+    uik_number INTEGER
+);
+
+INSERT INTO "municipal_protocol_io_uik_download" (district_id, district_name, io_id, io_number, protocol_percent, protocol_value, sort, status, uik_all, uik_id, uik_number)
+VALUES
+    (1, 'Москворецкий', 100, 1, 13.22, 4, 0, 'processed', 61, 1000, 1),
+    (2, 'Замоскворецкий', 101, 2, 52.27, 129, 1, 'pending', 185, 1007, 2),
+    (3, 'Тверской', 102, 3, 41.98, 38, 2, 'received', 165, 1014, 3),
+    (4, 'Пресненский', 103, 4, 9.63, 121, 3, 'not_received', 167, 1021, 4),
+    (5, 'Якиманский', 104, 5, 59.98, 200, 4, 'processed', 146, 1028, 5),
+    (6, 'Донской', 105, 6, 50.33, 30, 5, 'pending', 33, 1035, 6),
+    (7, 'Нагатинский', 106, 7, 48.22, 33, 6, 'received', 164, 1042, 7),
+    (8, 'Чертановский', 107, 8, 53.93, 0, 7, 'not_received', 183, 1049, 8),
+    (9, 'Бутирский', 108, 9, 64.92, 133, 8, 'processed', 117, 1056, 9),
+    (10, 'Перовский', 109, 10, 37.04, 11, 9, 'pending', 188, 1063, 10),
+    (11, 'Кузьминский', 110, 11, 52.98, 58, 10, 'received', 133, 1070, 11),
+    (12, 'Выхайловский', 111, 12, 78.96, 97, 11, 'not_received', 99, 1077, 12),
+    (13, 'Люблинский', 112, 13, 58.9, 189, 12, 'processed', 188, 1084, 13),
+    (14, 'Капотнянский', 113, 14, 57.61, 108, 13, 'pending', 44, 1091, 14),
+    (15, 'Марьинский', 114, 15, 25.45, 196, 14, 'received', 69, 1098, 15),
+    (16, 'Печатниковский', 115, 16, 91.01, 21, 15, 'not_received', 82, 1105, 16),
+    (17, 'Солнцевский', 116, 17, 59.83, 139, 16, 'processed', 114, 1112, 17),
+    (18, 'Одинцовский', 117, 18, 25.78, 1, 17, 'pending', 191, 1119, 18),
+    (19, 'Ленинский', 118, 19, 74.36, 1, 18, 'received', 157, 1126, 19),
+    (20, 'Видный', 119, 20, 52.25, 133, 19, 'not_received', 11, 1133, 20);
+
+-- -------------------------------------------------------------
+-- Studenikin.mamaanarchia
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS studenikin."mamaanarchia";
+CREATE TABLE studenikin."mamaanarchia" (
+    ao TEXT,
+    come TEXT,
+    country TEXT,
+    percent NUMERIC(10,2),
+    yi TEXT
+);
+
+INSERT INTO studenikin."mamaanarchia" (ao, come, country, percent, yi)
+VALUES
+    ('АО-1', '50155', 'Россия', 65.45, '89'),
+    ('АО-2', '42405', 'Россия', 40.88, '14'),
+    ('АО-3', '21287', 'Россия', 42.61, '75'),
+    ('АО-4', '34244', 'Россия', 26.13, '69'),
+    ('АО-5', '56517', 'Россия', 56.47, '79'),
+    ('АО-6', '37118', 'Россия', 99.18, '51'),
+    ('АО-7', '99955', 'Россия', 20.37, '71'),
+    ('АО-8', '74080', 'Россия', 48.25, '48'),
+    ('АО-9', '74281', 'Россия', 55.49, '33'),
+    ('АО-10', '41193', 'Россия', 57.77, '100'),
+    ('АО-1', '93470', 'Россия', 39.81, '18'),
+    ('АО-2', '87413', 'Россия', 11.91, '30'),
+    ('АО-3', '59536', 'Россия', 78.31, '21'),
+    ('АО-4', '14143', 'Россия', 21.45, '52'),
+    ('АО-5', '45359', 'Россия', 80.09, '79'),
+    ('АО-6', '92364', 'Россия', 68.46, '7'),
+    ('АО-7', '22068', 'Россия', 38.91, '82'),
+    ('АО-8', '1693', 'Россия', 80.44, '19'),
+    ('АО-9', '62822', 'Россия', 92.59, '56'),
+    ('АО-10', '12552', 'Россия', 6.41, '29');
+
+-- -------------------------------------------------------------
+-- municipal_invalid_bulletin
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "municipal_invalid_bulletin";
+CREATE TABLE "municipal_invalid_bulletin" (
+    ao_code TEXT,
+    ao_id INTEGER,
+    ao_name VARCHAR(100),
+    ao_okato VARCHAR(20),
+    district_id INTEGER,
+    district_name VARCHAR(100),
+    district_okato VARCHAR(20),
+    invalid TEXT,
+    invalid_deg TEXT,
+    invalid_offline TEXT,
+    invalid_per TEXT,
+    invalid_per_deg TEXT,
+    invalid_per_offline TEXT,
+    io_id INTEGER,
+    io_number INTEGER,
+    source_id INTEGER,
+    source_name VARCHAR(100),
+    uik_id INTEGER,
+    uik_number INTEGER
+);
+
+INSERT INTO "municipal_invalid_bulletin" (ao_code, ao_id, ao_name, ao_okato, district_id, district_name, district_okato, invalid, invalid_deg, invalid_offline, invalid_per, invalid_per_deg, invalid_per_offline, io_id, io_number, source_id, source_name, uik_id, uik_number)
+VALUES
+    ('AO01', 1, 'АО-1', '2592724766', 1, 'Москворецкий', '3615759047', 'invalid_0', 'invalid_deg_0', 'invalid_offline_0', 'invalid_per_0', 'invalid_per_deg_0', 'invalid_per_offline_0', 100, 1, 1, 'Dremio', 1000, 1),
+    ('AO02', 2, 'АО-2', '8406648395', 2, 'Замоскворецкий', '7418263314', 'invalid_1', 'invalid_deg_1', 'invalid_offline_1', 'invalid_per_1', 'invalid_per_deg_1', 'invalid_per_offline_1', 101, 2, 2, 'ЦЕСНА', 1007, 2),
+    ('AO03', 3, 'АО-3', '1046000830', 3, 'Тверской', '7520418699', 'invalid_2', 'invalid_deg_2', 'invalid_offline_2', 'invalid_per_2', 'invalid_per_deg_2', 'invalid_per_offline_2', 102, 3, 3, 'GIS', 1014, 3),
+    ('AO04', 4, 'АО-4', '1836429847', 4, 'Пресненский', '3999818762', 'invalid_3', 'invalid_deg_3', 'invalid_offline_3', 'invalid_per_3', 'invalid_per_deg_3', 'invalid_per_offline_3', 103, 4, 4, 'API', 1021, 4),
+    ('AO05', 5, 'АО-5', '3642220886', 5, 'Якиманский', '3894912687', 'invalid_4', 'invalid_deg_4', 'invalid_offline_4', 'invalid_per_4', 'invalid_per_deg_4', 'invalid_per_offline_4', 104, 5, 5, 'Архив', 1028, 5),
+    ('AO06', 6, 'АО-6', '2545071541', 6, 'Донской', '3813285701', 'invalid_5', 'invalid_deg_5', 'invalid_offline_5', 'invalid_per_5', 'invalid_per_deg_5', 'invalid_per_offline_5', 105, 6, 6, 'Портал', 1035, 6),
+    ('AO07', 7, 'АО-7', '5190367237', 7, 'Нагатинский', '7010521940', 'invalid_6', 'invalid_deg_6', 'invalid_offline_6', 'invalid_per_6', 'invalid_per_deg_6', 'invalid_per_offline_6', 106, 7, 1, 'Dremio', 1042, 7),
+    ('AO08', 8, 'АО-8', '8171143901', 8, 'Чертановский', '9655933303', 'invalid_7', 'invalid_deg_7', 'invalid_offline_7', 'invalid_per_7', 'invalid_per_deg_7', 'invalid_per_offline_7', 107, 8, 2, 'ЦЕСНА', 1049, 8),
+    ('AO09', 9, 'АО-9', '4022033155', 9, 'Бутирский', '4947836984', 'invalid_8', 'invalid_deg_8', 'invalid_offline_8', 'invalid_per_8', 'invalid_per_deg_8', 'invalid_per_offline_8', 108, 9, 3, 'GIS', 1056, 9),
+    ('AO10', 10, 'АО-10', '7655449762', 10, 'Перовский', '7798642975', 'invalid_9', 'invalid_deg_9', 'invalid_offline_9', 'invalid_per_9', 'invalid_per_deg_9', 'invalid_per_offline_9', 109, 10, 4, 'API', 1063, 10),
+    ('AO01', 1, 'АО-1', '8797577040', 11, 'Кузьминский', '5136298935', 'invalid_10', 'invalid_deg_10', 'invalid_offline_10', 'invalid_per_10', 'invalid_per_deg_10', 'invalid_per_offline_10', 110, 11, 5, 'Архив', 1070, 11),
+    ('AO02', 2, 'АО-2', '5314945131', 12, 'Выхайловский', '6046735986', 'invalid_11', 'invalid_deg_11', 'invalid_offline_11', 'invalid_per_11', 'invalid_per_deg_11', 'invalid_per_offline_11', 111, 12, 6, 'Портал', 1077, 12),
+    ('AO03', 3, 'АО-3', '3174276085', 13, 'Люблинский', '3399300652', 'invalid_12', 'invalid_deg_12', 'invalid_offline_12', 'invalid_per_12', 'invalid_per_deg_12', 'invalid_per_offline_12', 112, 13, 1, 'Dremio', 1084, 13),
+    ('AO04', 4, 'АО-4', '7456062427', 14, 'Капотнянский', '8626138802', 'invalid_13', 'invalid_deg_13', 'invalid_offline_13', 'invalid_per_13', 'invalid_per_deg_13', 'invalid_per_offline_13', 113, 14, 2, 'ЦЕСНА', 1091, 14),
+    ('AO05', 5, 'АО-5', '8222394132', 15, 'Марьинский', '4702361794', 'invalid_14', 'invalid_deg_14', 'invalid_offline_14', 'invalid_per_14', 'invalid_per_deg_14', 'invalid_per_offline_14', 114, 15, 3, 'GIS', 1098, 15),
+    ('AO06', 6, 'АО-6', '3070046110', 16, 'Печатниковский', '2107327477', 'invalid_15', 'invalid_deg_15', 'invalid_offline_15', 'invalid_per_15', 'invalid_per_deg_15', 'invalid_per_offline_15', 115, 16, 4, 'API', 1105, 16),
+    ('AO07', 7, 'АО-7', '4011528431', 17, 'Солнцевский', '8731634319', 'invalid_16', 'invalid_deg_16', 'invalid_offline_16', 'invalid_per_16', 'invalid_per_deg_16', 'invalid_per_offline_16', 116, 17, 5, 'Архив', 1112, 17),
+    ('AO08', 8, 'АО-8', '3300607428', 18, 'Одинцовский', '2131078331', 'invalid_17', 'invalid_deg_17', 'invalid_offline_17', 'invalid_per_17', 'invalid_per_deg_17', 'invalid_per_offline_17', 117, 18, 6, 'Портал', 1119, 18),
+    ('AO09', 9, 'АО-9', '2233899367', 19, 'Ленинский', '2468848245', 'invalid_18', 'invalid_deg_18', 'invalid_offline_18', 'invalid_per_18', 'invalid_per_deg_18', 'invalid_per_offline_18', 118, 19, 1, 'Dremio', 1126, 19),
+    ('AO10', 10, 'АО-10', '6061557739', 20, 'Видный', '6643040635', 'invalid_19', 'invalid_deg_19', 'invalid_offline_19', 'invalid_per_19', 'invalid_per_deg_19', 'invalid_per_offline_19', 119, 20, 2, 'ЦЕСНА', 1133, 20);
+
+-- -------------------------------------------------------------
+-- d_all_slices
+-- -------------------------------------------------------------
+DROP TABLE IF EXISTS "d_all_slices";
+CREATE TABLE "d_all_slices" (
+    ao_id INTEGER,
+    district_id INTEGER,
+    election_id INTEGER,
+    io_id INTEGER,
+    uik_id INTEGER,
+    uik_number INTEGER,
+    uik_type_id INTEGER
+);
+
+INSERT INTO "d_all_slices" (ao_id, district_id, election_id, io_id, uik_id, uik_number, uik_type_id)
+VALUES
+    (1, 1, 2024, 100, 1000, 1, 1),
+    (2, 2, 2024, 101, 1007, 2, 2),
+    (3, 3, 2024, 102, 1014, 3, 3),
+    (4, 4, 2024, 103, 1021, 4, 1),
+    (5, 5, 2024, 104, 1028, 5, 2),
+    (6, 6, 2024, 105, 1035, 6, 3),
+    (7, 7, 2024, 106, 1042, 7, 1),
+    (8, 8, 2024, 107, 1049, 8, 2),
+    (9, 9, 2024, 108, 1056, 9, 3),
+    (10, 10, 2024, 109, 1063, 10, 1),
+    (1, 11, 2024, 110, 1070, 11, 2),
+    (2, 12, 2024, 111, 1077, 12, 3),
+    (3, 13, 2024, 112, 1084, 13, 1),
+    (4, 14, 2024, 113, 1091, 14, 2),
+    (5, 15, 2024, 114, 1098, 15, 3),
+    (6, 16, 2024, 115, 1105, 16, 1),
+    (7, 17, 2024, 116, 1112, 17, 2),
+    (8, 18, 2024, 117, 1119, 18, 3),
+    (9, 19, 2024, 118, 1126, 19, 1),
+    (10, 20, 2024, 119, 1133, 20, 2);
